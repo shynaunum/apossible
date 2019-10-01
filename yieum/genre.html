@@ -1,0 +1,4052 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>장르별 도서 - 도서출판 이음</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+  <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+  <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+  <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script>
+	  $(document).ready(function() {
+
+		$('a[href="#"]').on('click', function(e){
+			e.preventDefault();
+		});
+		
+		$(window).scroll( function(){
+			if($(window).width() >= 1280){
+				var scroll = $(document).scrollTop(); 
+				if(scroll >= 100 ){ 
+					$("#content>div>div").addClass("fadeIn");
+					$('.page>li').addClass("fadeIn");
+				}
+				
+				$('.fadeIn').each( function(i){
+					var bottom_of_object = $(this).offset().top;
+					var bottom_of_window = scroll + $(window).height();
+
+					if( bottom_of_window > bottom_of_object ){
+						$(this).stop().animate({'opacity':'1','marginTop':'0'},400);
+					}else{
+						$(this).stop().animate({'opacity':'0','marginTop':'20'},100);
+					}
+				});
+			}else if($(window).width() < 1280){
+				var scroll = $(document).scrollTop(); 
+				if(scroll >= 100 ){ 
+					$("#content>div>div").addClass("fadeIn");
+					$('.page>li').addClass("fadeIn");
+				}
+				
+				$('.fadeIn').each( function(i){
+					var bottom_of_object = $(this).offset().top;
+					var bottom_of_window = scroll + $(window).height();
+
+					if( bottom_of_window > bottom_of_object ){
+						$(this).stop().animate({'opacity':'1','marginTop':'0'},400);
+					}else{
+						$(this).stop().animate({'opacity':'0','marginTop':'20'},100);
+					}
+				});
+			}
+			
+			//top menu fix, btn-top
+			var topMenu = $(document).scrollTop(); 
+			if(topMenu >= 750 ){ 
+				$("#gnb").addClass("fix-menu");
+				$(".btn-top").css('opacity','1');
+			}else{
+				$("#gnb").removeClass("fix-menu");
+				$(".btn-top").css('opacity','0');
+			}
+
+		});
+
+		//search
+		var searchIcon = $('.search img');
+		$(".search").mouseenter(function() {
+			$(searchIcon).attr('src','images/icon-search-color.svg');
+		}).mouseleave(function(){
+			$(searchIcon).attr('src','images/icon-search.svg');
+		});
+
+		$('.search').click(function (e) {
+			$(this).attr('rel','modal:open'); 
+		});
+
+		//menu
+		if($(window).width()>=1280){
+			var menu = $('#gnb-menu>ul>li');
+			menu.mouseenter(function(){
+				$('.sub-menu').addClass('on');
+			}).mouseleave(function(){
+				$('.sub-menu').removeClass('on');
+			});
+		}
+		$('.menu').append('<span class="btn-drop"></span>');
+		$('#gnb-inner').append('<div class="cover"></div>');
+		 
+
+		//tablet & mobile menu
+		var btn = $('.btn-menu');
+		var gnb = $('#gnb');
+		var allMenu = $('#gnb-menu');
+
+		btn.on('click',function(e){
+			e.preventDefault;
+			$(this).toggleClass('btn-close');
+			allMenu.toggleClass('width');
+			$('.cover').toggleClass('cover-bg');
+			$('body').toggleClass('no-scroll');
+		});
+
+		var subBtn = $('.menu');
+		$(subBtn).on('click',function() {
+			$(this).find('.sub-menu').toggleClass('sub-menu-on');
+			$(this).find('.btn-drop').toggleClass('btn-up');
+		});
+
+		//btn-top
+		$('.btn-top').click(function() {
+			$('body,html').animate({
+				scrollTop: 0
+			},600);
+		});
+		
+		//swiper
+		var mySwiper = new Swiper('.swiper-container', {
+			spaceBetween: 0,
+			loop: true,
+			observer: true,
+			observeParents: true,
+			speed: 1000,
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+
+		//genre-tab
+		var tab = $('.genre-menu li');
+		var tabBg = $('.genre-bg>div');
+		var genre = $('.content-genre');
+		genre.css({'visibility':'hidden','max-height':'0'});
+		genre.first().css({'visibility':'visible','max-height':'100%'});
+		tab.on('click', function(e){
+			e.preventDefault();
+			var tg = $(this);
+			var tc = tg.find('>a');
+		
+			tab.find('>a').removeClass('menu-on');
+			tc.addClass('menu-on');
+		
+			i = tg.index();
+			tabBg.removeClass('bg-on');
+			tabBg.eq(i).addClass('bg-on');
+			genre.css({'visibility':'hidden','max-height':'0'});
+			genre.eq(i).css({'visibility':'visible','max-height':'100%'});
+
+			book.find('>a').remove();
+			book.removeClass('card');
+			viewCard.children('img').attr('src','images/icon-card.svg');
+			viewList.children('img').attr('src','images/icon-list-on.svg');
+		});
+	
+
+		//view-type
+		var viewCard = $('a.view-card');
+		var viewList = $('a.view-list');
+		var book = $('.genre-list>ul>li');
+
+		viewCard.click(function(){
+			viewList.children('img').attr('src','images/icon-list.svg');
+			$(this).children('img').attr('src','images/icon-card-on.svg');
+			book.addClass('card').prepend('<a href="#"></a>');
+			$('.card>a').click(function(e){
+				e.preventDefault();
+			});
+			$('.book-intro').each(function(i){
+				var bookCard = $('.card>a').eq(i);
+				$(this).clone().prependTo(bookCard);
+			});
+			$('.book-title').each(function(i){
+				var bookCard = $('.card>a').eq(i);
+				$(this).clone().prependTo(bookCard);
+			});
+		});
+		viewList.click(function(){
+			viewCard.children('img').attr('src','images/icon-card.svg');	
+			$(this).children('img').attr('src','images/icon-list-on.svg');
+			book.find('>a').remove();
+			book.removeClass('card');
+		});
+	 });
+  </script>
+ 
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/header_footer.css">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+
+ </head>
+ <body id="genre">
+ 	<a href="#" class="btn-top"><img src="images/icon-top.svg" alt="위로가기아이콘"></a>
+	<header id="main-header">
+		<div id="gnb">
+			<div id="gnb-inner">
+				<div id="gnb-logo" style="background: url('images/logo.svg')no-repeat left center">
+					<h1><a href="main.html">도서출판 이음</a></h1>
+				</div>
+				<a href="#" class="btn-menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+				<div id="gnb-menu">
+					<div class="logo" style="background: url('images/logo-black.svg')no-repeat left center">
+						<h1><a href="main.html">도서출판 이음</a></h1>
+					</div>
+					<ul class="menu-top">
+						<li><a href="#">로그인</a></li>
+						<li><a href="#">회원가입</a></li>
+						<li class="select-lang"><a href="#">KOR</a>
+							<ul>
+								<li><a href="#">ENG</a></li>
+								<li><a href="#">CHN</a></li>
+								<li><a href="#">JAP</a></li>
+							</ul>
+						</li>
+					</ul><!--menu-top-->
+					<ul class="menu-bottom">
+						<li>
+							<form action="" method="post">
+								<input type="search" id="gnb-search" placeholder="검색어를 입력하세요">
+								<input type="image" src="images/icon-search.svg" alt="검색아이콘">
+							</form>
+						</li>
+						<li class="menu menu-book"><a href="#">책소식</a>
+							<div class="sub-menu sub-book">
+								<h2>Books</h2>
+								<ul>
+									<li>
+										<a href="#">새로 나온 책</a>
+										<div class="new-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/illustration-alice.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>Alice in Wonderland</p>
+												<p>Lewis Carroll</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">베스트셀러</a>
+										<div class="best-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/galactic2.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>은하철도의 밤</p>
+												<p>미야자와 겐지</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="sub.html">장르별 도서</a>
+										<div class="genre-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/menu-genre.jpeg')no-repeat center center"></div>
+										</div>
+									</li>
+									<li>
+										<a href="#">이 달의 작가</a>
+										<div class="author-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/fitzgerald.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>F. Scott Fitzgerald</p>
+												<p>1986. 9. 24 ~ 1940. 12. 21</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">지금 만드는 책</a>
+										<div class="now-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/publishing.jpg')no-repeat"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-comm"><a href="#">커뮤니티</a>
+							<div class="sub-menu sub-comm">
+								<h2>Community</h2>
+								<ul>
+									<li><a href="#">공지사항 & 이벤트</a></li>
+									<li><a href="#">도서 갤러리</a></li>
+									<li><a href="#">문의 게시판</a></li>
+									<li><a href="#">오탈자 제보</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-club"><a href="#">북클럽</a>
+							<div class="sub-menu sub-club">
+								<h2>Book Club</h2>
+								<ul>
+									<li><a href="#">북클럽 소개</a></li>
+									<li><a href="#">웰컴북 & 생일도서</a></li>
+									<li><a href="#">이 달의 강연</a></li>
+									<li><a href="#">작가와 고전 읽기</a></li>
+									<li><a href="#">북클럽 리뷰</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-corp"><a href="#">회사소개</a>
+							<div class="sub-menu sub-corp">
+								<h2>Corporate</h2>
+								<ul>
+									<li><a href="#">회사소개</a></li>
+									<li><a href="#">인사말</a></li>
+									<li><a href="#">오시는 길</a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#ex1" class="search"><img src="images/icon-search.svg" alt="검색아이콘"></a>
+							<div id="ex1" class="modal">
+								<p>
+									<input type="search" placeholder="검색어를 입력하세요." autofocus>
+									<input type="image" src="images/icon-search-color.svg" alt="검색아이콘">
+								</p>
+							</div><!--modal-->
+						</li>
+					</ul>
+				</div>
+			</div><!--gnb-inner-->
+		</div><!--gnb-->
+		<div class="page-title">
+			<p>장르별 도서</p>
+			<p>Genres</p>
+		</div>
+	</header>
+
+	<section id="main-section">
+		<p class="route">
+			<a href="main.html">홈</a> > <a href="#">책소식</a> > 장르별 도서
+		</p>
+
+		<div class="genre-tab">
+			<div class="cover-left"></div>
+			<div class="cover-right"></div>
+			<ul class="genre-menu">
+				<li><a href="#" id="tab-mistery" class="tab menu-on">미스터리 & 추리</a></li>
+				<li><a href="#" id="tab-fairy" class="tab">동화</a></li>
+				<li><a href="#" id="tab-romance" class="tab">로맨스</a></li>
+				<li><a href="#" id="tab-historical" class="tab">역사소설</a></li>
+				<li><a href="#" id="tab-sf" class="tab">공상과학</a></li>
+				<li><a href="#" id="tab-fantasy" class="tab">판타지</a></li>
+				<li><a href="#" id="tab-poetry" class="tab">시</a></li>
+				<li><a href="#" id="tab-h" class="tab">공포소설</a></li>
+			</ul>
+			<div class="genre-bg">
+				<div class="g-bg g-bg0 bg-on" style="background: url('images/genre/tab/mystery-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Mystery<br>&emsp;& Detective</p>
+						<img src="images/genre/tab/mystery.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg1" style="background: url('images/genre/tab/fairytale-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Fairy Tales</p>
+						<img src="images/genre/tab/fairytale.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg2" style="background: url('images/genre/tab/romance-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Romance</p>
+						<img src="images/genre/tab/romance.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg3" style="background: url('images/genre/tab/historical-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Historical<br>&emsp;&emsp;Fiction</p>
+						<img src="images/genre/tab/historical.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg4" style="background: url('images/genre/tab/sf-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Science<br>&emsp;Fiction</p>
+						<img src="images/genre/tab/sf.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg5" style="background: url('images/genre/tab/fantasy-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Fantasy</p>
+						<img src="images/genre/tab/fantasy.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg6" style="background: url('images/genre/tab/poetry-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Poetry</p>
+						<img src="images/genre/tab/poetry.png" alt="장르이미지">
+					</div>
+				</div>
+				<div class="g-bg g-bg7" style="background: url('images/genre/tab/horror-bg.jpg')no-repeat">
+					<div class="bg-inner">
+						<p>Horror<br>&emsp;& Thriller</p>
+						<img src="images/genre/tab/horror.png" alt="장르이미지">
+					</div>
+				</div>
+			</div>
+		</div><!--genre-tab-->
+		<section id="content">
+			<div class="content-genre content-mistery">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-mystery">
+						<div class="swiper-container swiper-container1">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/mistery-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/scarlet.jpg" alt="도서이미지" class="books">
+										<p>〈주홍색 연구〉</p>
+										<p>-아서 코난 도일</p>
+										<p>“삶을 이루는 무색의 실타래에 살인의 붉은 실이 얽혀있다네.<br>그리고 우리가 할 일은 그것을 풀어내고 흩뜨려 모든 것을 드러내는 것이지.”</p>
+										<p style="background: #3a2586">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/mistery-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/orient.jpg" alt="도서이미지" class="books">
+										<p>〈오리엔트 특급살인〉</p>
+										<p>-애거서 크리스티</p>
+										<p>〈가디언〉에서 선정한 애거서 크리스티 베스트 10이자<br>추리소설의 여왕 애거서 크리스티 자신이 뽑은 BEST 10중의 한 작품!</p>
+										<p style="background: #e27a20">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/mistery-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/coffins.jpg" alt="도서이미지" class="books">
+										<p>〈세개의 관〉</p>
+										<p>-존 딕슨 카</p>
+										<p>괴기탐정의 귀재 존 딕슨 카, 느닷없이 얼굴없는 살인사건이 일어났다!<br>불가능한 범죄와 괴기취미 거장 존 딕슨 카의 기이하고 소름끼치는 제1급 밀실살인!</p>
+										<p style="background: #e45612">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination1"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-mystery" style="background: url('images/author/christie.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Agatha<br>&emsp;&nbsp;Christie</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>미스터리 & 추리 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/pigeons.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈비둘기 속의 고양이〉<span>- 애거서 크리스티</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">계속되는 교사들의 죽음……. 과연 보석은 어디에 있는 것일까? 아무 것도 없는 체육관에서 왜 살인이 일어나는 것일까?</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#보석</a></span>
+									<span><a href="#">#유작</a></span>
+									<span><a href="#">#전집</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/scarlet.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈주홍색 연구〉<span>- 아서 코난 도일</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">세상을 놀라게 한 가장 기발하고 흥미진진한 추리의 결정판. 1887년 ‘셜록 홈즈 시리즈’의 첫 번째 작품 《주홍색 연구》</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#대표장면</a></span>
+									<span><a href="#">#하숙집</a></span>
+									<span><a href="#">#동거인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/coffins.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈세개의 관〉<span>- 존 딕슨 카</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">밀실 미스터리의 거장으로 인정받는 존 딕슨 카의 작품 중 최고 대표작이자, 밀실 미스터리의 역사에서도 빼놓을 수 없는 걸작</p>
+								<p class="hash">
+									<span><a href="#">#밀실</a></span>
+									<span><a href="#">#트릭</a></span>
+									<span><a href="#">#살인사건</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/baskervilles.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈바스커빌 가의 개〉<span>- 아서 코난 도일</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">유서 깊은 가문의 찰스 바스커빌은 어느 날 수수께끼 같은 죽음을 맞이한다. 유산 상속인인 헨리는 가문에 내려오던 저주를 확인하고자 홈즈에게 자문을 구하는데…</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#황무지</a></span>
+									<span><a href="#">#탐정</a></span>
+									<span><a href="#">#걸작</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/none.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈그리고 아무도 없었다〉<span>- 애거서 크리스티</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">무인도에 갇힌 열 사람은 모두 죽고 한 사람도 살아 남지 못했는데, 섬에는 이들 열 명 외엔 아무도 없다. 범인은 도대체 누구인가?</p>
+								<p class="hash">
+									<span><a href="#">#무인도</a></span>
+									<span><a href="#">#서스펜스</a></span>
+									<span><a href="#">#성경</a></span>
+									<span><a href="#">#인형</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/orient.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈오리엔트 특급살인〉<span>- 애거서 크리스티</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">한 사람이 살해당한다. 아무도 열차를 빠져나갈 수는 없다. 게다가, 승객들은 모두 완벽한 알리바이를 가지고 있다. 그렇다면 범인은 어디로 사라진 것일까?</p>
+								<p class="hash">
+									<span><a href="#">#명탐정</a></span>
+									<span><a href="#">#열차</a></span>
+									<span><a href="#">#범인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/valley.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈공포의 계곡〉<span>- 아서 코난 도일</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">벌스톤 저택의 살인사건과 마주한 홈즈는 명쾌한 추리로 사건을 해결하는데, 암흑계의 제왕 모리어티 교수의 도발로 두 사람의 대결이 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#숙적</a></span>
+									<span><a href="#">#탄광촌</a></span>
+									<span><a href="#">#저택</a></span>
+									<span><a href="#">#살인사건</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/burning.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈화형 법정〉<span>- 존 딕슨 카</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">인기 작가의 원고 속 17세기 독살범의 사진에서 아내의 모습을 발견하고 깜짝 놀란 스티븐스. 아내에 대한 의혹은 이웃에서 살인 사건이 벌어지면서 점점 커지는데…</p>
+								<p class="hash">
+									<span><a href="#">#독살</a></span>
+									<span><a href="#">#밀실</a></span>
+									<span><a href="#">#후작</a></span>
+									<span><a href="#">#오컬트</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/velvet.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈벨벳의 악마〉<span>- 존 딕슨 카</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">이름은 물론 태어날 날짜까지 같은 두 남자, 그리고 악마와의 위험한 거래. 그는 정치적 모략에 맞서 싸우면서 사랑하는 여인의 살해를 막아야 하는데…</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#독살</a></span>
+									<span><a href="#">#역사소설</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/emperor.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈황제의 코담뱃갑〉<span>- 존 딕슨 카</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">어느 늦은 밤, 이브는 침실에서 전남편과 말다툼을 하다 약혼자의 아버지가 잔혹하게 살해당하는 것을 목격하고, 급기야 살인 사건의 용의자로 몰리는데…</p>
+								<p class="hash">
+									<span><a href="#">#트릭</a></span>
+									<span><a href="#">#전남편</a></span>
+									<span><a href="#">#약혼자</a></span>
+									<span><a href="#">#범죄</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/femme.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈지푸라기 여자〉<span>- 카트린 아를레</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro"> 전통적인 추리소설의 기법을 완전히 버리고도 강력한 흡입력과 예측을 뛰어넘는 잔혹한 결말로 출간 후 60년이 지난 오늘날까지도 독자들을 사로잡은 미스터리의 걸작</p>
+								<p class="hash">
+									<span><a href="#">#잔혹</a></span>
+									<span><a href="#">#범죄</a></span>
+									<span><a href="#">영화화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/four.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈네 개의 서명〉<span>- 아서 코난 도일</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">《주홍색 연구》에 기록된 사건 발생 7년 후를 다룬 이야기로, 그가 처음이자 마지막으로 사람을 죽인 사건이기도 한 이야기</p>
+								<p class="hash">
+									<span><a href="#">#진주</a></span>
+									<span><a href="#">#신문광고</a></span>
+									<span><a href="#">#무죄판결</a></span>
+									<span><a href="#">#시리즈</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">7</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-mistery-->
+			<div class="content-genre content-fairy">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-fairy">
+						<div class="swiper-container swiper-container2">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/fairy-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/alice.jpg" alt="도서이미지" class="books">
+										<p>〈이상한 나라의 앨리스〉</p>
+										<p>-루이스 캐롤</p>
+										<p>“전 어디로 가야 하죠?” “그건 네가 어딜 가고 싶은가에 달렸지!”<br>앨리스가 들려주는 꿈속 이야기를 따라 환상의 세계에 빠져들다!</p>
+										<p style="background: #ecbd10">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/fairy-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/oz.jpg" alt="도서이미지" class="books">
+										<p>〈오즈의 마법사〉</p>
+										<p>-L. 프랭크 바움</p>
+										<p>영문판 동시수록!<br>용감하고 사랑스러운 탐험가 도로시의 이야기를 원어의 감동 그대로 만나다.</p>
+										<p style="background: #6ca720">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/fairy-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/prince.jpg" alt="도서이미지" class="books">
+										<p>〈어린왕자〉</p>
+										<p>-앙투안 드 생텍쥐페리</p>
+										<p>"사막이 아름다운 것은 우물을 숨기고 있기 때문이야."<br>이제 숨어 있던 진짜 '어린 왕자'를 만날 시간!</p>
+										<p style="background: #ec4c4c">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination2"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-fairy" style="background: url('images/author/grimm.jpg')no-repeat center top">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Brothers<br>&emsp;Grimm</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>동화 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/oz.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈오즈의 마법사〉<span>- L. 프랭크 바움</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">국내 최초 1900년 오즈의 마법사 초판본 표지이미지 채택. 프랭크 라이먼 바움이 그려낸 환상적인 모험 이야기!</p>
+								<p class="hash">
+									<span><a href="#">#허수아비</a></span>
+									<span><a href="#">#어른을위한동화</a></span>
+									<span><a href="#">#에메랄드</a></span>
+									<span><a href="#">#사자</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/alice.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈이상한 나라의 앨리스〉<span>- 루이스 캐롤</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">일곱살 소녀 앨리스가 우스꽝스럽고 기이한 캐릭터들과 겪는 엉뚱하고 황당한 모험 이야기.</p>
+								<p class="hash">
+									<span><a href="#">#아동문학</a></span>
+									<span><a href="#">#판타지동화</a></span>
+									<span><a href="#">#애벌레</a></span>
+									<span><a href="#">#일러스트</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/prince.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈어린왕자〉<span>- 앙투안 드 생텍쥐페리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">세상에서 가장 순수한 영혼,‘어린 왕자’ 이야기. “사막이 아름다운 이유는 어딘가에 오아시스를 숨기고 있기 때문이야.”</p>
+								<p class="hash">
+									<span><a href="#">#어른을위한동화</a></span>
+									<span><a href="#">#프랑스고전</a></span>
+									<span><a href="#">#메시지</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/daddy.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈키다리 아저씨〉<span>- 진 웹스터</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“사람들은 평범한 삶이 얼마나 큰 행복인지 몰라요. 그래서 살지 않고 경주를 해요. 이기려다가 지칠 뿐이죠. 아저씨, 전 매 순간 최대한으로 행복을 느끼며 살겠어요!”</p>
+								<p class="hash">
+									<span><a href="#">#편지</a></span>
+									<span><a href="#">#후원자</a></span>
+									<span><a href="#">#쌍둥이</a></span>
+									<span><a href="#">#행복</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/anne.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈빨강 머리 앤〉<span>- 루시 모드 몽고메리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">초록 지붕 집에 실수로 입양된 고아 앤 셜 리가 엉뚱한 상상력과 긍정의 에너지로 어려움들을 돌파해 가는, 명랑하고 엉뚱하고 유쾌한 성장소설</p>
+								<p class="hash">
+									<span><a href="#">#애니메이션</a></span>
+									<span><a href="#">#입양</a></span>
+									<span><a href="#">#어른을위한동화</a></span>
+									<span><a href="#">#성장소설</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/princess.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈소공녀〉<span>- 프랜시스 호즈슨 버넷</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">〈비밀의 화원〉의 작가 프랜시스 호즈슨 버넷의 동화『소공녀』. 힘든 상황 속에서도 따뜻한 마음과 우아함을 잃지 않는 소녀 사라의 이야기가 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#명탐정</a></span>
+									<span><a href="#">#열차</a></span>
+									<span><a href="#">#범인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/women.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈작은 아씨들〉<span>- 루이자 메이 올콧</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">책임감이 강한 첫째 메그, 작가를 꿈꾸는 열정적인 성격의 둘째 조, 얌전하고 속 깊은 셋째 베스, 사고뭉치 귀여운 막내 에이미. 네 자매 이야기가 가슴 따뜻하게 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#명작</a></span>
+									<span><a href="#">#자매</a></span>
+									<span><a href="#">#청소년소설</a></span>
+									<span><a href="#">#어른을위한동화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/peter.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈피터 래빗 이야기〉<span>- 베아트릭스 포터</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">말썽꾸러기 토끼 피터는 손에 잡히는 채소들을 와작와작 씹어 먹다가 채소밭 주인인 맥그레거 아저씨에게 들키고 마는데…</p>
+								<p class="hash">
+									<span><a href="#">#아기토끼</a></span>
+									<span><a href="#">#말썽꾸러기</a></span>
+									<span><a href="#">#정원</a></span>
+									<span><a href="#">#채소밭</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/pinocchio.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈피노키오〉<span>- 카를로 콜로디</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">아이들뿐만 아니라 어른에게도 감동과 웃음을 주는 깜짝 놀랄 만한 피노키오의 좌충우돌 모험담 『피노키오』</p>
+								<p class="hash">
+									<span><a href="#">#할아버지</a></span>
+									<span><a href="#">#좌충우돌</a></span>
+									<span><a href="#">#나무토막</a></span>
+									<span><a href="#">#귀뚜라미</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/grimm.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈그림형제 동화 전집〉<span>- 그림 형제</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">《개구리 왕자》,《백설공주》,《라푼첼》,《헨젤과 그레텔》등 누구나 한 번쯤 들어봤을 만한 익숙한 동화들의 원작을 만나다!</p>
+								<p class="hash">
+									<span><a href="#">#원작</a></span>
+									<span><a href="#">#이야기</a></span>
+									<span><a href="#">#개구리왕자</a></span>
+									<span><a href="#">#브레멘음악대</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/flanders.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈플랜더스의 개〉<span>- 위다</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>아동문학</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">화가를 꿈꾸는 순수한 소년과 개의 아름다운 우정! 천진한 동심의 세계가 담아낸 슬프고 가슴 따뜻한 이야기</p>
+								<p class="hash">
+									<span><a href="#">#예술</a></span>
+									<span><a href="#">#난로</a></span>
+									<span><a href="#">#소년</a></span>
+									<span><a href="#">#우정</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/heidi.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈하이디〉<span>- 요한나 슈피리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">아무것도 가진 것 없는 고아 소녀지만, 하이디로 인해 세상은 좀 더 살아볼 만한 의미 있는 것이 되고, 내일은 좀 더 즐거울 수도 있는 귀한 것이 된다.</p>
+								<p class="hash">
+									<span><a href="#">#고아</a></span>
+									<span><a href="#">#자연속</a></span>
+									<span><a href="#">#할아버지</a></span>
+									<span><a href="#">#고원</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-fairy-->
+			<div class="content-genre content-romance">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-romance">
+						<div class="swiper-container swiper-container3">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/romance-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/pride.jpg" alt="도서이미지" class="books">
+										<p>〈오만과 편견〉</p>
+										<p>-제인 오스틴</p>
+										<p>편견은 내가 다른 사람을 사랑하지 못하게 하고,<br>오만은 다른 사람이 나를 사랑할 수 없게 만든다.</p>
+										<p style="background: #f2ae30">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/romance-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/phantom.jpg" alt="도서이미지" class="books">
+										<p>〈오페라의 유령〉</p>
+										<p>-가스통 르루</p>
+										<p>세계 4대 뮤지컬 중 하나로 사랑받는 '오페라의 유령'<br>그 원작 소설을 초판본으로 다시 만나다!</p>
+										<p style="background: #712a00">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/romance-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/gone.jpg" alt="도서이미지" class="books">
+										<p>〈바람과 함께 사라지다〉</p>
+										<p>-마가렛 미첼</p>
+										<p>미국의 남북 전쟁과 패전, 그리고 재건 시대의 조지아 주를 배경으로<br>전쟁이라는 급격한 사회 변화 속에 휩싸인 삶과 사랑</p>
+										<p style="background: #e8b524">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination3"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-romance" style="background: url('images/author/austen.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Jane<br>&nbsp;Austen</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>로맨스 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/sense.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈이성과 감성〉<span>- 제인 오스틴</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">'오만과 편견'으로 잘 알려진 제인 오스틴의 데뷔작으로, 46회 베를린영화제 금곰상 수상작인 영화 '센스 앤 센서빌리티'의 원작소설</p>
+								<p class="hash">
+									<span><a href="#">#데뷔작</a></span>
+									<span><a href="#">#자매</a></span>
+									<span><a href="#">#결혼</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/pride.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈오만과 편견〉<span>- 제인 오스틴</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>13,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">이 시대 최고의 찬사를 받은 제인 오스틴의 《오만과 편견》. 125년 만에 공작새 에디션으로 다시 돌아온 사랑 이야기</p>
+								<p class="hash">
+									<span><a href="#">#영국소설</a></span>
+									<span><a href="#">#영화화</a></span>
+									<span><a href="#">#여류작가</a></span>
+									<span><a href="#">#사랑</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/emma.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈엠마〉<span>- 제인 오스틴</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">모든 것을 다 갖추고 있는 사랑스러운 엠마는 연애에는 햇병아리 신세를 면하지 못한다. 그녀는 자신만의 공상에 사로잡혀 주위 사람들을 커플로 만들어 나가는데…</p>
+								<p class="hash">
+									<span><a href="#">#커플</a></span>
+									<span><a href="#">#사랑</a></span>
+									<span><a href="#">#햇병아리</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/gone.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈바람과 함께 사라지다〉<span>- 마가렛 미첼</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“내일은 내일의 태양이 뜰 것이다.” 남북전쟁 혼돈의 시대를 헤쳐 나가는 장대한 드라마! 80년이 지난 오늘도 뜨겁게 읽히는 매력적인 고전!</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#황무지</a></span>
+									<span><a href="#">#탐정</a></span>
+									<span><a href="#">#걸작</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/phantom.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈오페라의 유령〉<span>- 가스통 르루</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">세계 4대 뮤지컬의 하나로 자리 잡아, 현재에 이르기까지 많은 사랑을 받고 있는 뮤지컬 ‘오페라의 유령’의 원작소설</p>
+								<p class="hash">
+									<span><a href="#">#극장</a></span>
+									<span><a href="#">#뮤지컬</a></span>
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/gatsby.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈위대한 개츠비〉<span>- F. 스콧 피츠제럴드</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">‘재즈의 시대’였던 1920년대 미국을 배경으로 무너져 가는 아메리칸 드림을 예리한 필치로 그려낸 20세기의 가장 뛰어난 미국 소설!</p>
+								<p class="hash">
+									<span><a href="#">#꿈</a></span>
+									<span><a href="#">#아메리칸드림</a></span>
+									<span><a href="#">#금주법</a></span>
+									<span><a href="#">#1920년대</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/wuthering.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈폭풍의 언덕〉<span>- 에밀리 브론테</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">황량한 들판 위의 외딴 저택 워더링 하이츠를 무대로 벌어지는 캐서린과 히스클리프의 비극적인 사랑, 에드거와 이사벨을 향한 히스클리프의 잔인한 복수</p>
+								<p class="hash">
+									<span><a href="#">#숙적</a></span>
+									<span><a href="#">#탄광촌</a></span>
+									<span><a href="#">#저택</a></span>
+									<span><a href="#">#살인사건</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/jane.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈제인 에어〉<span>- 샬럿 브론테</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro"> ‘여성의 입장에서 본 사랑과 욕망’을 다루었다는 사실로 당시의 독자들에게 큰 호기심을 자극한 로맨스 소설의 고전 중의 고전</p>
+								<p class="hash">
+									<span><a href="#">#열정</a></span>
+									<span><a href="#">#사랑</a></span>
+									<span><a href="#">#고아</a></span>
+									<span><a href="#">#여류작가</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/portrait.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈여인의 초상〉<span>- 헨리 제임스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">시대의 인습을 거부하며 자유롭고 독립적인 삶이란 이상을 품고 실현하고자 했던 한 여인의 긴 생애 중 몇 년간의 삶을 조명한 작품</p>
+								<p class="hash">
+									<span><a href="#">#시련</a></span>
+									<span><a href="#">#운명</a></span>
+									<span><a href="#">#결혼생활</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/mansfield.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈맨스필드 파크〉<span>- 제인 오스틴</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">오직 한 남자만을 향한 가난하지만 당찬 한 여자의 거부할 수 없는 운명의 사랑!</p>
+								<p class="hash">
+									<span><a href="#">#비밀편지</a></span>
+									<span><a href="#">#삼각관계</a></span>
+									<span><a href="#">#친척집</a></span>
+									<span><a href="#">#사교계</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/bovary.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈마담 보바리〉<span>- 귀스타브 플로베르</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">평범한 일상생활에 환멸을 느끼고 공상에 사로잡혀 허영과 불륜으로 자신을 파멸로 몰아넣는 한 여인의 비극적 종말</p>
+								<p class="hash">
+									<span><a href="#">#실증주의</a></span>
+									<span><a href="#">#사실주의</a></span>
+									<span><a href="#">#환멸</a></span>
+									<span><a href="#">#불륜</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/karenina.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈안나 카레니나〉<span>- 레프 톨스토이</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">위선, 질투, 신념, 욕망, 사랑 등 인간의 감정과 결혼, 계급, 종교 등 인간이 만들어낸 사회 구조에 대한 톨스토이의 모든 고민이 집약된 작품</p>
+								<p class="hash">
+									<span><a href="#">#사교계</a></span>
+									<span><a href="#">#발레</a></span>
+									<span><a href="#">#러시아</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-romance-->
+			<div class="content-genre content-historical">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-historical">
+						<div class="swiper-container swiper-container4">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/historical-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/mizerables.jpg" alt="도서이미지" class="books">
+										<p>〈레 미제라블〉</p>
+										<p>-빅토르 위고</p>
+										<p>19세기 프랑스 대문호 빅토르 위고가 17년에 걸쳐 완성한 걸작!</p>
+										<p style="background: #500a0a">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/historical-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/comte.jpg" alt="도서이미지" class="books">
+										<p>〈몬테 크리스토 백작〉</p>
+										<p>-알렉상드르 뒤마</p>
+										<p>화려한 상상력, 이국적인 배경, 흥미진진한 추리 과정 같은 낭만적 요소를 두루 갖춘<br>통쾌하고도 교묘한 복수극!</p>
+										<p style="background: #674700">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/historical-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/musketeers.jpg" alt="도서이미지" class="books">
+										<p>〈삼총사〉</p>
+										<p>-알렉상드르 뒤마</p>
+										<p>원문 그대로 만나는, 파리를 정의로 물들인 승부사들의 이야기!</p>
+										<p style="background: #6f0000">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination4"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-historical" style="background: url('images/author/hugo.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Victor<br>&emsp;&nbsp;Hugo</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>역사소설 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/comte.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈몬테 크리스토 백작〉<span>- 알렉상드르 뒤마</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">일등항해사 에드몽 당테스는 모함으로 약혼피로연에서 체포당해 지하 정치범 수용소(이프 성)에 감금되지만 14년 뒤 탈옥에 성공, 차례로 복수하는데…</p>
+								<p class="hash">
+									<span><a href="#">#항해사</a></span>
+									<span><a href="#">#복수</a></span>
+									<span><a href="#">#정치범</a></span>
+									<span><a href="#">#나폴레옹</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/mizerables.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈레 미제라블〉<span>- 빅토르 위고</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">연민의 감정과 영혼의 속죄, 그리고 자기희생이라는 과정을 통해 한 인간이 마침내 빛을 향하여 올라가는 승화의 드라마가 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#장발장</a></span>
+									<span><a href="#">#속죄</a></span>
+									<span><a href="#">#뮤지컬</a></span>
+									<span><a href="#">#부사관</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/gatsby.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈위대한 개츠비〉<span>- F. 스콧 피츠제럴드</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">데이지를 찾기 위해 자신의 저택에서 매일 화려한 파티를 여는 개츠비는 데이지를 다시 만나 과거의 사랑을 되돌리려 하지만, 결국 비극적인 끝을 맞이하게 되는데…</p>
+								<p class="hash">
+									<span><a href="#">#1920년대</a></span>
+									<span><a href="#">#금주법</a></span>
+									<span><a href="#">#아메리칸드림</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/gone.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈바람과 함께 사라지다〉<span>- 마가렛 미첼</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“내일은 내일의 태양이 뜰 것이다.” 남북전쟁 혼돈의 시대를 헤쳐 나가는 장대한 드라마! 80년이 지난 오늘도 뜨겁게 읽히는 매력적인 고전!</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#황무지</a></span>
+									<span><a href="#">#탐정</a></span>
+									<span><a href="#">#걸작</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/musketeers.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈삼총사〉<span>- 알렉상드르 뒤마</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">다르타냥과 삼총사가 펼치는 눈부신 모험담으로 용사들의 의리를 호쾌하게 그린 뒤마의 대표작.</p>
+								<p class="hash">
+									<span><a href="#">#뮤지컬</a></span>
+									<span><a href="#">#추기경</a></span>
+									<span><a href="#">#루이</a></span>
+									<span><a href="#">#결투</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/arirang.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈아리랑〉<span>- 조정래</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">일제 침략기부터 해방기까지 한민족의 끈질긴 생존과 투쟁, 이민사를 다룬 민족의 대서사시</p>
+								<p class="hash">
+									<span><a href="#">#명탐정</a></span>
+									<span><a href="#">#열차</a></span>
+									<span><a href="#">#범인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/twocities.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈두 도시 이야기〉<span>- 찰스 디킨스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">안정적인 삶을 영위해 나갈 수 있는 도시 런던과, 가난한 사람들의 도시 파리. 대조적인 두 도시를 넘나들며 역사에서 잊혀진 민중의 삶에 가까이 다가간다.</p>
+								<p class="hash">
+									<span><a href="#">#프랑스혁명</a></span>
+									<span><a href="#">#군중</a></span>
+									<span><a href="#">#가난</a></span>
+									<span><a href="#">#변두리</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/daisy.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈데이지 밀러〉<span>- 헨리 제임스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">사회적 계층이 다른 미국인들 사이의 갈등을 극적으로 보여주며 국제적인 주제를 다루고 있지만, 데이지 밀러의 생기발랄함을 교차시키면서 경쾌한 유머를 선사하는 작품</p>
+								<p class="hash">
+									<span><a href="#">#독살</a></span>
+									<span><a href="#">#밀실</a></span>
+									<span><a href="#">#후작</a></span>
+									<span><a href="#">#오컬트</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/farewell.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈무기여 잘 있거라〉<span>- 어니스트 헤밍웨이</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">자전적 경험에서 생생하게 전해지는 전쟁터에 대한 구체적인 묘사로 높은 평가를 받는 헤밍웨이의 자전 소설</p>
+								<p class="hash">
+									<span><a href="#">#자전소설</a></span>
+									<span><a href="#">#전쟁</a></span>
+									<span><a href="#">#유작</a></span>
+									<span><a href="#">#전집</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/catcher.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈호밀밭의 파수꾼〉<span>- 제롬 데이비드 샐린저</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“같이 있는 사람 없어. 나하고 나 자신, 그리고 또 나뿐이지.”, 20세기 최고의 베스트셀러이자 전 세계 청춘들을 열광하게 한 성장 소설!</p>
+								<p class="hash">
+									<span><a href="#">#청춘</a></span>
+									<span><a href="#">#퇴학</a></span>
+									<span><a href="#">#기성세대</a></span>
+									<span><a href="#">#성장소설</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/peste.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈페스트〉<span>- 알베르 카뮈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">'페스트'라는 비극적인 현실 속에서 의연히 운명과 대결하는 인간의 모습을 그린 작품으로 20세기 문학이 남긴 기념비적인 작품</p>
+								<p class="hash">
+									<span><a href="#">#노벨문학상</a></span>
+									<span><a href="#">#잔혹</a></span>
+									<span><a href="#">#절망</a></span>
+									<span><a href="#">#전염병</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/kotlovan.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈구덩이〉<span>- 안드레이 플라토노프</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">집단 거주 공간을 건설하기 위한 구덩이를 파며 일하는 이들 모두 '인민의 집'을 짓기 위해 밤낮으로 일한다. 그러나 점차 집단화에 휩쓸리면서 본래의 의미는 잊어버리는데…</p>
+								<p class="hash">
+									<span><a href="#">#집단</a></span>
+									<span><a href="#">#이상향</a></span>
+									<span><a href="#">#인간군상</a></span>
+									<span><a href="#">#조지오웰</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-historical-->
+			<div class="content-genre content-sf">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-sf">
+						<div class="swiper-container swiper-container5">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/sf-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/mers.jpg" alt="도서이미지" class="books">
+										<p>〈해저 2만리〉</p>
+										<p>-쥘 베른</p>
+										<p>'근대 과학 소설의 선구자' 쥘 베른의 대표작!<br>바다 속과 바다 밑이라는 미지의 영역에 도전하다.</p>
+										<p style="background: #007c90">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/sf-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/nineteen.jpg" alt="도서이미지" class="books">
+										<p>〈1984〉</p>
+										<p>-조지 오웰</p>
+										<p>과거를 지배하는 자는 미래를 지배하고,<br>현재를 지배하는 자는 과거를 지배한다!</p>
+										<p style="background: #791e1e">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/sf-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/frankenstein.jpg" alt="도서이미지" class="books">
+										<p>〈프랑켄슈타인〉</p>
+										<p>-메리 셸리</p>
+										<p>신의 뜻을 거스른 인간과 인간이 되고 싶었던 인조인간의 대립<br>과학 기술의 실패로 인해 초래되는 재앙에 대해 경고하다!</p>
+										<p style="background: #d64f00">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination5"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-sf" style="background: url('images/author/verne.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Jules<br>&nbsp;&nbsp;Verne</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>공상과학 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/frankenstein.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈프랑켄슈타인〉<span>- 메리 셸리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">과학기술이 야기하는 사회적, 윤리적 문제를 다룬 최초의 소설로 인류의 과학기술에 던지는 프랑켄슈타인의 경고!</p>
+								<p class="hash">
+									<span><a href="#">#괴물</a></span>
+									<span><a href="#">#창조주</a></span>
+									<span><a href="#">#피조물</a></span>
+									<span><a href="#">#공포</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/nineteen.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈1984〉<span>- 조지 오웰</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">획일화와 집단 히스테리가 난무하는 인간의 존엄상과 자유가 박탈된 전체주의 사회에서 한 개인의 저항과 파멸</p>
+								<p class="hash">
+									<span><a href="#">#디스토피아</a></span>
+									<span><a href="#">#빅브라더</a></span>
+									<span><a href="#">#지배체제</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/world.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈멋진 신세계〉<span>- 올더스 헉슬리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">기계문명의 발달과 과학의 진보가 전체주의 사상과 밀착될 때 어떤 비극이 초래될 수 있는가를 보여주는 작품</p>
+								<p class="hash">
+									<span><a href="#">#전체주의</a></span>
+									<span><a href="#">#기계문명</a></span>
+									<span><a href="#">#과학문명</a></span>
+									<span><a href="#">#디스토피아</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/war.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈우주전쟁〉<span>- 허버트 조지 웰즈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">한 영국의 작은 마을에 화성인의 우주선이 속속 도착하면서 전투 기계로 무장한 화성인들이 지구를 점령해 가기 시작하는데…</p>
+								<p class="hash">
+									<span><a href="#">#외계생명체</a></span>
+									<span><a href="#">#화성인</a></span>
+									<span><a href="#">#우주선</a></span>
+									<span><a href="#">#독가스</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/time.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈타임머신〉<span>- 허버트 조지 웰즈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">상상 속에나 존재할 법한 기계를 발명해 낸 시간 여행자가 무려 80만 년이라는 시간을 뛰어넘어 모험을 시작한다.</p>
+								<p class="hash">
+									<span><a href="#">#시간여행자</a></span>
+									<span><a href="#">#빅토리아시대</a></span>
+									<span><a href="#">#인류</a></span>
+									<span><a href="#">#데뷔작</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/terre.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈지구에서 달까지〉<span>- 쥘 베른</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">인류의 폭력적 성향이 세계사에 어떤 식으로 발현될지를 그려낸, 놀라운 상상력과 과학적 통찰이 담긴 SF의 고전</p>
+								<p class="hash">
+									<span><a href="#">#대포</a></span>
+									<span><a href="#">#모험</a></span>
+									<span><a href="#">#우주여행</a></span>
+									<span><a href="#">#클럽</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/mers.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈해저 2만리〉<span>- 쥘 베른</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">바다 속과 바다 밑이라는 미지의 영역에 도전한 소설로 '근대 과학소설의 선구자' 쥘 베른의 대표작</p>
+								<p class="hash">
+									<span><a href="#">#숙적</a></span>
+									<span><a href="#">#탄광촌</a></span>
+									<span><a href="#">#저택</a></span>
+									<span><a href="#">#살인사건</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/space.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈2001 스페이스 오디세이〉<span>- 아서 C. 클라크</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">인류 진화에 대한 통찰과 우주를 향한 무한한 상상력이 담긴 아서 C. 클라크의 대표작인 「스페이스 오디세이 시리즈」 1편</p>
+								<p class="hash">
+									<span><a href="#">#우주여행</a></span>
+									<span><a href="#">#궤도</a></span>
+									<span><a href="#">#통신</a></span>
+									<span><a href="#">#위성</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/space2010.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈2010 스페이스 오디세이〉<span>- 아서 C. 클라크</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">인류 진화에 대한 통찰과 우주를 향한 무한한 상상력이 담긴 아서 C. 클라크의 대표작인 「스페이스 오디세이 시리즈」 2편</p>
+								<p class="hash">
+									<span><a href="#">#우주여행</a></span>
+									<span><a href="#">#궤도</a></span>
+									<span><a href="#">#통신</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/moreau.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈모로 박사의 섬〉<span>- 허버트 조지 웰즈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">동물 생체실험에서 인간의 잔인성을 되돌아보게 만들며, 유전자 조작의 윤리적 문제에 대한 논쟁을 선취하는 작품</p>
+								<p class="hash">
+									<span><a href="#">#생체실험</a></span>
+									<span><a href="#">#동물</a></span>
+									<span><a href="#">#액자소설</a></span>
+									<span><a href="#">#퓨마</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/invisible.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈투명인간〉<span>- 허버트 조지 웰즈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">투명인간이라는 보이지 않는 존재에 대한 과학소설로 단순한 과학소설을 넘어, 소외된 인간의 고독을 그린 작품</p>
+								<p class="hash">
+									<span><a href="#">#불가시성</a></span>
+									<span><a href="#">#고독</a></span>
+									<span><a href="#">#공포</a></span>
+									<span><a href="#">#이중성</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/voyage.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈지구 속 여행〉<span>- 쥘 베른</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">지질 시대의 수수께끼를 간직한 전인미답의 세계를 경이적인 상상력으로 묘사해낸 걸작.</p>
+								<p class="hash">
+									<span><a href="#">#지질학</a></span>
+									<span><a href="#">#모험</a></span>
+									<span><a href="#">#고문서</a></span>
+									<span><a href="#">#영화화</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-sf-->
+			<div class="content-genre content-fantasy">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-fantasy">
+						<div class="swiper-container swiper-container6">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/fantasy-bg1.jpg')no-repeat">
+									<a href="detail.html">
+										<img src="images/books/galactic.jpg" alt="도서이미지" class="books">
+										<p>〈은하철도의 밤〉</p>
+										<p>-미야자와 겐지</p>
+										<p>"아, 마젤란 성운이다! 이제부터 난 꼭 나를 위해, 어머니를 위해,<br>...또 캄파넬라를 위해, 모두를 위해 진짜 행복을 찾을거야."</p>
+										<p style="background: #e0bc09">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/fantasy-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/ring.jpg" alt="도서이미지" class="books">
+										<p>〈반지 원정대〉</p>
+										<p>-J. R. R. 톨킨</p>
+										<p>모든 종족의 운명을 결정지을 '절대반지'를 둘러싼 선과 악의 대결.<br>〈반지의 제왕〉시리즈 그 첫번째!</p>
+										<p style="background: #e03b09">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/fantasy-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/contes.jpg" alt="도서이미지" class="books">
+										<p>〈천일야화〉</p>
+										<p>-앙투안 갈랑</p>
+										<p>알라딘과 지니, 신밧드, 알리바바의 오리지널 이야기!<br>1,001일 밤의 환상적인 이야기를 생동감 넘치는 일러스트와 함께 만나다.</p>
+										<p style="background: #0699a0">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination6"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-fantasy" style="background: url('images/author/tolkien.jpg')no-repeat center top">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>J. R. R.<br>&emsp;Tolkien</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>판타지 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/alice.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈이상한 나라의 앨리스〉<span>- 루이스 캐롤</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">이상한 나라에서 이상한 경험들을 한 앨리스는 과연 무사히 집으로 돌아갈 수 있을까?</p>
+								<p class="hash">
+									<span><a href="#">#애벌레</a></span>
+									<span><a href="#">#고양이</a></span>
+									<span><a href="#">#다과회</a></span>
+									<span><a href="#">#토끼</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/galactic.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈은하철도의 밤〉<span>- 미야자와 겐지</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">진정한 행복이란 무엇일까? 신비로운 은하철도 안에서 펼쳐지는 삶과 죽음, 행복에 대한 이야기</p>
+								<p class="hash">
+									<span><a href="#">#별자리</a></span>
+									<span><a href="#">#캄파넬라</a></span>
+									<span><a href="#">#애니메이션</a></span>
+									<span><a href="#">#여행</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/oz.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈오즈의 마법사〉<span>- L. 프랭크 바움</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">도로시는 뇌가 없는 허수아비, 심장이 없는 양철 나무꾼, 용기가 없는 사자와 일행이 되어 오즈가 살고 있는 에메랄드 도시를 향해 떠나는데…</p>
+								<p class="hash">
+									<span><a href="#">#허수아비</a></span>
+									<span><a href="#">#어른을위한동화</a></span>
+									<span><a href="#">#회오리바람</a></span>
+									<span><a href="#">#우정</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/ring.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈반지의 제왕: 반지 원정대〉<span>- J. R. R. 톨킨</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장르소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">모든 종족의 운명을 결정지을 '절대반지'를 둘러싼 선과 악의 대결을 통해 인간 본원에 대한 근원적 메시지를 전달하는 작품으로 판타지 소설의 고전</p>
+								<p class="hash">
+									<span><a href="#">#반지</a></span>
+									<span><a href="#">#영화화</a></span>
+									<span><a href="#">#요정</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/contes.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈천일야화〉<span>- 앙투안 갈랑</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">알라딘과 지니, 신밧드, 알리바바의 오리지널 이야기! 1,001일 밤의 환상적인 이야기를 생동감 넘치는 일러스트와 함께 만나다.</p>
+								<p class="hash">
+									<span><a href="#">#요술램프</a></span>
+									<span><a href="#">#낙타</a></span>
+									<span><a href="#">#공주</a></span>
+									<span><a href="#">#보물창고</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/ring3.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈반지의 제왕: 왕의 귀환〉<span>- J. R. R. 톨킨</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">모든 종족의 운명을 결정지을 '절대반지'를 둘러싼 선과 악의 대결을 통해 인간 본원에 대한 근원적 메시지를 전달하는 작품으로 판타지 소설의 고전</p>
+								<p class="hash">
+									<span><a href="#">#반지</a></span>
+									<span><a href="#">#영화화</a></span>
+									<span><a href="#">#요정</a></span>
+									<span><a href="#">#시리즈</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/prince.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈어린왕자〉<span>- 앙투안 드 생텍쥐페리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">세상에서 가장 순수한 영혼,‘어린 왕자’ 이야기. “사막이 아름다운 이유는 어딘가에 오아시스를 숨기고 있기 때문이야.”</p>
+								<p class="hash">
+									<span><a href="#">#어른을위한동화</a></span>
+									<span><a href="#">#프랑스고전</a></span>
+									<span><a href="#">#메시지</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/lion.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈사자, 마녀, 그리고 옷장〉<span>- C. S. 루이스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">피터, 수잔, 에드먼드, 루시다는 교수님 집으로 갔다가 그 집의 옷장을 통해 나니아로 들어간다. 네 어린이는 나니아의 왕과 힘을 합쳐 못된 마녀에 대항하여 마법을 푸는데…</p>
+								<p class="hash">
+									<span><a href="#">#카네기상</a></span>
+									<span><a href="#">#나니아</a></span>
+									<span><a href="#">#아슬란</a></span>
+									<span><a href="#">#마녀</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/treasure.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈보물섬〉<span>- 로버트 루이스 스티븐슨</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">빅토리아 시대의 꿈과 낭만을 담은 희대의 걸작으로, 로버트 루이스 스티븐슨이 아들 로이드와 함께 지도를 그리며 놀다가 아이디어를 얻어 쓴 첫 장편소설.</p>
+								<p class="hash">
+									<span><a href="#">#빅토리아시대</a></span>
+									<span><a href="#">#성장소설</a></span>
+									<span><a href="#">#모험</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/peterpan.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈피터팬〉<span>- J. M. 배리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“나는 젊음이자 기쁨이야.” 쾌활하고 순수하고 매정한, 가능성으로 펼쳐진 세계. 영원히 식지 않는 동심을 그리다</p>
+								<p class="hash">
+									<span><a href="#">#네버랜드</a></span>
+									<span><a href="#">#후크선장</a></span>
+									<span><a href="#">#해적</a></span>
+									<span><a href="#">#어른</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/picture.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈도리안 그레이의 초상〉<span>- 오스카 와일드</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">소원대로 도리안 그레이 자신은 아름다움과 젊음을 그대로 간직한 반면 초상화는 자기 탐닉과 타락에 빠진 사악한 모습으로 점점 바뀌어 가는데…</p>
+								<p class="hash">
+									<span><a href="#">#초상화</a></span>
+									<span><a href="#">#모습</a></span>
+									<span><a href="#">#유미주의</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/earthsea.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈어스시의 마법사〉<span>- 어슐러 르 귄</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">자신의 재능에 도취하여 상급생과 내기를 걸고 죽은 사람의 영혼을 소환하려던 새매는 정체 모를 그림자 괴물을 불러들이고 그에게 쫓겨 도망치는데…</p>
+								<p class="hash">
+									<span><a href="#">#애니화</a></span>
+									<span><a href="#">#성장소설</a></span>
+									<span><a href="#">#3대판타지</a></span>
+									<span><a href="#">#시리즈</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">7</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-fantasy-->
+			<div class="content-genre content-poetry">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-poetry">
+						<div class="swiper-container swiper-container7">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/poetry-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/yoon.jpg" alt="도서이미지" class="books">
+										<p>〈하늘과 바람과 별과 詩〉</p>
+										<p>-윤동주</p>
+										<p>별 하나에 추억(追憶)과 별 하나에 사랑과 별 하나에 쓸쓸함과<br>별 하나에 동경(憧憬)과 별 하나에 시(詩)와 별 하나에 어머니, 어머니</p>
+										<p style="background: #b3690e">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/poetry-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/rilke.jpg" alt="도서이미지" class="books">
+										<p>〈릴케 시집〉</p>
+										<p>-라이너 마리아 릴케</p>
+										<p>우리나라 문학계를 이끌어온 시인들에게 지대한 영향을 끼친 시인 라이너 마리아 릴케!<br>그의 시대별 시집을 한 권에 모았다.</p>
+										<p style="background: #b3340e">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/poetry-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/pushkin.jpg" alt="도서이미지" class="books">
+										<p>〈삶이 그대를 속일지라도〉</p>
+										<p>-알렉산드르 푸쉬킨</p>
+										<p>삶이 그대를 속일지라도 슬퍼하거나 노여워하지 말라<br>설움의 날이 끝나고 나면, 기쁨의 날이 오고야 말리니!</p>
+										<p style="background: #ff9d24">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination7"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-poetry" style="background: url('images/author/pushkin.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Alexander<br>&nbsp;Pushkin</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>시 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/yoon.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈하늘과 바람과 별과 詩〉<span>- 윤동주</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>한국시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">몰락한 조국을 마음으로 지켜낸 한 청년 윤동주의 뜨거운 마음을 고스란히 담아 1955년 증보판으로 재현한 시집</p>
+								<p class="hash">
+									<span><a href="#">#유고시집</a></span>
+									<span><a href="#">#육필원고</a></span>
+									<span><a href="#">#조국</a></span>
+									<span><a href="#">#일본유학</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/pushkin.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈삶이 그대를 속일지라도〉<span>- 알렉산드르 푸쉬킨</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>러시아시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">꾸밈 없는 도덕적 아름다움과 러시아인의 삶의 세계를 투명한 언어로 담아낸 푸쉬킨의 작품을 모은 시선집</p>
+								<p class="hash">
+									<span><a href="#">#러시아문학</a></span>
+									<span><a href="#">#서정시</a></span>
+									<span><a href="#">#애국주의</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/sidewalk.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈골목길이 끝나는 곳〉<span>- 쉘 실버스타인</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">『아낌없이 주는 나무』의 저자 쉘 실버스타인의 어른들을 위한 그림우화집. 독특한 표현이 잘 살아 있는 130편의 시들이 저자의 그림과 함께 어우러져 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#우화집</a></span>
+									<span><a href="#">#아동</a></span>
+									<span><a href="#">#후크선장</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/waste.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈황무지〉<span>- T. S. 엘리엇</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">낭만적 서정 시인이자 이상적 혁명주의자 T. S. 엘리엇의 대표작을 묶은 시선집 『황무지』</p>
+								<p class="hash">
+									<span><a href="#">#서정시인</a></span>
+									<span><a href="#">#사랑노래</a></span>
+									<span><a href="#">#랭보</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/buch.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈노래의 책〉<span>- 하인리히 하이데</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>독일시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">「젊은 날의 슬픔」, 「서정적 간주곡」, 「귀향」, 「하르츠 여행에서」, 「북해」 등 다섯 개의 연작을 담아 하이네에게 세계적인 명성을 가져다준 시집.</p>
+								<p class="hash">
+									<span><a href="#">#소네트</a></span>
+									<span><a href="#">#귀향</a></span>
+									<span><a href="#">#연작시</a></span>
+									<span><a href="#">#간주곡</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/rilke.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈릴케 시집〉<span>- 라이너 마리아 릴케</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>독일시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">우리나라 문학계를 이끌어온 시인들에게 지대한 영향을 끼친 시인 라이너 마리아 릴케의 시를 모아 엮은 시집</p>
+								<p class="hash">
+									<span><a href="#">#독일시</a></span>
+									<span><a href="#">#내면세계</a></span>
+									<span><a href="#">#죽음</a></span>
+									<span><a href="#">#심리묘사</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/leesang.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈이상선집〉<span>- 이상</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>한국시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">실험적인 시어와 독특한 문법으로 자의식 문학을 선도한 이상의 작품집, 《이상 선집》</p>
+								<p class="hash">
+									<span><a href="#">#한국문학</a></span>
+									<span><a href="#">#오감도</a></span>
+									<span><a href="#">#작품집</a></span>
+									<span><a href="#">#모더니스트</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/jung.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈정지용 시집〉<span>- 정지용</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>한국시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">절제된 언어로 우리말의 아름다움을 살려내며 한국 시문학의 이미지즘과 모더니즘 계열 시의 지평을 연 시인 정지용의 첫 번째 시집.</p>
+								<p class="hash">
+									<span><a href="#">#이미지즘</a></span>
+									<span><a href="#">#모더니즘</a></span>
+									<span><a href="#">#대표시인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/calender.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈양치기의 달력〉<span>- 에드먼드 스펜서</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">영문학사에서 르네상스 영시의 본격적인 시작을 알리는 작품으로 간주되는 열두 달에 맞춘 열두 편의 목가. </p>
+								<p class="hash">
+									<span><a href="#">#영시</a></span>
+									<span><a href="#">#목가</a></span>
+									<span><a href="#">#르네상스</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/poe.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈에드거 앨런 포 시전집〉<span>- 에드거 앨런 포</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">사후 170주년 기념 특별 전집, 시대를 앞서간 가장 독창적인 작가 에드거 앨런 포의 모든 것</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#대표장면</a></span>
+									<span><a href="#">#하숙집</a></span>
+									<span><a href="#">#동거인</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/fleurs.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈악의 꽃〉<span>- 샤를 보들레르</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>프랑스시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">상징주의, 초현실주의, 현대시에 길을 터놓은 것으로 평가되는 작품으로 서구 현대시의 시조 보들레르가 남긴 단 한권의 시집</p>
+								<p class="hash">
+									<span><a href="#">#시집</a></span>
+									<span><a href="#">#현대시</a></span>
+									<span><a href="#">#낭만주의</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/yeats.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈예이츠 시선〉<span>- 윌리엄 버틀러 예이츠</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미시</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">우리나라에서도 ‘호수 섬 이니스프리’로 유명한 아일랜드의 시인 윌리엄 버틀러 예이츠의 시를 모은 시선집</p>
+								<p class="hash">
+									<span><a href="#">#노벨문학상</a></span>
+									<span><a href="#">#진달래꽃</a></span>
+									<span><a href="#">#아일랜드</a></span>
+									<span><a href="#">#시집</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-poetry-->
+			<div class="content-genre content-horror">
+				<div class="genre-best">
+					<h2>이 장르의 인기 도서</h2>
+					<div class="best best-horror">
+						<div class="swiper-container swiper-container8">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide swiper-slide1" style="background: url('images/genre/best/horror-bg1.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/dracula.jpg" alt="도서이미지" class="books">
+										<p>〈드라큘라〉</p>
+										<p>-브람 스토커</p>
+										<p>흡혈귀 소설의 원조, 브람 스토커의 『드라큘라』<br>오리지널 스토리가 일러스트레이션과 함께 다시 찾아왔다!</p>
+										<p style="background: #a01a0c">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide2" style="background: url('images/genre/best/horror-bg2.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/silence.jpg" alt="도서이미지" class="books">
+										<p>〈양들의 침묵〉</p>
+										<p>-토마스 해리스</p>
+										<p>“클라리스, 양들은 울음을 그쳤나?<br>그 울음은 아마 영원히 멈추지 않을 거야.”</p>
+										<p style="background: #4f2586">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+								<div class="swiper-slide swiper-slide3" style="background: url('images/genre/best/horror-bg3.jpg')no-repeat">
+									<a href="#">
+										<img src="images/books/interview.jpg" alt="도서이미지" class="books">
+										<p>〈뱀파이어와의 인터뷰〉</p>
+										<p>-앤 라이스</p>
+										<p>앤 라이스의 뱀파이어 연대기 그 아름다운 악이 다시 찾아온다!<br>세계에서 가장 유명한 뱀파이어들의 아름답고 치명적인 어둠의 연대기</p>
+										<p style="background: #3a2586">도서 바로가기<img src="images/icon-arrow-w.svg" alt="화살표아이콘"></p>
+									</a>
+								</div>
+							</div>
+							<div class="swiper-pagination swiper-pagination8"></div>
+						</div><!--swiper-container-->
+					</div>
+				</div>
+				<div class="genre-author">
+					<h2>이 장르의 인기 작가</h2>
+					<div class="author author-horror" style="background: url('images/author/poe.jpg')no-repeat center center">
+						<a href="#">
+							<div class="author-cover"><p>작품 보기 <img src="images/icon-arrow.svg" alt="화살표아이콘"></p></div>
+							<p>Edgar<br>Allan Poe</p>
+						</a>
+					</div>
+				</div>
+				<div class="genre-list">
+					<h2>공포 & 스릴러 전체 도서</h2>
+					<div class="view-mode">
+						<p><a href="#" class="view-card"><img src="images/icon-card.svg" alt="카드형목록보기"></a></p>
+						<p><a href="#" class="view-list"><img src="images/icon-list-on.svg" alt="리스트형목록보기"></a></p>
+					</div>
+					<ul class="page">
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/silence.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈양들의 침묵〉<span>- 토마스 해리스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">“클라리스, 양들은 울음을 그쳤나? 그 울음은 아마 영원히 멈추지 않을 거야.”</p>
+								<p class="hash">
+									<span><a href="#">#연쇄살인사건</a></span>
+									<span><a href="#">#식인</a></span>
+									<span><a href="#">#범죄소설</a></span>
+									<span><a href="#">#공포</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/cat.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈검은 고양이〉<span>- 에드거 앨런 포</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">최고의 미스터리 세계를 보여준 호러 문학의 걸작! 19세기 최고의 독창가, 에드거 앨런 포의 베스트 단편집</p>
+								<p class="hash">
+									<span><a href="#">#비밀편지</a></span>
+									<span><a href="#">#살인사건</a></span>
+									<span><a href="#">#공포</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/frankenstein.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈프랑켄슈타인〉<span>- 메리 셸리</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">무방비 상태로 세상에 나타난 괴물은 추악한 자신을 만든 창조주에 대한 증오심으로 복수를 꾀하는데…</p>
+								<p class="hash">
+									<span><a href="#">#괴물</a></span>
+									<span><a href="#">#창조주</a></span>
+									<span><a href="#">#피조물</a></span>
+									<span><a href="#">#공포</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/jekyll.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈지킬 박사와 하이드〉<span>- 로버트 루이스 스티븐슨</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">선과 악의 이율배반, 반전에 반전을 거듭하는 지킬의 충격 고백!</p>
+								<p class="hash">
+									<span><a href="#">#인간본성</a></span>
+									<span><a href="#">#회개</a></span>
+									<span><a href="#">#양면성</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/dracula.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈드라큘라〉<span>- 브람 스토커</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>11,200원</span>
+									</li>
+								</ul>
+								<p class="book-intro">연극, 영화, 뮤지컬 등으로도 각색되며 흡혈귀 소설의 대표적인 고전으로 꼽히는 브램 스토커의 작품 『드라큘라』</p>
+								<p class="hash">
+									<span><a href="#">#고전</a></span>
+									<span><a href="#">#흡혈귀</a></span>
+									<span><a href="#">#백작</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/raven.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈더 레이븐〉<span>- 에드거 앨런 포</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">어느 깊은 밤, 죽은 연인을 떠올리며 상념에 잠겨 있는 화자에게 느닷없이 까마귀 한 마리가 찾아오는데…</p>
+								<p class="hash">
+									<span><a href="#">#편지</a></span>
+									<span><a href="#">#운문시</a></span>
+									<span><a href="#">#모르그</a></span>
+									<span><a href="#">#까마귀</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/sleepy.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈슬리피 할로우의 전설〉<span>- 워싱턴 어빙</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">목 없는 기사가 출몰한다는 ‘슬리피 할로우’ 지역의 기괴한 사건들을 중심으로 미국으로의 이주가 한창이던 당시 초기 이민자들의 풍습을 낭만적인 필치로 그려낸 작품.</p>
+								<p class="hash">
+									<span><a href="#">#원작소설</a></span>
+									<span><a href="#">#기담</a></span>
+									<span><a href="#">#이민</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/invisible.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈투명인간〉<span>- 허버트 조지 웰즈</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>장편소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">과학자 그리핀은 힘과 자유를 상상하며 스스로를 투명하게 만든다. 하지만 투명 인간을 향한 사람들의 공포는 커져만 가고 그는 하나의 거대한 악이 되는데…</p>
+								<p class="hash">
+									<span><a href="#">#불가시성</a></span>
+									<span><a href="#">#고독</a></span>
+									<span><a href="#">#공포</a></span>
+									<span><a href="#">#이중성</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/rosa.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈장미의 이름〉<span>- 움베르토 에코</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>이탈리아소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 09. 20</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">중세의 한 이탈리아 수도원에서 일어난 끔찍한 연쇄 살인 사건을 다룬 이탈리아 작가 움베르토 에코의 장편소설.</p>
+								<p class="hash">
+									<span><a href="#">#추리</a></span>
+									<span><a href="#">#독살</a></span>
+									<span><a href="#">#역사소설</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/interview.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈뱀파이어와의 인터뷰〉<span>- 앤 라이스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2017. 06. 04</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>9,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">인간을 초월한 강력한 힘과 아름다움을 가진 뱀파이어. 피에 대한 갈망과 영원한 삶 속에서 그들의 장대한 이야기가 펼쳐진다.</p>
+								<p class="hash">
+									<span><a href="#">#기자</a></span>
+									<span><a href="#">#뱀파이어</a></span>
+									<span><a href="#">#시리즈</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/fingersmith.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈핑거스미스〉<span>- 세라 워터스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>15,400원</span>
+									</li>
+								</ul>
+								<p class="book-intro">레즈비언 역사 스릴러 소설로 영미권에서 선풍적인 인기와 높은 평가를 동시에 얻고 있는 영국 작가 세라 워터스의 대표작.</p>
+								<p class="hash">
+									<span><a href="#">#빅토리아시대</a></span>
+									<span><a href="#">#유산</a></span>
+									<span><a href="#">#소매치기</a></span>
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="book-img">
+								<a href="#">
+									<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+									<img src="images/books/dragon.jpg" alt="도서이미지">
+								</a>
+							</div>
+							<div class="book-dscr">
+								<p class="book-title">〈레드 드래곤〉<span>- 토마스 해리스</span></p>
+								<ul class="book-info">
+									<li>
+										<span>분야</span>
+										<span>영미소설</span>
+									</li>
+									<li>
+										<span>발행일</span>
+										<span>2018. 04. 12</span>
+									</li>
+									<li>
+										<span>정가</span>
+										<span>12,800원</span>
+									</li>
+								</ul>
+								<p class="book-intro">FBI 특별 수사관 윌 그레이엄은 희대의 살인마를 잡기 위해 자신이 검거한 뛰어난 정신과 의사이자 식인 범죄자인 한니발 렉터 박사를 찾아가 도움을 요청하는데…</p>
+								<p class="hash">
+									<span><a href="#">#연쇄살인</a></span>
+									<span><a href="#">#FBI</a></span>
+									<span><a href="#">#미궁</a></span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					<div class="list-page">
+						<ul>
+							<li><a href="#"><img src="images/icon-page-prev.svg" alt="이전페이지아이콘"></a></li>
+							<li><a href="#" class="page-on">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">7</a></li>
+							<li><a href="#"><img src="images/icon-page-next.svg" alt="다음페이지아이콘"></a></li>
+						</ul>
+					</div>
+				</div><!--book-list-->
+			</div><!--content-horror-->
+		</section><!--content-->
+	</section>
+	<div class="newsletter">
+		<div class="newsletter-inner">
+			<p>이메일을 등록하고 좋아하는 장르의 신간 소식을 받아보세요.</p>
+			<form action="" method="post">
+				<input type="email" placeholder="ex) yieum@yieum.co.kr">
+				<input type="submit" value="submit">
+			</form>
+			<img src="images/genre/newsletter.png" alt="배경이미지">
+		</div>
+	</div>
+	<footer id="main-footer">
+		<div id="footer-inner">
+			<div id="footer-left">
+				<div class="footer-left-logo">
+					<a href="main.html"><img src="images/logo.svg" alt="도서출판이음로고"></a>
+				</div>
+				<div class="footer-left-info">
+					<ul class="corporate">
+						<li>(주)도서출판 이음</li>
+						<li>사업자등록번호: 402-09-08763</li>
+					</ul>
+					<ul class="contact">
+						<li>주소: 서울시 종로구 새문안로 92</li>
+						<li>TEL: 02.2054.5566</li>
+						<li>FAX: 02.2054.5577</li>
+						<li>E-MAIL: yieum@yieum.co.kr</li>
+					</ul>
+					<p>Copyright ⓒ 2019 (주)도서출판 이음 All rights reserved.</p>
+				</div>
+			</div>
+			<div id="footer-right">
+				<ul class="footer-menu">
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">오시는길</a></li>
+				</ul>
+				<ul class="sns">
+					<li><a href="#"><img src="images/footer/insta.svg" alt="인스타그램아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/facebook.svg" alt="페이스북아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/twitter.svg" alt="트위터아이콘"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+ </body>
+  
+</html>

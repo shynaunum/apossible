@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>은하철도의 밤 - 도서출판 이음</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+  <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+  <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+  <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  
+  <script>
+	  $(document).ready(function() {
+
+		$('a[href="#"]').on('click', function(e){
+			e.preventDefault();
+		});
+		
+		/* Every time the window is scrolled ... */
+		$(window).scroll( function(){
+
+			var scroll = $(document).scrollTop(); 
+
+			if(scroll >= 100 ){ 
+				$("section>div").addClass("fadeIn");
+				$('.famous').removeClass('fadeIn');
+			}
+			/* Check the location of each desired element */
+			$('.fadeIn').each( function(i){
+				var bottom_of_object = $(this).offset().top + $(this).outerHeight()*0.1;
+				var bottom_of_window = scroll + $(window).height();
+
+				/* If the object is completely visible in the window, fade in it */
+				if( bottom_of_window > bottom_of_object ){
+					$(this).stop().animate({'opacity':'1','marginTop':'0'},400);
+				}else{
+					$(this).stop().animate({'opacity':'0','marginTop':'20'},400);
+				}
+			});
+
+			//top menu fix, btn-top
+			var topMenu = $(document).scrollTop(); 
+			if(topMenu >= 750 ){ 
+				$("#gnb").addClass("fix-menu");
+				$(".btn-top").css('opacity','1');
+			}else{
+				$("#gnb").removeClass("fix-menu");
+				$(".btn-top").css('opacity','0');
+			}
+
+		});
+
+		//search
+		var searchIcon = $('.search img');
+		$(".search").mouseenter(function() {
+			$(searchIcon).attr('src','images/icon-search-color.svg');
+		}).mouseleave(function(){
+			$(searchIcon).attr('src','images/icon-search.svg');
+		});
+		$('.search').click(function (e) {
+			$(this).attr('rel','modal:open'); 
+		});
+
+		//menu
+		if($(window).width()>=1280){
+			var menu = $('#gnb-menu>ul>li');
+			menu.mouseenter(function(){
+				$('.sub-menu').addClass('on');
+			}).mouseleave(function(){
+				$('.sub-menu').removeClass('on');
+			});
+		}
+		$('.menu').append('<span class="btn-drop"></span>');
+		$('#gnb-inner').append('<div class="cover"></div>');
+		 
+
+		//tablet & mobile menu
+		var btn = $('.btn-menu');
+		var gnb = $('#gnb');
+		var allMenu = $('#gnb-menu');
+
+		btn.on('click',function(e){
+			e.preventDefault;
+			$(this).toggleClass('btn-close');
+			allMenu.toggleClass('width');
+			$('.cover').toggleClass('cover-bg');
+			$('body').toggleClass('no-scroll');
+		});
+
+		var subBtn = $('.menu');
+		$(subBtn).on('click',function() {
+			$(this).find('.sub-menu').toggleClass('sub-menu-on');
+			$(this).find('.btn-drop').toggleClass('btn-up');
+		});
+
+		//modal
+		$('.modalOpen1').click(function(e){
+			e.preventDefault();
+			$('.large-modal').show();
+			$('body').css('overflow','hidden');
+		});
+		$('.modalClose1').click(function(e){
+			e.preventDefault();
+			$('.large-modal').hide();
+			$('body').css('overflow', 'auto');
+		});
+
+		$('.modalOpen2').click(function(e){
+			e.preventDefault();
+			$('.preview-modal').show(10, function(){
+				var galleryTop = new Swiper('.gallery-top', {
+				  spaceBetween: 5,
+				  loop:true,
+				  loopedSlides: 13,
+				  navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				  },
+				});
+				var galleryThumbs = new Swiper('.gallery-thumbs', {
+				  spaceBetween: 5,
+				  slidesPerView: 6,
+				  touchRatio: 0.2,
+				  loop: true,
+				  loopedSlides: 13,
+				  slideToClickedSlide: true,
+				  breakpoints: {
+					767: {
+					  slidesPerView: 4,
+					  spaceBetween: 5
+					}
+				  }
+				});
+				galleryTop.controller.control = galleryThumbs;
+				galleryThumbs.controller.control = galleryTop;
+			});
+			$('body').css('overflow','hidden');
+		});
+		$('.modalClose2').click(function(e){
+			e.preventDefault();
+			$('.preview-modal').hide();
+			$('body').css('overflow', 'auto');
+		});
+		
+		//btn-top
+		$('.btn-top').click(function() {
+			$('body,html').animate({
+				scrollTop: 0
+			},600);
+		});
+	 });
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/header_footer.css">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+ </head>
+ <body id="detail">
+ 	<a href="#" class="btn-top"><img src="images/icon-top.svg" alt="위로가기아이콘"></a>
+	<header id="main-header">
+		<div id="gnb">
+			<div id="gnb-inner">
+				<div id="gnb-logo" style="background: url('images/logo.svg')no-repeat left center">
+					<h1><a href="main.html">도서출판 이음</a></h1>
+				</div>
+				<a href="#" class="btn-menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+				<div id="gnb-menu">
+					<div class="logo" style="background: url('images/logo-black.svg')no-repeat left center">
+						<h1><a href="main.html">도서출판 이음</a></h1>
+					</div>
+					<ul class="menu-top">
+						<li><a href="#">로그인</a></li>
+						<li><a href="#">회원가입</a></li>
+						<li class="select-lang"><a href="#">KOR</a>
+							<ul>
+								<li><a href="#">ENG</a></li>
+								<li><a href="#">CHN</a></li>
+								<li><a href="#">JAP</a></li>
+							</ul>
+						</li>
+					</ul><!--menu-top-->
+					<ul class="menu-bottom">
+						<li>
+							<form action="" method="post">
+								<input type="search" id="gnb-search" placeholder="검색어를 입력하세요">
+								<input type="image" src="images/icon-search.svg" alt="검색아이콘">
+							</form>
+						</li>
+						<li class="menu menu-book"><a href="#">책소식</a>
+							<div class="sub-menu sub-book">
+								<h2>Books</h2>
+								<ul>
+									<li>
+										<a href="#">새로 나온 책</a>
+										<div class="new-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/illustration-alice.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>Alice in Wonderland</p>
+												<p>Lewis Carroll</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">베스트셀러</a>
+										<div class="best-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/galactic2.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>은하철도의 밤</p>
+												<p>미야자와 겐지</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="genre.html">장르별 도서</a>
+										<div class="genre-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/menu-genre.jpeg')no-repeat center center"></div>
+										</div>
+									</li>
+									<li>
+										<a href="#">이 달의 작가</a>
+										<div class="author-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/fitzgerald.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>F. Scott Fitzgerald</p>
+												<p>1986. 9. 24 ~ 1940. 12. 21</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">지금 만드는 책</a>
+										<div class="now-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/publishing.jpg')no-repeat"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-comm"><a href="#">커뮤니티</a>
+							<div class="sub-menu sub-comm">
+								<h2>Community</h2>
+								<ul>
+									<li><a href="#">공지사항 & 이벤트</a></li>
+									<li><a href="#">도서 갤러리</a></li>
+									<li><a href="#">문의 게시판</a></li>
+									<li><a href="#">오탈자 제보</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-club"><a href="#">북클럽</a>
+							<div class="sub-menu sub-club">
+								<h2>Book Club</h2>
+								<ul>
+									<li><a href="#">북클럽 소개</a></li>
+									<li><a href="#">웰컴북 & 생일도서</a></li>
+									<li><a href="#">이 달의 강연</a></li>
+									<li><a href="#">작가와 고전 읽기</a></li>
+									<li><a href="#">북클럽 리뷰</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-corp"><a href="#">회사소개</a>
+							<div class="sub-menu sub-corp">
+								<h2>Corporate</h2>
+								<ul>
+									<li><a href="#">회사소개</a></li>
+									<li><a href="#">인사말</a></li>
+									<li><a href="#">오시는 길</a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#ex1" class="search"><img src="images/icon-search.svg" alt="검색아이콘"></a>
+							<div id="ex1" class="modal">
+								<p>
+									<input type="search" placeholder="검색어를 입력하세요." autofocus>
+									<input type="image" src="images/icon-search-color.svg" alt="검색아이콘">
+								</p>
+							</div><!--modal-->
+						</li>
+					</ul>
+				</div>
+			</div><!--gnb-inner-->
+		</div><!--gnb-->
+		<div class="page-title">
+			<p>베스트셀러</p>
+			<p>Best Seller</p>
+		</div>
+	</header>
+
+	<section id="main-section">
+		<p class="route">
+			<a href="main.html">홈</a> > <a href="#">책소식</a> > <a href="#">베스트 셀러</a> > 은하철도의 밤
+		</p>
+		<div class="famous">
+			<div class="famous-bg">
+				<div class="famous-line">
+					<p class="line line1 fadeIn">캄파넬라, 또 우리 둘만 남았어.</p>
+					<p class="line line2 fadeIn">어디까지든 함께 가자.</p>
+					<p class="line line3 fadeIn">나는 정말로 아까 전 그 전갈처럼 모든 사람의 행복을 위해서라면,</p>
+					<p class="line line4 fadeIn">내 몸 같은것은 백 번이라도 태울 수 있어.</p>
+					<p class="line line5 fadeIn">나도 그래.</p>
+					<img src="images/detail/img-star1.svg" alt="별자리이미지">
+					<img src="images/detail/img-star2.svg" alt="별자리이미지">
+				</div>
+			</div>
+		</div>
+		<div class="book-info">
+			<div class="book-info-inner">
+				<div class="book-title">
+					<h2>은하철도의 밤</h2>
+					<p>미야자와 겐지</p>
+				</div>
+				<div class="book-intro">
+					<div class="book-cover">
+						<div class="book-btn">
+							<p class="btn-large">
+								<a href="#" class="modalOpen1">
+									<img src="images/icon-large.svg" alt="크게보기아이콘">
+									<span>크게보기</span>
+								</a>
+							</p>
+							<p class="btn-preview">
+								<a href="#" class="modalOpen2">
+									<img src="images/icon-preview.svg" alt="미리보기아이콘">
+									<span>미리보기</span>
+								</a>
+							</p>
+						</div><!--book-btn-->
+					</div><!--book-cover-->
+					<div class="book-text">
+						<p class="text-title">“남십자행 은하열차,<br>&emsp;&emsp;오늘 밤 출발합니다!”</p>
+						<p class="text-subtitle">1934년 초판본 오리지널 디자인 〈한국어판〉</p>
+						<p class="text-dscr">
+							가난 때문에 따돌림을 받지만 꿋꿋하게 견뎌내는 외로운 소년 조반니. 은하수 축제가 열리는 날 밤. 친구들과 어울리지 못하고 혼자 뒷동산에 오른 조반니의 눈앞에 빛을 내뿜는 은하열차가 나타나고, 열차에 타고 있던 단짝친구 캄파넬라와 함께 별을 정거장 삼아 신비한 여행을 시작한다.
+						</p>
+					</div>
+				</div>
+				<div class="book-detail">
+					<ul>
+						<li>
+							<p>원제</p>
+							<p>銀河鐵道の夜</p>
+						</li>
+						<li>
+							<p>출간일</p>
+							<p>2015년 7월 15일</p>
+						</li>
+						<li>
+							<p>쪽수, 무게, 크기</p>
+							<p>288쪽, 320g, 128*188*20mm</p>
+						</li>
+						<li>
+							<p>ISBN13</p>
+							<p>9788998046538</p>
+						</li>
+						<li>
+							<p>ISBN10</p>
+							<p>8998046539</p>
+						</li>
+						<li>
+							<p>가격</p>
+							<p>16,400원</p>
+						</li>
+					</ul>
+					<div class="book-seller">
+						<p>판매처</p>
+						<ul>
+							<li>
+								<a href="http://www.yes24.com/Product/Goods/18757041?">
+									<img src="images/detail/yes24.jpg" alt="예스이십사">
+								</a>
+							</li>
+							<li>
+								<a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9788998046538">
+									<img src="images/detail/kyobo.jpg" alt="교보문고">
+								</a>
+							</li>
+							<li>
+								<a href="https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=8998046539&start=pnaver_02">
+									<img src="images/detail/aladin.jpg" alt="알라딘">
+								</a>
+							</li>
+							<li>
+								<a href="http://www.ypbooks.co.kr/book.yp?bookcd=100612001&gubun=NV">
+									<img src="images/detail/yp.jpg" alt="영풍문고">
+								</a>
+							</li>
+							<li>
+								<a href="http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=240654251">
+									<img src="images/detail/interpark.jpg" alt="인터파크도서">
+								</a>
+							</li>
+							<li>
+								<a href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=3846623&compId=101">
+									<img src="images/detail/bandi.jpg" alt="반디앤루니스">
+								</a>
+							</li>
+						</ul>
+					</div><!--book-seller-->
+				</div><!--book-detail-->
+			</div><!--book-info-inner-->
+		</div><!--book-info-->
+		<div class="book-design">
+			<h2>책 소개</h2>
+			<div class="book-design-inner">
+				<div class="book-design-content">
+					<div class="design design1">
+						<img src="images/detail/book1.jpg" alt="도서이미지">
+						<p>속표지</p>
+						<p>
+							일본문학 마니아를 위해 일본 원서처럼 디자인한 겉표지 속,
+							속표지는 1934년 전집 형태로 출판된 초판본을 그대로 복원했습니다.
+						</p>
+					</div>
+					<div class="design design2">
+						<img src="images/detail/book2.jpg" alt="도서이미지">
+						<p>세로쓰기</p>
+						<p>
+							가로쓰기가 익숙한 독자들께 원작에 충실한 세로쓰기를 통해 색다른 경험을 선사합니다.
+						</p>
+					</div>
+					<div class="design design3">
+						<img src="images/detail/book3.jpg" alt="도서이미지">
+						<p>별자리 그림 수록</p>
+						<p>
+							조반니와 캄파넬라가 은하철도 안에서 보았던 무수한 별자리들을 18세기의 별자리 그림으로 수록했습니다. 
+						</p>
+					</div>
+					<div class="design design4">
+						<img src="images/detail/book4.jpg" alt="도서이미지">
+						<p>별자리 설명</p>
+						<p>
+							소설에 이어, 소설에 나오는 별자리에 대한 설명을 더했습니다.
+						</p>
+					</div>
+				</div><!--book-design-content-->
+			</div><!--book-design-inner-->
+		</div><!--book-design-->
+		<div class="book-index">
+			<h2>목차</h2>
+			<div class="book-index-inner">
+				<p>INDEX</p>
+				<ol>
+					<li class="fadeIn">1. 은하철도의 밤</li>
+					<li class="fadeIn">2. 고양이 사무소</li>
+					<li class="fadeIn">3. 바람의 마타사부로</li>
+					<li class="fadeIn">4. 주문이 많은 요리점</li>
+				</ol>
+			</div>
+		</div><!--book-index-->
+		<div class="book-author">
+			<h2>작가 소개</h2>
+			<div class="book-author-inner">
+				<div class="author-content">
+					<div class="author-left"><p>작가사진</p></div>
+					<div class="author-right">
+						<p class="author-name">미야자와 겐지 (宮澤 賢治, 1896 ~ 1933)</p>
+						<p class="author-intro">
+							일본의 대표적인 동화 작가이자 시인이면서 농예과학자. 이와테 현 하나마키 시의 독실한 불교 집안에서 태어났다. 중학교 2학년 때부터 일본의 시조라 할 수 있는 단가를 짓기 시작한 겐지는 열여덟 살 무렵부터 동화를 지어 형제들에게 읽어 주었다고 한다. 1921년에는 무작정 도쿄로 상경하여 동화를 창작했는데, 겐지 동화의 초고는 대부분 이 시기에 씌어졌다. 이후 농업 학교 교사로 일하면서 왕성한 창작 활동을 계속하였는데, 생명 존중 사상과 공생(共生)의 행복관을 담아내던 겐지의 동화들은 당시 주위 아시아 국가들에 대해 배타적이던 일본에서는 외면당한다. 결국 겐지의 동화는 끝내 빛을 보지 못하고, 37세라는 젊은 나이에 늑막염으로 생을 마친다. 
+						</p>
+						<p class="author-intro">
+							대표작으로는 『쥐돌이 쳇』, 『주문 많은 음식점』, 『바람의 마타사부로』, 『은하 철도의 밤』, 『첼로 켜는 고슈』,
+							『카이로 단장』 『미야자와 겐지 전집 1,2』등이 있다.
+						</p>
+						<p><a href="#">이 작가의 다른 작품</a></p>
+					</div>
+				</div><!--author-content-->
+			</div><!--book-author-inner-->
+		</div><!--book-author-->
+		<div class="rel-book">
+			<h2>관련 도서</h2>
+			<div class="rel-swiper-container swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/gone.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">비슷한 시기에 출판된 소설</p>
+							<p class="book-title">바람과 함께 사라지다</p>
+							<p class="book-author">마가렛 미첼 지음 / 송관식 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/rashomon.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">일본 고전 명작</p>
+							<p class="book-title">라쇼몽(나생문)</p>
+							<p class="book-author">아쿠타가와 류노스케 지음 / 김영식 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/oz.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">20세기에 쓰인 동화</p>
+							<p class="book-title">오즈의 마법사</p>
+							<p class="book-author">L. 프랭크 바움 지음 / 김석희 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/human.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">일본 인기 고전</p>
+							<p class="book-title">인간 실격</p>
+							<p class="book-author">다자이 오사무 지음 / 김동근 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/world.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">비슷한 시기에 출판된 소설</p>
+							<p class="book-title">멋진 신세계</p>
+							<p class="book-author">올더스 헉슬리 지음 / 안정효 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="#">
+							<div class="book-img-box">
+								<img src="images/books/galactic.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1934년 초판본 디자인<br>18세기 별자리 그림 수록</p>
+							<p class="book-title">은하철도의 밤</p>
+							<p class="book-author">미야자와 겐지 지음 / 김동근 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+				
+				</div><!--swiper-wrapper-->
+			</div><!--swiper-container-->
+			<div class="swiper-btn">
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+		</div><!--rel-book-->
+	</section>
+	<footer id="main-footer">
+		<div id="footer-inner">
+			<div id="footer-left">
+				<div class="footer-left-logo">
+					<a href="main.html"><img src="images/logo.svg" alt="도서출판이음로고"></a>
+				</div>
+				<div class="footer-left-info">
+					<ul class="corporate">
+						<li>(주)도서출판 이음</li>
+						<li>사업자등록번호: 402-09-08763</li>
+					</ul>
+					<ul class="contact">
+						<li>주소: 서울시 종로구 새문안로 92</li>
+						<li>TEL: 02.2054.5566</li>
+						<li>FAX: 02.2054.5577</li>
+						<li>E-MAIL: yieum@yieum.co.kr</li>
+					</ul>
+					<p>Copyright ⓒ 2019 (주)도서출판 이음 All rights reserved.</p>
+				</div>
+			</div>
+			<div id="footer-right">
+				<ul class="footer-menu">
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">오시는길</a></li>
+				</ul>
+				<ul class="sns">
+					<li><a href="#"><img src="images/footer/insta.svg" alt="인스타그램아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/facebook.svg" alt="페이스북아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/twitter.svg" alt="트위터아이콘"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<div class="detail-modal large-modal">
+		<div class="large-view">
+			<img src="images/books/galactic.jpg" alt="도서이미지">
+		</div>
+		<a href="#" class="modalClose modalClose1"></a>
+		<a href="#" class="modalClose modalClose1"></a>
+	</div>
+
+	<div class="detail-modal preview-modal">
+		<div class="book-preview">
+			<div class="swiper-container gallery-top">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" style="background: url('images/books/galactic/book01.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book02.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book03.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book04.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book05.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book06.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book07.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book08.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book09.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book10.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book11.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book12.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book13.jpg')"></div>
+				</div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next2 swiper-button-next swiper-button-white"></div>
+				<div class="swiper-button-prev2 swiper-button-prev swiper-button-white"></div>
+			</div>
+			<div class="swiper-container gallery-thumbs">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" style="background: url('images/books/galactic/book01.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book02.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book03.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book04.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book05.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book06.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book07.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book08.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book09.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book10.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book11.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book12.jpg')"></div>
+					<div class="swiper-slide" style="background: url('images/books/galactic/book13.jpg')"></div>
+				</div>
+			</div>
+		</div>
+		<a href="#" class="modalClose modalClose2"></a>
+		<a href="#" class="modalClose modalClose2"></a>
+	</div>
+	<script src="js/swiper.min.js"></script>
+	<script>
+		var mySwiper = new Swiper('.rel-swiper-container', {
+			slidesPerView: 5,
+			spaceBetween: 40,
+			loop: true,
+			breakpoints: {
+				767: {
+					slidesPerView: 2,
+					spaceBetween: 30
+				}
+			},
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+	</script>
+ </body>
+</html>

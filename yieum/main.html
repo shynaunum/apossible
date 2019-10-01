@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>도서출판 이음</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+  <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+  <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+  <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/jquery.counterup.min.js"></script>
+  <script src="js/scrollfix.js"></script>
+  <script src="js/scatterplot.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script>
+	  $(document).ready(function() {
+		$('a[href="#"]').on('click', function(e){
+			e.preventDefault();
+		});
+		$(".new-book").addClass("fadeIn");
+		$(window).scroll( function(){
+			
+			if($(window).width() >= 1280){
+				var scroll = $(document).scrollTop(); 
+				if(scroll >= 100 ){ 
+					$("section>div").addClass("fadeIn");
+				}
+				/* Check the location of each desired element */
+				$('.fadeIn').each( function(i){
+					var bottom_of_object = $(this).offset().top + $(this).outerHeight() * 0.2;
+					var bottom_of_window = scroll + $(window).height();
+
+					/* If the object is completely visible in the window, fade in it */
+					if( bottom_of_window > bottom_of_object ){
+						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
+					}else{
+						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
+					}
+				});
+			}else if($(window).width() < 1280){
+				var scroll = $(document).scrollTop(); 
+				if(scroll >= 100 ){ 
+					$("section>div").addClass("fadeIn");
+				}
+				/* Check the location of each desired element */
+				$('.fadeIn').each( function(i){
+					var bottom_of_object = $(this).offset().top + $(this).outerHeight() *0.1;
+					var bottom_of_window = scroll + $(window).height();
+
+					/* If the object is completely visible in the window, fade in it */
+					if( bottom_of_window > bottom_of_object ){
+						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
+					}else{
+						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
+					}
+				});
+			}
+			//top menu fix, btn-top
+			var topMenu = $(document).scrollTop(); 
+			if(topMenu >= 750 ){ 
+				$("#gnb").addClass("fix-menu");
+				$(".btn-top").css('opacity','1');
+			}else{
+				$("#gnb").removeClass("fix-menu");
+				$(".btn-top").css('opacity','0');
+			}
+		});
+		
+		//counterup
+		$('.counter').counterUp({
+		  delay: 10,
+		  time: 1000
+		});
+
+		//search
+		var searchIcon = $('.search img');
+		$(".search").mouseenter(function() {
+			$(searchIcon).attr('src','images/icon-search-color.svg');
+		}).mouseleave(function(){
+			$(searchIcon).attr('src','images/icon-search.svg');
+		});
+		$('.search').click(function (e) {
+			$(this).attr('rel','modal:open'); 
+		});
+
+		//menu
+		if($(window).width()>=1280){
+			var menu = $('#gnb-menu>ul>li');
+			menu.mouseenter(function(){
+				$('.sub-menu').addClass('on');
+			}).mouseleave(function(){
+				$('.sub-menu').removeClass('on');
+			});
+		}
+		$('.menu').append('<span class="btn-drop"></span>');
+		$('#gnb-inner').append('<div class="cover"></div>');
+		
+
+		//tablet & mobile menu
+		var btn = $('.btn-menu');
+		var gnb = $('#gnb');
+		var allMenu = $('#gnb-menu');
+
+		btn.on('click',function(e){
+			e.preventDefault;
+			$(this).toggleClass('btn-close');
+			allMenu.toggleClass('width');
+			$('.cover').toggleClass('cover-bg');
+			$('body').toggleClass('no-scroll');
+		});
+
+		var subBtn = $('.menu');
+		$(subBtn).on('click',function() {
+			$(this).find('.sub-menu').toggleClass('sub-menu-on');
+			$(this).find('.btn-drop').toggleClass('btn-up');
+		});
+
+		//btn-top
+		$('.btn-top').click(function() {
+			$('body,html').animate({
+				scrollTop: 0
+			},600);
+		});
+
+		//scatter
+		$('#scatter-box').scatter({ height: '100%', width: '100%', rows: 5, columns: 5, subsections: 5, responsive: true });
+		$('.genre-text1').plot({ xPos: '18%', yPos: '62%' });
+		$('.genre-text2').plot({ xPos: '42%', yPos: '86%' });
+		$('.genre-text3').plot({ xPos: '67%', yPos: '78%' });
+		$('.genre-text4').plot({ xPos: '46%', yPos: '52%' });
+		$('.genre-text5').plot({ xPos: '80%', yPos: '48%' });
+		$('.genre-text6').plot({ xPos: '28%', yPos: '38%' });
+		$('.genre-text7').plot({ xPos: '42%', yPos: '29%' });
+		$('.genre-text8').plot({ xPos: '68%', yPos: '32%' });
+
+	  });
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/header_footer.css">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+ </head>
+ <body id="main">
+ 	<a href="#" class="btn-top"><img src="images/icon-top.svg" alt="위로가기아이콘"></a>
+	<header id="main-header">
+		<div id="gnb">
+			<div id="gnb-inner">
+				<div id="gnb-logo" style="background: url('images/logo.svg')no-repeat left center">
+					<h1><a href="main.html">도서출판 이음</a></h1>
+				</div>
+				<a href="#" class="btn-menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
+				<div id="gnb-menu">
+					<div class="logo" style="background: url('images/logo-black.svg')no-repeat left center">
+						<h1><a href="main.html">도서출판 이음</a></h1>
+					</div>
+					<ul class="menu-top">
+						<li><a href="#">로그인</a></li>
+						<li><a href="#">회원가입</a></li>
+						<li class="select-lang"><a href="#">KOR</a>
+							<ul>
+								<li><a href="#">ENG</a></li>
+								<li><a href="#">CHN</a></li>
+								<li><a href="#">JAP</a></li>
+							</ul>
+						</li>
+					</ul><!--menu-top-->
+					<ul class="menu-bottom">
+						<li>
+							<form action="" method="post">
+								<input type="search" id="gnb-search" placeholder="검색어를 입력하세요">
+								<input type="image" src="images/icon-search.svg" alt="검색아이콘">
+							</form>
+						</li>
+						<li class="menu menu-book"><a href="#">책소식</a>
+							<div class="sub-menu sub-book">
+								<h2>Books</h2>
+								<ul>
+									<li>
+										<a href="#">새로 나온 책</a>
+										<div class="new-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/illustration-alice.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>Alice in Wonderland</p>
+												<p>Lewis Carroll</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">베스트셀러</a>
+										<div class="best-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/galactic2.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>은하철도의 밤</p>
+												<p>미야자와 겐지</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="genre.html">장르별 도서</a>
+										<div class="genre-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/menu-genre.jpeg')no-repeat center center"></div>
+										</div>
+									</li>
+									<li>
+										<a href="#">이 달의 작가</a>
+										<div class="author-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/fitzgerald.jpg')no-repeat"></div>
+											<div class="sub-menu-text">
+												<p>F. Scott Fitzgerald</p>
+												<p>1986. 9. 24 ~ 1940. 12. 21</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="#">지금 만드는 책</a>
+										<div class="now-menu-img sub-menu-img">
+											<div class="sub-menu-bg" style="background: url('images/main/publishing.jpg')no-repeat"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-comm"><a href="#">커뮤니티</a>
+							<div class="sub-menu sub-comm">
+								<h2>Community</h2>
+								<ul>
+									<li><a href="#">공지사항 & 이벤트</a></li>
+									<li><a href="#">도서 갤러리</a></li>
+									<li><a href="#">문의 게시판</a></li>
+									<li><a href="#">오탈자 제보</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-club"><a href="#">북클럽</a>
+							<div class="sub-menu sub-club">
+								<h2>Book Club</h2>
+								<ul>
+									<li><a href="#">북클럽 소개</a></li>
+									<li><a href="#">웰컴북 & 생일도서</a></li>
+									<li><a href="#">이 달의 강연</a></li>
+									<li><a href="#">작가와 고전 읽기</a></li>
+									<li><a href="#">북클럽 리뷰</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu menu-corp"><a href="#">회사소개</a>
+							<div class="sub-menu sub-corp">
+								<h2>Corporate</h2>
+								<ul>
+									<li><a href="#">회사소개</a></li>
+									<li><a href="#">인사말</a></li>
+									<li><a href="#">오시는 길</a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#ex1" class="search"><img src="images/icon-search.svg" alt="검색아이콘"></a>
+							<div id="ex1" class="modal">
+								<p>
+									<input type="search" placeholder="검색어를 입력하세요." autofocus>
+									<input type="image" src="images/icon-search-color.svg" alt="검색아이콘">
+								</p>
+							</div><!--modal-->
+						</li>
+					</ul>
+				</div>
+			</div><!--gnb-inner-->
+		</div><!--gnb-->
+		<p class="header-title">
+			과거와 현재를 잇는 문학의 다리 ‘이음’<br>소장하며 두고두고 읽고픈 아름다운 책을 만듭니다.&emsp;
+		</p>
+	</header>
+	<div class="corp-num">
+		<div class="corp-num-inner">
+			<span class="counter counter1">2014</span>
+			<span class="counter counter2">1,438</span>
+			<span class="counter counter3">247</span>
+		</div>
+	</div>
+	<section id="main-section">
+		<div class="new-book">
+			<h2>새로 나온 책</h2>
+			<div class="swiper-container swiper-container1">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/yoon.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1955년 10주기 기념 증보판<br>100주년 기념 패키지</p>
+							<p class="book-title">하늘과 바람과 별과 詩</p>
+							<p class="book-author">윤동주 지음</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/alice.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1866년 오리지널 디자인<br>존 테니얼 오리지널 일러스트</p>
+							<p class="book-title">이상한 나라의 앨리스</p>
+							<p class="book-author">루이스 캐롤 지음 / 이수경 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/animal.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1945년 오리지널 디자인, 양장본<br>국문, 영문 동시수록</p>
+							<p class="book-title">하늘과 바람과 별과 詩</p>
+							<p class="book-author">조지 오웰 지음 / 임종기 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/phantom.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1911년 오리지널 초판본 표지 디자인<br>양장본</p>
+							<p class="book-title">오페라의 유령</p>
+							<p class="book-author">가스통 르루 지음 / 성귀수 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/pigeons.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1959년 오리지널 디자인, 양장본<br>애거서 크리스티 전집 78</p>
+							<p class="book-title">비둘기 속의 고양이</p>
+							<p class="book-author">애거서 크리스티 지음 / 이수경 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/yoon.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1955년 10주기 기념 증보판<br>100주년 기념 패키지</p>
+							<p class="book-title">하늘과 바람과 별과 詩</p>
+							<p class="book-author">윤동주 지음</p>
+						</a>
+					</div><!--swiper-slide-->
+				
+				</div><!--swiper-wrapper-->
+			</div><!--swiper-container-->
+			<div class="swiper-btn">
+				<div class="swiper-button-next swiper-button-next1"></div>
+				<div class="swiper-button-prev swiper-button-prev1"></div>
+			</div>
+		</div><!--new-book-->
+		<div class="best-seller">
+			<h2>베스트셀러</h2>
+			<div class="swiper-container swiper-container2">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/galactic.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1934년 초판본 디자인<br>18세기 별자리 그림 수록</p>
+							<p class="book-title">은하철도의 밤</p>
+							<p class="book-author">미야자와 겐지 지음 / 김동근 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/prince.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1943년 초판본 디자인<br>한글+영어+불어 텍스트</p>
+							<p class="book-title">어린왕자</p>
+							<p class="book-author">생 텍쥐페리 지음 / 김미정 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/scarlet.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1887년 오리지널 초판본 표지디자인<br>셜록홈즈 전집 01</p>
+							<p class="book-title">주홍색 연구</p>
+							<p class="book-author">아서 코난 도일 지음 / 송성미 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/gatsby.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1925년 오리지널 초판본 디자인, 양장본<br>국문, 영문 동시수록</p>
+							<p class="book-title">위대한 개츠비</p>
+							<p class="book-author">스콧 피츠제럴드 지음 / 이기선 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/alice.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1866년 오리지널 디자인<br>존 테니얼 오리지널 일러스트</p>
+							<p class="book-title">이상한 나라의 앨리스</p>
+							<p class="book-author">루이스 캐롤 지음 / 이수경 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+					<div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/galactic.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1934년 초판본 디자인<br>18세기 별자리 그림 수록</p>
+							<p class="book-title">은하철도의 밤</p>
+							<p class="book-author">미야자와 겐지 지음 / 김동근 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+				
+				</div><!--swiper-wrapper-->
+			</div><!--swiper-container-->
+			<div class="swiper-btn">
+				<div class="swiper-button-next swiper-button-next2"></div>
+				<div class="swiper-button-prev swiper-button-prev2"></div>
+			</div>
+		</div><!--best-seller-->
+		<div class="author">
+			<h2>이 달의 작가</h2>
+			<div class="author-inner">
+				<div class="author-content">
+					<div class="author-left"><p>작가사진</p></div>
+					<div class="author-right">
+						<div class="author-intro">
+							<p class="author-name">F. 스콧 피츠제럴드 (Francis Scott Fitzgerald, 1986~1940)</p>
+							<p>
+								미국의 소설가로 어니스트 헤밍웨이, 더스 패서스와 함께 잃어버린 세대(Lost Generation)를 대표하는 작가 중 한 명. 1925년 작품인 《위대한 개츠비》는 대서양 서쪽에서 20세기 최고의 작품으로 손꼽히며,일순간의 영광을 맛보았지만 불행한 삶을 살다간 대문호로 잘 알려져 있다.
+							</p>
+						</div>
+						<div class="author-book">
+							<h3>이음의 추천작</h3>
+							<ul class="rec-book-list">
+								<li>
+									<a href="#">
+										<div class="book-img-box">
+											<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+											<img src="images/books/gatsby.jpg" alt="도서이미지" class="rec-book-img">
+										</div>
+										<p>위대한 개츠비</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<div class="book-img-box">
+											<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+											<img src="images/books/jazz.jpg" alt="도서이미지" class="rec-book-img">
+										</div>
+										<p>[단편] 재즈 시대의 이야기</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<div class="book-img-box">
+											<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+											<img src="images/books/paradise.jpg" alt="도서이미지" class="rec-book-img">
+										</div>
+										<p>낙원의 이쪽</p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<div class="book-img-box">
+											<div class="cover"><img src="images/icon-go-black.svg" alt="바로가기아이콘"></div>
+											<img src="images/books/tycoon.jpg" alt="도서이미지" class="rec-book-img">
+										</div>
+										<p>마지막 대군</p>
+									</a>
+								</li>
+							</ul>
+						</div><!--author-book-->
+					</div><!--author-right-->
+				</div><!--author-content-->
+			</div><!--author-inner-->
+			<img src="images/main/author-bg.svg" alt="배경텍스트">
+		</div><!--author-->
+		<div class="genre-gallery">
+			<div class="genre">
+				<h2>장르별 도서</h2>
+				<div class="genre-box">
+					<div id="scatter-box">
+						<div class="genre-text genre-text1" style="background: url('images/main/genre/genre-mystery.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-mystery.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text2" style="background: url('images/main/genre/genre-fairy.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-fairy.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text3" style="background: url('images/main/genre/genre-romance.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-romance.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text4" style="background: url('images/main/genre/genre-historical.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-historical.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text5" style="background: url('images/main/genre/genre-science.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-science.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text6" style="background: url('images/main/genre/genre-fantasy.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-fantasy.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text7" style="background: url('images/main/genre/genre-poet.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-poet.jpg" alt="도서이미지">
+							</a>
+						</div>
+						<div class="genre-text genre-text8" style="background: url('images/main/genre/genre-horror.svg')no-repeat center center">
+							<a href="genre.html">
+								<img src="images/main/genre/book-horror.jpg" alt="도서이미지">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div><!--genre-->
+			<div class="gallery">
+				<h2>도서 갤러리</h2>
+				<div class="gallery-box">
+					<a href="#">
+						<p>Go to Gallery</p>
+						<div style="background: url('images/gallery-arrow.svg')no-repeat"></div>
+					</a>
+				</div>
+			</div><!--gallery-->
+		</div>
+		<div class="event">
+			<h2>이벤트</h2>
+			<div class="swiper-container swiper-container-event">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swiper-slide1" style="background: url('images/main/event-bg1.jpg')no-repeat center bottom">
+						<a href="#">
+							<div class="event-content event-content1">
+								<img src="images/main/event1.png" alt="이벤트이미지">
+								<p>#with이음</p>
+								<p>이음의 책과 함께하는<br>당신의 일상을 공유해주세요.</p>
+								<p>자세히 보기</p>
+							</div>
+						</a>
+					</div>
+					<div class="swiper-slide swiper-slide2" style="background: url('images/main/event2-bg.jpg')no-repeat center bottom">
+						<a href="#">
+							<div class="event-content event-content2">
+								<img src="images/main/event2-img.png" alt="이벤트이미지">
+								<img src="images/main/event2-img2.png" alt="이벤트이미지">
+								<p>J. D. 샐린저</p>
+								<p>탄생 100주년 기념 도서 할인전</p>
+								<p>「호밀밭의 파수꾼」, 「9개의 단편」,<br>「목수여, 지붕의 대들보를 높이 올려라」,<br>「프래니와 주이」 외 14권</p>
+							</div>
+						</a>
+					</div>
+					<div class="swiper-slide swiper-slide3" style="background: url('images/main/event3-bg2.jpg')no-repeat center center">
+						<a href="#">
+							<div class="event-content event-content3">
+								<img src="images/main/event3-img.png" alt="이벤트이미지">
+								<p>이음의 도서로 만나고싶은<br>&emsp;&emsp;고전 문학을 추천해주세요</p>
+								<p>추천하기</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div><!--swiper-container-->
+		</div><!--event-->
+		<div class="notice">
+			<div class="notice-inner">
+				<div class="notice-box">
+					<h2>공지사항</h2>
+					<ul>
+						<li><a href="#"><p>
+							<span>[공지] 2019 추석 연휴 고객센터 휴무 안내</span>
+							<span class="date">19.09.02</span>
+						</p></a></li>
+						<li><a href="#"><p>
+							<span>[당첨자발표] 8월 오프라인 우수 고객 공연 초대권 안내</span>
+							<span class="date">19.09.01</span>
+						</p></a></li>
+						<li><a href="#"><p>
+							<span>[공지] 개인정보 처리방침 변경 안내</span>
+							<span class="date">19.08.31</span>
+						</p></a></li>
+						<li><a href="#"><p>
+							<span>[안내] '8월의 리뷰어' 선정 결과 안내</span>
+							<span class="date">19.08.31</span>
+						</p></a></li>
+						<li><a href="#"><p>
+							<span>[공지] '웰컴박스 & 생일도서' 정책 변경 안내</span>
+							<span class="date">19.08.25</span>
+						</p></a></li>
+					</ul>
+				</div>
+				<div class="newsletter">
+					<p class="newsletter-text">이메일을 등록하고 이음의 신간 도서, 북클럽,<br>이벤트 등 다양한 정보를 받아보세요.</p>
+					<form action="" method="post">
+						<input type="email" placeholder="yieum@yieum.co.kr">
+						<input type="submit" value="SUBMIT">
+					</form>
+				</div>
+			</div>
+		</div><!--notice-->
+	</section>
+	<footer id="main-footer">
+		<div id="footer-inner">
+			<div id="footer-left">
+				<div class="footer-left-logo">
+					<a href="main.html"><img src="images/logo.svg" alt="도서출판이음로고"></a>
+				</div>
+				<div class="footer-left-info">
+					<ul class="corporate">
+						<li>(주)도서출판 이음</li>
+						<li>사업자등록번호: 402-09-08763</li>
+					</ul>
+					<ul class="contact">
+						<li>주소: 서울시 종로구 새문안로 92</li>
+						<li>TEL: 02.2054.5566</li>
+						<li>FAX: 02.2054.5577</li>
+						<li>E-MAIL: yieum@yieum.co.kr</li>
+					</ul>
+					<p>Copyright ⓒ 2019 (주)도서출판 이음 All rights reserved.</p>
+				</div>
+			</div>
+			<div id="footer-right">
+				<ul class="footer-menu">
+					<li><a href="#">회사소개</a></li>
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">오시는길</a></li>
+				</ul>
+				<ul class="sns">
+					<li><a href="#"><img src="images/footer/insta.svg" alt="인스타그램아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/facebook.svg" alt="페이스북아이콘"></a></li>
+					<li><a href="#"><img src="images/footer/twitter.svg" alt="트위터아이콘"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script>
+		var mySwiper = new Swiper('.swiper-container1', {
+			slidesPerView: 5,
+			spaceBetween: 40,
+			loop: true,
+			breakpoints: {
+				767: {
+					slidesPerView: 2,
+					spaceBetween: 30
+				}
+			},
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next1',
+				prevEl: '.swiper-button-prev1',
+			},
+		});
+		var mySwiper = new Swiper('.swiper-container2', {
+			slidesPerView: 5,
+			spaceBetween: 40,
+			loop: true,
+			breakpoints: {
+				767: {
+					slidesPerView: 2,
+					spaceBetween: 30
+				}
+			},
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next2',
+				prevEl: '.swiper-button-prev2',
+			},
+		});
+
+		var eventSwiper = new Swiper('.swiper-container-event', {
+			spaceBetween: 0,
+			loop: true,
+			centeredSlides: true,
+			speed: 1500,
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+	</script>
+
+ </body>
+</html>
