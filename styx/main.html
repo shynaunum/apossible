@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title> MAIN - Styx Formula 1 </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+  <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+  <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+  <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script>
+      var CountDown   =   function(data)
+	 {
+        // Assign this object
+        var thisObj =   this;
+        // Make sure all settings are not left undefined
+        data.send_to        =   (typeof data.send_to === "undefined")? "time1" : data.send_to;
+        // data.backcolor      =   (typeof data.backcolor === "undefined")? "white" : data.backcolor;
+        // data.forecolor      =   (typeof data.forecolor === "undefined")? "black" : data.forecolor;
+        // data.targetdate     =   (typeof data.targetdate === "undefined")? "12/31/2020 5:00 AM" : data.targetdate;
+        data.displayformat  =   (typeof data.displayformat === "undefined")? "%%D%% %%H%% %%M%% %%S%%" : data.displayformat;
+        data.countactive    =   (typeof data.countactive === "undefined")? true : data.countactive;
+        // data.message        =   (typeof data.message === "undefined")? "Ended" : data.message;
+        data.countstepper   =   (typeof data.countstepper != "number")? -1 : data.countstepper;
+        data.leadingzero    =   (typeof data.leadingzero === "undefined")? true : data.leadingzero;
+        // Get DOM object
+        var domObj          =   document.getElementById(data.send_to);
+
+        this.calcage    =   function(secs, num1, num2)
+            {
+                var s = ((Math.floor(secs/num1))%num2).toString();
+
+                if(data.leadingzero && s.length < 2)
+                    s = "0" + s;
+
+                return "<b>" + s + "</b>";
+            }
+
+
+        this.writeBoard =   function(secs,countDownEngine)
+            {
+                if(secs <= 0) {
+                    clearInterval(countDownEngine);
+                    domObj.innerHTML = data.message;
+                    return;
+                }
+
+                var DisplayStr      =   '';
+                DisplayStr          =   data.displayformat.replace(/%%D%%/g, thisObj.calcage(secs,86400,100000));
+                DisplayStr          =   DisplayStr.replace(/%%H%%/g, thisObj.calcage(secs,3600,24));
+                DisplayStr          =   DisplayStr.replace(/%%M%%/g, thisObj.calcage(secs,60,60));
+                DisplayStr          =   DisplayStr.replace(/%%S%%/g, thisObj.calcage(secs,1,60));
+                domObj.innerHTML    =   DisplayStr;
+            }
+
+        this.create =   function()
+            {
+                data.countstepper = Math.ceil(data.countstepper);
+
+                if(data.countstepper == 0)
+                    data.countactive = false;
+
+                var SetTimeOutPeriod = ((Math.abs(data.countstepper)-1)*1000) + 990;
+
+                var dthen   =   new Date(data.targetdate);
+                var dnow    =   new Date();
+                var nowCalc =   (data.countstepper > 0)? (dnow-dthen) : (dthen-dnow);
+                var ddiff   =   new Date(nowCalc);
+                var gsecs   =   Math.floor((ddiff.valueOf()/1000));
+
+                var countDownEngine =   setInterval(function() {
+                    gsecs   =   gsecs+data.countstepper;
+                    thisObj.writeBoard(gsecs,countDownEngine);
+                }, 1000);
+            }
+		}
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+  <link rel="stylesheet" type="text/css" href="css/header_footer.css">
+
+ </head>
+
+ <body id="main">
+	<div id="to-top"></div>
+	<a href="main.html" id="btn-home"><img src="images/btn-home.svg" alt="홈버튼"></a>
+	<a href="#to-top" id="btn-top"><img src="images/btn-top.svg" alt="위로버튼"></a>
+
+ 	<header id="main-header">
+		<input type="checkbox" id="icon-menu">
+		<input type="checkbox" id="search">
+		<div id="gnb">
+			<div id="gnb-inner">
+				<p class="toggle">
+					<label for="icon-menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</label>
+				</p>
+				<h1>
+					<a href="main.html">
+						<img src="images/logo_w.svg" alt="스틱스로고">
+					</a>
+				</h1>
+				<p class="search">
+					<label for="search"></label>
+				</p>
+				<ul>
+					<li><a href="#">Corporate</a></li>
+					<li><a href="#">E-Sports</a></li>
+					<li><a href="#">Media</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><label for="search"></label></li>
+				</ul>
+			</div><!--gnb-inner end-->
+		</div><!--gnb end-->
+		<div id="searchbox">
+			<div>
+				<form action="" method="post">
+				  <input type="search">
+				  <input type="submit" value="search">
+				</form>
+			</div>
+		</div><!--searchbox end-->
+		<div id="lnb">
+			<div id="lnb-inner">
+				<ul class="main-lnb">
+					<li><a href="race.html">RACE</a></li>
+					<li><a href="news.html">NEWS</a></li>
+					<li><a href="team.html">TEAM</a></li>
+					<li><a href="car.html">CAR</a></li>
+					<li><a href="#">HISTORY</a></li>
+					<li><a href="#">PARTNERS</a></li>
+					<li><a href="store.html">STORE</a></li>
+				</ul>
+				<ul class="sub-lnb">
+					<li><a href="#">Corporate</a></li>
+					<li><a href="#">E-Sports</a></li>
+					<li><a href="#">Media</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul class="header-lang">
+					<li class="lang lang-first">
+						<a href="#"><img src="images/footer/eng.png" alt="영어아이콘"></a>
+						<p class="lang-tooltip">ENG</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ita.png" alt="이탈리아어아이콘"></a>
+						<p class="lang-tooltip">ITA</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ger.png" alt="독일어아이콘"></a>
+						<p class="lang-tooltip">GER</p>
+					</li>
+				</ul>
+				<ul class="header-sns">
+					<li>
+						<a href="#" class="sns sns1">
+							<p class="hide">twitter</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns2">
+							<p class="hide">instagram</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns3">
+							<p class="hide">facebook</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns4">
+							<p class="hide">youtube</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--lnb-inner end-->
+		</div><!--lnb end-->
+	</header>
+	<div id="main-slider">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-slide1">
+					<a href="#">
+						<div class="slide-bg"></div>
+						<p>styx club exclusive</p>
+						<p>Factory Tour</p>
+						<p><span>VISIT NOW</span></p>
+					</a>
+				</div>
+				<div class="swiper-slide swiper-slide2">
+					<a href="news.html">
+						<p>2019 Belgian Grand Prix</p>
+						<p>Technical Director - Gil de Ferran INTERVIEW</p>
+						<div class="bg">
+							<p>read interview</p>
+						</div>
+						<div class="gradient"></div>
+					</a>
+				</div>
+				<div class="swiper-slide swiper-slide3">
+					<a href="car.html">
+						<img src="images/main/car.png" alt="차량이미지">
+						<div class="bg"></div>
+						<p>Explore</p>
+						<p>The Historic Car of Styx</p>
+					</a>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div><!--swiper-container-->
+	</div><!--main-slider-->
+
+	<div class="main-count">
+		<div class="main-count-inner">
+			<p class="count-title">Countdown to Mexican Grand Prix</p>
+			<p class="count-subtit">RACE</p>
+			<div class="count" id="main-count"></div>
+			<div class="count-text">
+				<p>
+					<span class="r-txt r-d">DAYS</span>
+					<span class="r-txt r-hr">HOURS</span>
+					<span class="r-txt r-min">MINUTES</span>
+					<span class="r-txt r-sec">SECONDS</span>
+				</p>
+			</div>
+		</div><!--main-count-inner-->
+	</div><!--main-count end-->
+
+	<section id="main-contents">
+		<article id="this-race">
+			<h2>THIS RACE</h2>
+			<div class="race-info">
+				<div class="cover"></div>
+				<div class="race-title">
+					<p class="round-title">Belgian Grand Prix</p>
+					<p class="round-date">30 AUG - 01 SEP</p>
+					<p class="round-circuit">Circuit de Spa-Francorchamps</p>
+				</div>
+				<input type="checkbox" name="circuit-cb1" id="circuit-cb1" checked>
+				<input type="checkbox" name="circuit-cb2" id="circuit-cb2">
+				<input type="checkbox" name="circuit-cb3" id="circuit-cb3">
+				<input type="checkbox" name="circuit-cb4" id="circuit-cb4">
+				<div class="circuit-btn">
+				  <label for="circuit-cb1" class="on1">Sector <strong>ON</strong></label>
+				  <label for="circuit-cb1" class="off1">Sector <strong>OFF</strong></label>
+				  <label for="circuit-cb2" class="on2">Turns <strong>ON</strong></label>
+				  <label for="circuit-cb2" class="off2">Turns <strong>OFF</strong></label>
+				  <label for="circuit-cb3" class="on3">DRS <strong>ON</strong></label>
+				  <label for="circuit-cb3" class="off3">DRS <strong>OFF</strong></label>
+				  <label for="circuit-cb4" class="on4">Top Speed <strong>ON</strong></label>
+				  <label for="circuit-cb4" class="off4">Top Speed <strong>OFF</strong></label>
+				</div><!--circuit-btn-->
+				<div class="circuit-img">
+				  <img src="images/main/thisrace/belgio.png" class="layer layer1" alt="서킷이미지1">
+				  <img src="images/main/thisrace/belgio-sector.png" class="layer layer-s hide" alt="서킷이미지2">
+				  <img src="images/main/thisrace/belgio-tourns.png" class="layer layer-t hide" alt="서킷이미지3">
+				  <img src="images/main/thisrace/belgio-drs.png" class="layer layer-d hide" alt="서킷이미지4">
+				  <img src="images/main/thisrace/belgio-topspeed.png" class="layer layer-top hide" alt="서킷이미지5">
+				</div><!--circuit-img-->
+			</div><!--race-info-->
+		</article>
+
+		<article id="latest-news">
+			<h2>LATEST NEWS</h2>
+			<div class="news-item news-item1">
+				<a href="news.html">
+					<div class="news-img">
+						<div></div>
+						<img src="images/main/latestnews/image1.jpg" alt="독일그랑프리기사이미지">
+					</div>
+					<div class="news-txt">
+						<p class="news-filter">04 AUG<span>|</span>Formula 1</p>
+						<p class="news-head">FORM GUIDE: The favourites for pole, points and victory in Germany</p>
+						<p class="news-sum">Mercedes set sail for their home race at Germany’s iconic Hockenheimring this weekend. But ahead of the action, who’s looking set to do the business out on track? We cast our eye over the form guide ahead of the 2019... </p>
+						<p class="read-more">read more</p>
+					</div>
+				</a>
+			</div>
+			<div class="news-item news-item2">
+				<a href="news.html">
+					<div class="news-img">
+						<div></div>
+						<img src="images/main/latestnews/image2.jpg" alt="독일그랑프리기사이미지2">
+					</div>
+					<div class="news-txt">
+						<p class="news-filter">04 AUG<span>|</span>Formula 1</p>
+						<p class="news-head">GERMANY–free digital race programme</p>
+						<p class="news-sum">To check out the digital version of the programme available to race goers at this weekend's Formula 1 Mercedes-Benz Grosser Preis von Deutschland 2019...</p>
+						<p class="read-more">read more</p>
+					</div>
+				</a>
+			</div>
+			<div class="news-item news-item3">
+				<a href="news.html">
+					<div class="news-img">
+						<div></div>
+						<img src="images/main/latestnews/image3.jpg" alt="기술개발기사이미지">
+					</div>
+					<div class="news-txt">
+						<p class="news-filter">03 AUG<span>|</span>Technical</p>
+						<p class="news-head">TECH TUESDAY: The upgrade that could turn</p>
+						<p class="news-sum">With their first significant upgrade of the season, Williams made their first noticeable performance gains last time...</p>
+						<p class="read-more">read more</p>
+					</div>
+				</a>
+			</div>
+		</article>
+
+		<article id="whats-hot">
+			<h2>WHAT'S HOT</h2>
+			<ul>
+				<li class="box box1">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-video.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">SN-19XS</p>
+						</div>
+					</a>
+				</li>
+				<li class="box box2">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-article.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">about Belgian GP</p>
+						</div>
+					</a>
+				</li>
+				<li class="box box3">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-article.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">Adrian Newey Interview</p>
+						</div>
+					</a>
+				</li>
+				<li class="box box4">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-store.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">S.Perez Replica Helmet</p>
+						</div>
+					</a>
+				</li>
+				<li class="box box5">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-article.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">NEW engine technology</p>
+						</div>
+					</a>
+				</li>
+				<li class="box box6">
+					<a href="#">
+						<div class="cover"></div>
+						<div>
+							<p class="box-icon">
+								<img src="images/main/whatshot/icon-store.svg" alt="비디오아이콘">
+							</p>
+							<p class="box-title">2019 NEW ACC.</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</article>
+
+		<article id="store">
+			<h2>STORE</h2>
+			<ul>
+				<li class="store-item store-item1">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img1"></div>
+						<p class="box-title">NEW ITEM</p>
+					</a>
+				</li>
+				<li class="store-item store-item2">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img2"></div>
+						<p class="box-title">HOT</p>
+					</a>
+				</li>
+				<li class="store-item store-item3">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img3"></div>
+						<p class="box-title">Fernando Alonso</p>
+					</a>
+				</li>
+				<li class="store-item store-item4">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img4"></div>
+						<p class="box-title">Sergio Perez</p>
+					</a>
+				</li>
+				<li class="store-item store-item5">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img5"></div>
+						<p class="box-title">Teamwear</p>
+					</a>
+				</li>
+				<li class="store-item store-item6">
+					<a href="#">
+						<div class="cover"></div>
+						<div class="item-img item-img6"></div>
+						<p class="box-title">Accessories<br>&Gift</p>
+					</a>
+				</li>
+			</ul>
+		</article>
+	</section>
+
+	<div id="bottom-banner">
+		<a href="#">
+			<div id="bottom-banner-inner">
+				<p class="banner-logo">
+					<img src="images/club_logo_w.svg" alt="스틱스클럽로고">
+				</p>
+				<p class="banner-title">21 Race Events, 5 Continents</p>
+				<p class="banner-subtit">Your Prime Viewing Across the World</p>
+				<p class="banner-btn">JOIN NOW</p>
+			</div><!--bottom-banner-inner-->
+		</a>
+	</div><!--bottom-banner-->
+	<div id="partners">
+		<div id="partners-inner">
+			<div class="pt pt1">
+				<h4>TITLE PARTNER</h4>
+				<p>
+					<a href="#">
+						<img src="images/partners/ubs_w.png" alt="타이틀파트너로고">
+					</a>
+				</p>
+			</div>
+			<div class="pt pt2">
+				<h4>TEAM PARTNERS</h4>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/intel_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/lg_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/hp_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/ge_w.png" alt="파트너로고">
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/bwt_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/claro_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/santander_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/asus_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/british_airways_w.png" alt="파트너로고">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="pt pt3">
+				<h4>TEAM SUPPLIERS</h4>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/pirelli_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/puma_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/mobil1_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/bose_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/rayban_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/patek_w.png" alt="공급업체로고">
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/accor_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/dynamite_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/ea_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/perrier_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/novotel_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/rockstar_w.png" alt="공급업체로고">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div><!--partners_inner end-->
+	</div><!--partners end-->
+
+	<footer id="main-footer">
+		<div id="footer-inner">
+			<div id="footer-left">
+				<ul>
+					<li><p class="copy">All rights reserved 2019ⓒ Styx</p></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Cookie Policy</a></li>
+					<li><a href="#">Media</a></li>
+					<li class="lang lang-first">
+						<a href="#"><img src="images/footer/eng.png" alt="영어아이콘"></a>
+						<p class="lang-tooltip">ENG</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ita.png" alt="이탈리아어아이콘"></a>
+						<p class="lang-tooltip">ITA</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ger.png" alt="독일어아이콘"></a>
+						<p class="lang-tooltip">GER</p>
+					</li>
+				</ul>
+			</div><!--footer-left end-->
+			<div id="footer-right">
+				<ul>
+					<li>
+						<a href="#" class="sns sns1">
+							<p class="hide">twitter</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns2">
+							<p class="hide">instagram</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns3">
+							<p class="hide">facebook</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns4">
+							<p class="hide">youtube</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--footer-right end-->
+		</div>
+	</footer>
+	<script>
+      // Create instance of your countdown with it's own settings
+      var counterOne  =   new CountDown({
+          // This is the id name for the container
+          send_to:'main-count',
+          targetdate:'10/28/2019 04:10:00 PM'
+      });
+      // Apply the creation method
+      // Without .create(), nothing will happen since all the working
+      // script to apply the counter is in this method
+      counterOne.create();
+    </script>
+
+	<!-- Swiper JS -->
+	<script src="js/swiper.min.js"></script>
+
+	<script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 0,
+	  loop: true,
+      centeredSlides: true,
+	  speed: 1500,
+	  keyboard: {
+        enabled: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title> TEAM - Styx Formula 1 </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+  <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+  <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+  <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script>
+	  // 체크박스 하나만 체크되도록.
+	  function setCheckBoxAsRadio(targetObj, inObj){
+	   var len = targetObj.length;
+
+	   if(len>1){ // 객체가 배열이라면. 배열이 아니면 그냥 체크박스로 작동
+		for(var i=0; i<len; i++){
+		 if(targetObj[i] != inObj)
+		  targetObj[i].checked = false;
+		}
+	   }
+	  }
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+  <link rel="stylesheet" type="text/css" href="css/header_footer.css">
+  
+ </head>
+
+ <body id="team">
+	<div id="to-top"></div>
+	<a href="main.html" id="btn-home"><img src="images/btn-home.svg" alt="홈버튼"></a>
+	<a href="#to-top" id="btn-top"><img src="images/btn-top.svg" alt="위로버튼"></a>
+
+ 	<header id="main-header">
+		<input type="checkbox" id="icon-menu">
+		<input type="checkbox" id="search">
+		<div id="gnb">
+			<div id="gnb-inner">
+				<p class="toggle">
+					<label for="icon-menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</label>
+				</p>
+				<h1>
+					<a href="main.html">
+						<img src="images/logo_w.svg" alt="스틱스로고">
+					</a>
+				</h1>
+				<p class="search">
+					<label for="search"></label>
+				</p>
+				<ul>
+					<li><a href="#">Corporate</a></li>
+					<li><a href="#">E-Sports</a></li>
+					<li><a href="#">Media</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><label for="search"></label></li>
+				</ul>
+			</div><!--gnb-inner end-->
+		</div><!--gnb end-->
+		<div id="searchbox">
+			<div>
+				<form action="" method="post">
+				  <input type="search">
+				  <input type="submit" value="search">
+				</form>
+			</div>
+		</div><!--searchbox end-->
+		<div id="lnb">
+			<div id="lnb-inner">
+				<ul class="main-lnb">
+					<li><a href="race.html">RACE</a></li>
+					<li><a href="news.html">NEWS</a></li>
+					<li><a href="team.html">TEAM</a></li>
+					<li><a href="car.html">CAR</a></li>
+					<li><a href="#">HISTORY</a></li>
+					<li><a href="#">PARTNERS</a></li>
+					<li><a href="store.html">STORE</a></li>
+				</ul>
+				<ul class="sub-lnb">
+					<li><a href="#">Corporate</a></li>
+					<li><a href="#">E-Sports</a></li>
+					<li><a href="#">Media</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul class="header-lang">
+					<li class="lang lang-first">
+						<a href="#"><img src="images/footer/eng.png" alt="영어아이콘"></a>
+						<p class="lang-tooltip">ENG</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ita.png" alt="이탈리아어아이콘"></a>
+						<p class="lang-tooltip">ITA</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ger.png" alt="독일어아이콘"></a>
+						<p class="lang-tooltip">GER</p>
+					</li>
+				</ul>
+				<ul class="header-sns">
+					<li>
+						<a href="#" class="sns sns1">
+							<p class="hide">twitter</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns2">
+							<p class="hide">instagram</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns3">
+							<p class="hide">facebook</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns4">
+							<p class="hide">youtube</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--lnb-inner end-->
+		</div><!--lnb end-->
+	</header>
+	<div id="title-img">
+		<div class="cover"></div>
+		<div class="title"><img src="images/team/title.svg" alt="타이틀"></div>
+		<div class="slide-in"></div>
+		<div class="title-bg" style="background: url('images/team/title-img1.jpg')"></div>
+	</div>
+	<div id="top-banner">
+		<a href="#">
+			<div class="banner-bg" style="background: url('images/team/top-banner-bg.png')">
+				<img src="images/team/top-banner-img.png" alt="상품이미지">
+				<p>BE OUR TEAM</p>
+				<p>Get the styx teamwear for half price!</p>
+				<p>SHOP NOW</p>
+			</div>
+		</a>
+	</div>
+
+	<form name="t1">
+
+		<section id="desktop-team">
+			<article id="race-drivers">
+				<h2>RACE DRIVERS</h2>
+				<input type="checkbox" id="d-alonso" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-perez" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="race-drivers-row team-row">
+					<div class="race-drivers-box drivers-box-alonso box">
+						<label for="d-alonso"></label>
+						<div class="thumbnail">
+							<p class="thumb-num"><img src="images/race/flag/r5_flag.png" alt="스페인국기"><span>#14</span></p>
+							<p class="thumb-name">Fernando Alonso</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--drivers-box-alonso-->
+					<div class="race-drivers-box drivers-box-perez box">
+						<label for="d-perez"></label>
+						<div class="thumbnail">
+							<p class="thumb-num"><img src="images/race/flag/r18_flag.jpg" alt="멕시코국기">#11</p>
+							<p class="thumb-name">Sergio Perez</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--drivers-box-perez-->
+				</div><!--race-drivers-row-->
+				<div class="race-drivers-info">
+					<div class="drivers-box-info drivers-alonso-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Race Driver #14</h3>
+									<table>
+										<caption>Fernando Alonso Profile</caption>
+										<tr>
+											<td>Nationality</td>
+											<td>Spain</td>
+										</tr>
+										<tr>
+											<td>Podiums</td>
+											<td>97</td>
+										</tr>
+										<tr>
+											<td>Points</td>
+											<td>1,899</td>
+										</tr>
+										<tr>
+											<td>Grands Prix Entered</td>
+											<td>314</td>
+										</tr>
+										<tr>
+											<td>World Championships</td>
+											<td>2 (2005, 2006)</td>
+										</tr>
+										<tr>
+											<td>Highest Grid Position</td>
+											<td>1(x22)</td>
+										</tr>
+										<tr>
+											<td>Fastest Laps</td>
+											<td>23</td>
+										</tr>
+										<tr>
+											<td>Date of Birth</td>
+											<td>29 JUL 1981</td>
+										</tr>
+									</table>
+									<ul>
+										<li><a href="https://twitter.com/alo_oficial"><span>Twitter</span></a></li>
+										<li><a href="https://www.instagram.com/fernandoalo_oficial/"><span>Instagram</span></a></li>
+										<li><a href="https://www.youtube.com/channel/UCwvrVuFiKDuZl1AUM-pTKKA"><span>YouTube</span></a></li>
+										<li><a href="https://www.facebook.com/FernandoAlonsoOficial/"><span>Facebook</span></a></li>
+									</ul>
+								</div><!--info-text-->
+								<div class="info-image">
+									<!-- Swiper -->
+									<div class="gallery-top gallery-top1">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso1.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso2.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso3.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso4.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso5.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso6.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso7.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso8.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso9.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso10.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso11.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso12.jpg)"></div>
+										</div>
+										<!-- Add Arrows -->
+										<div class="swiper-button-next swiper-button-next1 swiper-button-white"></div>
+										<div class="swiper-button-prev swiper-button-prev1 swiper-button-white"></div>
+									</div>
+									<div class="gallery-thumbs gallery-thumbs1">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso1.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso2.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso3.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso4.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso5.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso6.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso7.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso8.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso9.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso10.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso11.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso12.jpg)"></div>
+										</div>
+									</div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+						<div class="info-bio">
+							<h3>BIOGRAPHY</h3>
+							<div class="bio-text">
+								<p>
+									Born in Oviedo, the capital of the autonomous region of Asturias, Alonso started in karting from the age of 3. He won three consecutive karting championships in Spain from 1994 to 1997, and he became world karting champion in 1996.
+								</p>
+								<p>
+									He made his Formula One debut in the 2001 season with Minardi, and then moved to the Renault team as a test driver the next year. As a main Renault driver from 2003, he was crowned Formula One World Drivers' Champion in both 2005 and 2006. At the age of 24 years and 58 days upon clinching the title, he was the youngest Formula One World Drivers' Champion, and subsequently the youngest double Champion at the time.
+								</p>
+								<p>
+									He joined McLaren in 2007, before returning to Renault for two seasons in 2008 and 2009. Alonso raced for Scuderia Ferrari for five seasons between 2010 and 2014. During that time he finished second in the championship behind Sebastian Vettel three times (2010, 2012 and 2013), and won 11 further Grands Prix. Two of those years, he narrowly lost the title at the final race. He then returned to McLaren for four seasons between 2015 and 2018.
+								</p>
+							</div>
+						</div>
+						<div class="driver-latest">
+							<div class="driver-latest-inner">
+								<div class="driver-sns latest-content">
+									<h3>SNS</h3>
+									<div class="driver-sns-inner">
+										<a href="https://www.instagram.com/fernandoalo_oficial/">
+											<div class="sns-image">
+												<img src="images/team/alonso-sns.jpg" alt="sns사진">
+											</div>
+											<div class="sns-text">
+												<p class="sns-profile">
+													<img src="images/team/profile-alonso.png" alt="sns프로필">
+													<span>fernandoalo_oficial</span>
+												</p>
+												<p>We believe that if something frightens you, but makes you happy, then you should go for it. That’s the essence of adventure, and life is a big one.</p>
+												<p class="show-more">show more</p>
+											</div>
+											<div class="cover">
+												<p>go to Instagram</p>
+											</div>
+										</a>
+									</div>
+								</div>
+								<div class="driver-news latest-content">
+									<h3>LATEST NEWS</h3>
+									<div class="driver-news-inner">
+										<a href="news.html">
+											<div class="news-text">
+												<p class="news-head">
+													OPINION: The fantastic, frustrating career of Fernando Alonso
+												</p>
+												<p class="news-sum">
+													Some will have you believe that Fernando Alonso’s F1 title tally would be far higher than two, had he only chosen the right teams at the right time...
+												</p>
+												<p class="show-more">read more</p>
+											</div>
+											<div class="news-image">
+												<img src="images/team/alonso-news.jpg" alt="뉴스이미지">
+											</div>
+											<div class="cover">
+												<p>go to News</p>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--drivers-alonso-info-->
+					<div class="drivers-box-info drivers-perez-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Race Driver #11</h3>
+									<table>
+										<caption>Sergio Perez Profile</caption>
+										<tr>
+											<td>Nationality</td>
+											<td>Mexico</td>
+										</tr>
+										<tr>
+											<td>Podiums</td>
+											<td>8</td>
+										</tr>
+										<tr>
+											<td>Points</td>
+											<td>542</td>
+										</tr>
+										<tr>
+											<td>Grands Prix Entered</td>
+											<td>167</td>
+										</tr>
+										<tr>
+											<td>World Championships</td>
+											<td>N/A</td>
+										</tr>
+										<tr>
+											<td>Highest Grid Position</td>
+											<td>2(x2)</td>
+										</tr>
+										<tr>
+											<td>Fastest Laps</td>
+											<td>4</td>
+										</tr>
+										<tr>
+											<td>Date of Birth</td>
+											<td>26 JAN 1990</td>
+										</tr>
+									</table>
+									<ul>
+										<li><a href="https://twitter.com/schecoperez"><span>Twitter</span></a></li>
+										<li><a href="https://www.instagram.com/checopereznews/"><span>Instagram</span></a></li>
+										<li><a href="https://www.youtube.com/channel/UCw-ipyIc9gUWunmswPRYVAA"><span>YouTube</span></a></li>
+										<li><a href="https://www.facebook.com/sergioperezf1/"><span>Facebook</span></a></li>
+									</ul>
+								</div>
+								<div class="info-image">
+									<!-- Swiper -->
+									<div class="swiper-container gallery-top gallery-top2">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez1.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez2.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez3.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez4.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez5.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez6.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez7.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez8.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez9.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez10.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez11.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez12.jpg)"></div>
+										</div>
+										<!-- Add Arrows -->
+										<div class="swiper-button-next swiper-button-next2 swiper-button-white"></div>
+										<div class="swiper-button-prev swiper-button-prev2 swiper-button-white"></div>
+									</div>
+									<div class="swiper-container gallery-thumbs gallery-thumbs2">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez1.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez2.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez3.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez4.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez5.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez6.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez7.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez8.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez9.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez10.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez11.jpg)"></div>
+											<div class="swiper-slide" style="background: url(images/team/perez-slide/perez12.jpg)"></div>
+										</div>
+									</div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+						<div class="info-bio">
+							<h3>BIOGRAPHY</h3>
+							<div class="bio-text">
+								<p>
+									Sergio Perez – often referred to by his nickname Checo – made his F1 debut for Sauber in 2011 and before the end of his second season he’d signed to drive for McLaren. However that proved to be a short-lived relationship.
+								</p>
+								<p>
+									Perez started karting in 1996. In 2004, with the support of prominent Mexican businessman Carlos Slim’s Escuderia Telmex, he began racing in the Skip Barber series in the USA. The following year he moved to Europe and spent two years in the German Formula BMW championship.
+								</p>
+								<p>
+									Arriving in Britain in 2007 he raced for T-Sport, winning the national (junior) championship that year before graduating into the main series. He began his 2008 campaign strongly with three wins in the first six races, but faded to fourth by the end of the season.
+								</p>
+								<p>
+									He moved up to GP2 the following year, finishing on the podium in both races at Valencia and ending the year 12th. Switching from Arden to Addax he had a stronger 2010, but was beaten to the title by Pastor Maldonado.
+								</p>
+								<p>
+									Before the season was over he was signed by Sauber to partner Kamui Kobayashi in 2011. He also joined the driver development programme of Sauber’s engine supplier Ferrari.
+								</p>
+							</div>
+						</div>
+						<div class="driver-latest">
+							<div class="driver-latest-inner">
+								<div class="driver-sns latest-content">
+									<h3>SNS</h3>
+									<div class="driver-sns-inner">
+										<a href="https://www.instagram.com/schecoperez/">
+											<div class="sns-image">
+												<img src="images/team/perez-sns.png" alt="sns사진">
+											</div>
+											<div class="sns-text">
+												<p class="sns-profile">
+													<img src="images/team/profile-perez.png" alt="sns프로필">
+													<span>schecoperez</span>
+												</p>
+												<p>We believe that if something frightens you, but makes you happy, then you should go for it. That’s the essence of adventure, and life is a big one.</p>
+												<p class="show-more">show more</p>
+											</div>
+											<div class="cover">
+												<p>go to Instagram</p>
+											</div>
+										</a>
+									</div>
+								</div>
+								<div class="driver-news latest-content">
+									<h3>LATEST NEWS</h3>
+									<div class="driver-news-inner">
+										<a href="news.html">
+											<div class="news-text">
+												<p class="news-head">
+													Perez apologises to Styx for 'stupid mistake' at Hockenheim
+												</p>
+												<p class="news-sum">
+													Sergio Perez took responsibility for his “stupid mistake” after crashing out of the German Grand Prix. The Mexican driver qualified eighth after...
+												</p>
+												<p class="show-more">read more</p>
+											</div>
+											<div class="news-image">
+												<img src="images/team/perez-news.jpg" alt="뉴스이미지">
+											</div>
+											<div class="cover">
+												<p>go to News</p>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--drivers-perez-info-->
+				</div><!--race-drivers-info-->
+			</article>
+			<article id="other-drivers">
+				<h2>OTHER DRIVERS</h2>
+				<input type="checkbox" id="d-other1" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-other2" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-other3" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="other-drivers-row team-row">
+					<div class="other-drivers-box drivers-box-other1 box">
+						<label for="d-other1"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">Reserve Driver</p>
+							<p class="thumb-name">Charles Leclerc</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--drivers-box-other1-->
+					<div class="other-drivers-box drivers-box-other2 box">
+						<label for="d-other2"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">Test Driver</p>
+							<p class="thumb-name">Valtteri Bottas</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--drivers-box-other2-->
+					<div class="other-drivers-box drivers-box-other3 box">
+						<label for="d-other3"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">Development Driver</p>
+							<p class="thumb-name">Romain Grosjean</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--drivers-box-other3-->
+				</div><!--other-drivers-row-->
+				<div class="other-drivers-info">
+					<div class="other-driver-info other-driver1-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Reserve Driver</h3>
+									<table>
+										<caption>Cahrles Leclerc Profile</caption>
+										<tr>
+											<td>Nationality</td>
+											<td>Monaco</td>
+										</tr>
+										<tr>
+											<td>Podiums</td>
+											<td>5</td>
+										</tr>
+										<tr>
+											<td>Points</td>
+											<td>171</td>
+										</tr>
+										<tr>
+											<td>Grands Prix Entered</td>
+											<td>55</td>
+										</tr>
+										<tr>
+											<td>World Championships</td>
+											<td>N/A</td>
+										</tr>
+										<tr>
+											<td>Highest Grid Position</td>
+											<td>2</td>
+										</tr>
+										<tr>
+											<td>Fastest Laps</td>
+											<td>2</td>
+										</tr>
+										<tr>
+											<td>Date of Birth</td>
+											<td>16 OCT 1997</td>
+										</tr>
+									</table>
+									<ul>
+										<li><a href="https://twitter.com/charles_leclerc"><span>Twitter</span></a></li>
+										<li><a href="https://www.instagram.com/charles_leclerc/"><span>Instagram</span></a></li>
+										<li><a href="https://www.youtube.com/channel/UCIzIX1qgW7P3eF6JCk_afCA"><span>YouTube</span></a></li>
+										<li><a href="https://www.facebook.com/CharlesLeclercOfficiel/"><span>Facebook</span></a></li>
+									</ul>
+								</div><!--info-text-->
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/leclerc2.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+						<div class="info-bio">
+							<h3>BIOGRAPHY</h3>
+							<div class="bio-text">
+								<p>
+									Charles Leclerc is a Monégasque racing driver, currently driving in Formula One for Ferrari. Leclerc won the GP3 Series championship in 2016 and the FIA Formula 2 Championship in 2017.
+								</p>
+								<p>
+									Leclerc made his Formula One debut in 2018 for Sauber, a team affiliated with Ferrari, for which he was part of Ferrari Driver Academy. With Sauber having finished last the year before, Leclerc led the charge to improve the finishing position in the constructors' championship to eighth, being the highest ranked of the two Sauber drivers.
+								</p>
+								<p>
+									Leclerc agreed on a contract with Ferrari for the 2019 season where he is driving alongside Sebastian Vettel. Leclerc became the second-youngest driver to qualify on pole position in Formula One at the 2019 Bahrain Grand Prix.
+								</p>
+							</div>
+						</div>
+					</div><!--other-drivers-info1-->
+					<div class="other-driver-info other-driver2-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Test Driver</h3>
+									<table>
+										<caption>Valtteri Bottas Profile</caption>
+										<tr>
+											<td>Nationality</td>
+											<td>Finland</td>
+										</tr>
+										<tr>
+											<td>Podiums</td>
+											<td>8</td>
+										</tr>
+										<tr>
+											<td>Points</td>
+											<td>542</td>
+										</tr>
+										<tr>
+											<td>Grands Prix Entered</td>
+											<td>167</td>
+										</tr>
+										<tr>
+											<td>World Championships</td>
+											<td>N/A</td>
+										</tr>
+										<tr>
+											<td>Highest Grid Position</td>
+											<td>2(x2)</td>
+										</tr>
+										<tr>
+											<td>Fastest Laps</td>
+											<td>4</td>
+										</tr>
+										<tr>
+											<td>Date of Birth</td>
+											<td>28 AUG 1989</td>
+										</tr>
+									</table>
+									<ul>
+										<li><a href="https://twitter.com/valtteribottas"><span>Twitter</span></a></li>
+										<li><a href="https://www.instagram.com/valtteribottas/"><span>Instagram</span></a></li>
+										<li><a href="https://www.facebook.com/ValtteriBottas/"><span>Facebook</span></a></li>
+									</ul>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/bottas.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+						<div class="info-bio">
+							<h3>BIOGRAPHY</h3>
+							<div class="bio-text">
+								<p>
+									Bottas finished eighth in the 2005 Karting World Cup for the P.D.B. Racing Team, using Gillard chassis and Parilla engines.
+								</p>
+								<p>
+									Bottas competing at the second round of the 2010 Formula 3 Euro Series at Hockenheim.
+									Bottas won both the 2008 Formula Renault Eurocup and the 2008 Formula Renault Northern European Cup. In doing so, he repeated the feat of Filipe Albuquerque, who won both the NEC and Eurocup in the same season, in 2006.
+								</p>
+								<p>
+									He moved up into the Formula Three Euroseries for the 2009 season, competing for reigning champions ART Grand Prix. Despite not winning a race, Bottas set two pole positions on his way to third in the championship, edging out Alexander Sims at the final race. In June 2009, Bottas won the 2009 Masters of Formula 3, also claiming the pole position and setting the fastest lap of the race. By winning the event again in 2010, he became the first driver to win the F3 Masters title for the second time.
+								</p>
+								<p>
+									In 2010 Bottas was assigned test driver for the Williams Formula One team and would continue as such for the 2011 and 2012 (where he took part in 15 Friday Free Practice sessions) seasons. Also in 2011, the Finn contested the GP3 Series, remaining with F3 squad ART.[10] After a tough start to the season, he claimed a win in each of the last four race weekends and secured the title by winning the penultimate race ahead of his teammate James Calado.
+								</p>
+							</div>
+						</div>
+					</div><!--other-drivers-info2-->
+					<div class="other-driver-info other-driver3-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Development Driver</h3>
+									<table>
+										<caption>Romain Grosjean Profile</caption>
+										<tr>
+											<td>Nationality</td>
+											<td>Switzerland</td>
+										</tr>
+										<tr>
+											<td>Podiums</td>
+											<td>8</td>
+										</tr>
+										<tr>
+											<td>Points</td>
+											<td>542</td>
+										</tr>
+										<tr>
+											<td>Grands Prix Entered</td>
+											<td>167</td>
+										</tr>
+										<tr>
+											<td>World Championships</td>
+											<td>N/A</td>
+										</tr>
+										<tr>
+											<td>Highest Grid Position</td>
+											<td>2(x2)</td>
+										</tr>
+										<tr>
+											<td>Fastest Laps</td>
+											<td>4</td>
+										</tr>
+										<tr>
+											<td>Date of Birth</td>
+											<td>17 APR 1986</td>
+										</tr>
+									</table>
+									<ul>
+										<li><a href="https://twitter.com/rgrosjean"><span>Twitter</span></a></li>
+										<li><a href="https://www.instagram.com/grosjeanromain/"><span>Instagram</span></a></li>
+										<li><a href="https://www.facebook.com/grosjeanromain/"><span>Facebook</span></a></li>
+									</ul>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/grosjean.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+						<div class="info-bio">
+							<h3>BIOGRAPHY</h3>
+							<div class="bio-text">
+								<p>
+									He dominated the 2005 French Formula Renault championship at his first attempt and joined the Renault young driver programme. He was the 2007 Formula 3 Euro Series drivers' champion. In 2008 he became the inaugural GP2 Asia Series champion and came 4th in his first year in GP2. In 2009 he made his Formula One debut for Renault at the European Grand Prix and came 4th again in GP2 despite missing the final eight races.
+								</p>
+								<p>
+									After being dropped by Renault he returned to junior formulae, winning the 2010 Auto GP championship at the first attempt and winning the 2011 GP2 Asia Series and GP2 Series becoming the first – and as of 2018, only – two-time GP2 Asia champion and the only driver to hold both the GP2 Asia series and main GP2 series titles simultaneously. Due to the Asia and Main GP2 series being combined, it is likely that this will remain true for the foreseeable future.
+								</p>
+								<p>
+									In 2012, Grosjean returned to Formula One with the Lotus F1 Team, alongside Kimi Räikkönen.[3] He took his first Formula One podium at the 2012 Bahrain Grand Prix and took his first fastest lap in the 2012 Spanish Grand Prix. He became the first driver since 1994 to receive a race ban after causing a multi-car pile up, at the 2012 Belgian Grand Prix. In 2013 he remained with Lotus, taking six podiums. He drove for Lotus again alongside Venezuelan Pastor Maldonado in the 2014 and 2015 seasons. He moved to Haas in 2016.
+								</p>
+							</div>
+						</div>
+					</div><!--other-drivers-info3-->
+				</div><!--other-drivers-info-->
+			</article>
+			<article id="team-principal">
+				<h2>TEAM PRINCIPAL</h2>
+				<input type="checkbox" id="d-principal" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="team-row">
+					<div class="principal-box box">
+						<label for="d-principal"></label>
+						<div class="thumbnail">
+							<p class="thumb-name">Andreas Seidl</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--principal-box-->
+				</div>
+				<div class="team-principal-info">
+					<div class="principal-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Andreas Seidl</h3>
+									<p>
+										Andreas joined Styx as Team Principal at the start of May 2019. His role is to manage Styx's Formula 1 team, both on and off track. Andreas reports directly to Zak Brown, Chief Executive Officer of McLaren Styx.
+									</p>
+									<p>
+										Andreas joins Styx from his position as Porsche LMP1 Team Principal. His appointment marks Andreas’ return to Formula 1, having previously worked at BMW Motorsport from 2000 and 2006, then at BMW Sauber as head of track operations until 2009. He graduated from the Technical University in Munich with a diploma in Mechanical Engineering.
+									</p>
+								</div><!--info-text-->
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/principal.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--principal-info-->
+				</div><!--team-principal-info-->
+			</article>
+			<article id="d-team-manager">
+				<h2>TEAM MANAGER</h2>
+				<input type="checkbox" id="d-manager1" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-manager2" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-manager3" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="d-manager4" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="team-row">
+					<div class="manager-box manager-box1 box">
+						<label for="d-manager1"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">CHIEF EXECUTIVE OFFICER</p>
+							<p class="thumb-name">Zak Brown</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--manager-box-->
+					<div class="manager-box manager-box2 box">
+						<label for="d-manager2"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">TECHNICAL DIRECTOR</p>
+							<p class="thumb-name">James Key</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--manager-box-->
+					<div class="manager-box manager-box3 box">
+						<label for="d-manager3"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">SPORTING DIRECTOR</p>
+							<p class="thumb-name">Gil de Ferran</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--manager-box-->
+					<div class="manager-box manager-box4 box">
+						<label for="d-manager4"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">TEAM MANAGER</p>
+							<p class="thumb-name">Paul James</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover">
+						
+						</div>
+					</div><!--manager-box-->
+				</div><!--team-row-->
+				<div class="team-manager-info">
+					<div class="manager-info manager1-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Zak Brown</h3>
+									<p>
+										As Chief Executive of Styx Racing, Zak Brown has overall responsibility for the business, including strategic direction, operational performance, marketing and commercial development. In his role Zak leads McLaren’s direction and involvement in professional motorsport, spearheaded by the Styx Formula 1 team. Operating at the pinnacle of global motorsport, Styx uses the white heat of competition to drive innovation and develop synergies across the group.
+									</p>
+									<p>
+										Born and raised in California, Zak raced professionally around the world for 10 years before developing his skills in motorsport’s business and commercial worlds.
+									</p>
+									<p>
+										In 1995, he founded JMI, which grew to become the largest and most successful motorsport marketing agency in the world. When JMI was acquired by CSM, a division of Chime Communications, in 2013, Brown became the company’s Chief Executive Officer. He then relinquished that post to embark on his journey at Styx in the winter of 2016.
+									</p>
+									<p>
+										A passionate racer, collector and enthusiast, Brown also sits on the board of Cosworth Engineering, holds the position of Non-Executive Chairman on the board of media company Motorsport Network, and competes and races as a partner and driver in Anglo-American racing team United Autosports.
+									</p>
+								</div><!--info-text-->
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager1-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager1-info-->
+					<div class="manager-info manager2-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>James Key</h3>
+									<p>
+										James joined the team as Technical Director in March 2019 and is responsible for developing the MCL34 and leading the production of our future Formula 1 racecars.
+									</p>
+									<p>
+										James has been a familiar face in the paddock for more than 14 years and brings a wealth of F1 experience to his role. He has held the role of Technical Director with multiple teams, starting in 2005 with Midland F1 Racing where he took up the role at just 33 years old, making him one of the youngest Technical Directors on the grid. Since then James has served at Williams, Force India, Sauber and most recently Toro Rosso.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager2-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager2-info-->
+					<div class="manager-info manager3-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Gil de Ferran</h3>
+									<p>
+										Migrating to Europe from his home in Brazil, Gil de Ferran followed the time-honoured path of all hungry young South American drivers, working his way up the British single-seater ladder as he bid for motorsport success.
+									</p>
+									<p>
+										After a successful European stint, including  the 1992 British Formula 3 crown, de Ferran turned his attentions Stateside to IndyCar, where he earned Rookie of the Year honours for the ’95 season.
+									</p>
+									<p>
+										By the end of that decade, now driving for the legendary Penske marque, he truly made his name in the American single-seater series, winning the IndyCar title in 2000 and 2001. Two years later, he would win the legendary Indy 500.
+									</p>
+									<p>
+										After hanging up his helmet, Gil brought racing and business together to form a race-winning North American sports car team. He was also was elected onto Champ Car’s advisory board by his team-owner peers, and developed an extensive corporate and consultancy portfolio.
+									</p>
+									<p>
+										In 2017, he worked with Styx and Fernando Alonso as the team made its sensational return to the Indy 500. In July 2018, he was appointed Sporting Director, with a remit to develop and improve every element of the race team’s operating procedures.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager3-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager3-info-->
+					<div class="manager-info manager4-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Paul James</h3>
+									<p>
+										Paul James has spent his entire career in motorsport, first working for Mazda Rally Team Europe aged just 17. 
+									</p>
+									<p>
+										After stints at Onyx, Benetton Formula, and in North America’s Indy Car World Series, he joined Styx in 1995, working on the Styx F1 road car. In 1997, he joined the Formula 1 team, and has remained on the F1 frontlines ever since.
+									</p>
+									<p>
+										He has worked closely with drivers such as David Coulthard, Juan Pablo Montoya and Lewis Hamilton, and was the number-one mechanic during Lewis’ title-winning 2008 season.
+									</p>
+									<p>
+										He became chief mechanic in 2012, and was appointed as team manager, with overall responsibility for race team	operations, at the start of the 2017 season.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager4-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager4-info-->
+				</div><!--team-manager-info-->
+			</article>
+
+			<article id="t-team-manager">
+				<h2>TEAM MANAGER</h2>
+				<input type="checkbox" id="t-manager1" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="t-manager2" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="team-row">
+					<div class="manager-box manager-box1 box">
+						<label for="t-manager1"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">CHIEF EXECUTIVE OFFICER</p>
+							<p class="thumb-name">Zak Brown</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--manager-box1-->
+					<div class="manager-box manager-box2 box">
+						<label for="t-manager2"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">TECHNICAL DIRECTOR</p>
+							<p class="thumb-name">James Key</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--manager-box2-->
+				</div>
+				<div class="team-manager-info">
+					<div class="manager-info manager1-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Zak Brown</h3>
+									<p>
+										As Chief Executive of Styx Racing, Zak Brown has overall responsibility for the business, including strategic direction, operational performance, marketing and commercial development. In his role Zak leads McLaren’s direction and involvement in professional motorsport, spearheaded by the Styx Formula 1 team. Operating at the pinnacle of global motorsport, Styx uses the white heat of competition to drive innovation and develop synergies across the group.
+									</p>
+									<p>
+										Born and raised in California, Zak raced professionally around the world for 10 years before developing his skills in motorsport’s business and commercial worlds.
+									</p>
+									<p>
+										In 1995, he founded JMI, which grew to become the largest and most successful motorsport marketing agency in the world. When JMI was acquired by CSM, a division of Chime Communications, in 2013, Brown became the company’s Chief Executive Officer. He then relinquished that post to embark on his journey at Styx in the winter of 2016.
+									</p>
+									<p>
+										A passionate racer, collector and enthusiast, Brown also sits on the board of Cosworth Engineering, holds the position of Non-Executive Chairman on the board of media company Motorsport Network, and competes and races as a partner and driver in Anglo-American racing team United Autosports.
+									</p>
+								</div><!--info-text-->
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager1-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager1-info-->
+					<div class="manager-info manager2-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>James Key</h3>
+									<p>
+										James joined the team as Technical Director in March 2019 and is responsible for developing the MCL34 and leading the production of our future Formula 1 racecars.
+									</p>
+									<p>
+										James has been a familiar face in the paddock for more than 14 years and brings a wealth of F1 experience to his role. He has held the role of Technical Director with multiple teams, starting in 2005 with Midland F1 Racing where he took up the role at just 33 years old, making him one of the youngest Technical Directors on the grid. Since then James has served at Williams, Force India, Sauber and most recently Toro Rosso.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager2-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager2-info-->
+				</div><!--team-manager-info-->
+
+				<input type="checkbox" id="t-manager3" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<input type="checkbox" id="t-manager4" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="team-row">
+					<div class="manager-box manager-box3 box">
+						<label for="t-manager3"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">SPORTING DIRECTOR</p>
+							<p class="thumb-name">Gil de Ferran</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--manager-box3-->
+					<div class="manager-box manager-box4 box">
+						<label for="t-manager4"></label>
+						<div class="thumbnail">
+							<p class="thumb-work">TEAM MANAGER</p>
+							<p class="thumb-name">Paul James</p>
+							<div class="thumb-img"></div>
+						</div>
+						<div class="thumb-cover"></div>
+					</div><!--manager-box4-->
+				</div>
+				<div class="team-manager-info">
+					<div class="manager-info manager3-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Gil de Ferran</h3>
+									<p>
+										Migrating to Europe from his home in Brazil, Gil de Ferran followed the time-honoured path of all hungry young South American drivers, working his way up the British single-seater ladder as he bid for motorsport success.
+									</p>
+									<p>
+										After a successful European stint, including  the 1992 British Formula 3 crown, de Ferran turned his attentions Stateside to IndyCar, where he earned Rookie of the Year honours for the ’95 season.
+									</p>
+									<p>
+										By the end of that decade, now driving for the legendary Penske marque, he truly made his name in the American single-seater series, winning the IndyCar title in 2000 and 2001. Two years later, he would win the legendary Indy 500.
+									</p>
+									<p>
+										After hanging up his helmet, Gil brought racing and business together to form a race-winning North American sports car team. He was also was elected onto Champ Car’s advisory board by his team-owner peers, and developed an extensive corporate and consultancy portfolio.
+									</p>
+									<p>
+										In 2017, he worked with Styx and Fernando Alonso as the team made its sensational return to the Indy 500. In July 2018, he was appointed Sporting Director, with a remit to develop and improve every element of the race team’s operating procedures.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager3-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager2-info-->
+					<div class="manager-info manager4-info">
+						<div class="info-title">
+							<div class="info-title-inner">
+								<div class="info-text">
+									<h3>Paul James</h3>
+									<p>
+										Paul James has spent his entire career in motorsport, first working for Mazda Rally Team Europe aged just 17. 
+									</p>
+									<p>
+										After stints at Onyx, Benetton Formula, and in North America’s Indy Car World Series, he joined Styx in 1995, working on the Styx F1 road car. In 1997, he joined the Formula 1 team, and has remained on the F1 frontlines ever since.
+									</p>
+									<p>
+										He has worked closely with drivers such as David Coulthard, Juan Pablo Montoya and Lewis Hamilton, and was the number-one mechanic during Lewis’ title-winning 2008 season.
+									</p>
+									<p>
+										He became chief mechanic in 2012, and was appointed as team manager, with overall responsibility for race team	operations, at the start of the 2017 season.
+									</p>
+								</div>
+								<div class="info-image">
+									<div class="team-photo" style="background: url(images/team/manager4-profile.jpg)no-repeat center center"></div>
+								</div>
+							</div><!--info-title-inner-->
+						</div><!--info-title-->
+					</div><!--manager4-info-->
+				</div><!--team-manager-info-->
+			</article>
+		</section>
+
+		<section id="mobile-team">
+			<article id="m-race-drivers">
+				<h2>RACE DRIVERS</h2>
+				<input type="checkbox" id="m-alonso" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="race-drivers-box drivers-box-alonso box">
+					<label for="m-alonso"></label>
+					<div class="thumbnail">
+						<p class="thumb-num"><img src="images/race/flag/r5_flag.png" alt="스페인국기"><span>#14</span></p>
+						<p class="thumb-name">Fernando Alonso</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--drivers-box-alonso-->
+				<div class="drivers-box-info drivers-alonso-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Race Driver #14</h3>
+								<table>
+									<caption>Fernando Alonso Profile</caption>
+									<tr>
+										<td>Nationality</td>
+										<td>Spain</td>
+									</tr>
+									<tr>
+										<td>Podiums</td>
+										<td>97</td>
+									</tr>
+									<tr>
+										<td>Points</td>
+										<td>1,899</td>
+									</tr>
+									<tr>
+										<td>Grands Prix Entered</td>
+										<td>314</td>
+									</tr>
+									<tr>
+										<td>World Championships</td>
+										<td>2 (2005, 2006)</td>
+									</tr>
+									<tr>
+										<td>Highest Grid Position</td>
+										<td>1(x22)</td>
+									</tr>
+									<tr>
+										<td>Fastest Laps</td>
+										<td>23</td>
+									</tr>
+									<tr>
+										<td>Date of Birth</td>
+										<td>29 JUL 1981</td>
+									</tr>
+								</table>
+								<ul>
+									<li><a href="https://twitter.com/alo_oficial"><span>Twitter</span></a></li>
+									<li><a href="https://www.instagram.com/fernandoalo_oficial/"><span>Instagram</span></a></li>
+									<li><a href="https://www.youtube.com/channel/UCwvrVuFiKDuZl1AUM-pTKKA"><span>YouTube</span></a></li>
+									<li><a href="https://www.facebook.com/FernandoAlonsoOficial/"><span>Facebook</span></a></li>
+								</ul>
+							</div><!--info-text-->
+							<div class="info-image">
+								<!-- Swiper -->
+								<div class="swiper-container gallery-top3 gallery-top3">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso1.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso2.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso3.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso4.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso5.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso6.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso7.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso8.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso9.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso10.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso11.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso12.jpg)"></div>
+									</div>
+									<!-- Add Arrows -->
+									<div class="swiper-button-next swiper-button-next3 swiper-button-white"></div>
+									<div class="swiper-button-prev swiper-button-prev3 swiper-button-white"></div>
+								</div>
+								<div class="swiper-container gallery-thumbs3 gallery-thumbs3">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso1.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso2.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso3.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso4.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso5.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso6.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso7.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso8.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso9.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso10.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso11.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/alonso-slide/alonso12.jpg)"></div>
+									</div>
+								</div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+					<div class="info-bio">
+						<h3>BIOGRAPHY</h3>
+						<div class="bio-text">
+							<p>
+								Born in Oviedo, the capital of the autonomous region of Asturias, Alonso started in karting from the age of 3. He won three consecutive karting championships in Spain from 1994 to 1997, and he became world karting champion in 1996.
+							</p>
+							<p>
+								He made his Formula One debut in the 2001 season with Minardi, and then moved to the Renault team as a test driver the next year. As a main Renault driver from 2003, he was crowned Formula One World Drivers' Champion in both 2005 and 2006. At the age of 24 years and 58 days upon clinching the title, he was the youngest Formula One World Drivers' Champion, and subsequently the youngest double Champion at the time.
+							</p>
+							<p>
+								He joined McLaren in 2007, before returning to Renault for two seasons in 2008 and 2009. Alonso raced for Scuderia Ferrari for five seasons between 2010 and 2014. During that time he finished second in the championship behind Sebastian Vettel three times (2010, 2012 and 2013), and won 11 further Grands Prix. Two of those years, he narrowly lost the title at the final race. He then returned to McLaren for four seasons between 2015 and 2018.
+						</div>
+					</div>
+					<div class="driver-latest">
+						<div class="driver-latest-inner">
+							<div class="driver-sns latest-content">
+								<h3>SNS</h3>
+								<div class="driver-sns-inner">
+									<a href="https://www.instagram.com/fernandoalo_oficial/">
+										<div class="sns-image">
+											<img src="images/team/alonso-sns.jpg" alt="sns사진">
+										</div>
+										<div class="sns-text">
+											<p class="sns-profile">
+												<img src="images/team/profile-alonso.png" alt="sns프로필">
+												<span>fernandoalo_oficial</span>
+											</p>
+											<p>We believe that if something frightens you, but makes you happy, then you should go for it. That’s the essence of adventure, and life is a big one.</p>
+											<p class="show-more">show more</p>
+										</div>
+										<div class="cover">
+											<p>go to Instagram</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="driver-news latest-content">
+								<h3>LATEST NEWS</h3>
+								<div class="driver-news-inner">
+									<a href="news.html">
+										<div class="news-text">
+											<p class="news-head">
+												OPINION: The fantastic, frustrating career of Fernando Alonso
+											</p>
+											<p class="news-sum">
+												Some will have you believe that Fernando Alonso’s F1 title tally would be far higher than two, had he only chosen the right teams at the right time...
+											</p>
+											<p class="show-more">read more</p>
+										</div>
+										<div class="news-image">
+											<img src="images/team/alonso-news.jpg" alt="뉴스이미지">
+										</div>
+										<div class="cover">
+											<p>go to News</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!--drivers-alonso-info-->
+
+				<input type="checkbox" id="m-perez" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="race-drivers-box drivers-box-perez box">
+					<label for="m-perez"></label>
+					<div class="thumbnail">
+						<p class="thumb-num"><img src="images/race/flag/r18_flag.jpg" alt="멕시코국기">#11</p>
+						<p class="thumb-name">Sergio Perez</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--drivers-box-perez-->
+				<div class="drivers-box-info drivers-perez-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Race Driver #11</h3>
+								<table>
+									<caption>Sergio Perez Profile</caption>
+									<tr>
+										<td>Nationality</td>
+										<td>Mexico</td>
+									</tr>
+									<tr>
+										<td>Podiums</td>
+										<td>8</td>
+									</tr>
+									<tr>
+										<td>Points</td>
+										<td>542</td>
+									</tr>
+									<tr>
+										<td>Grands Prix Entered</td>
+										<td>167</td>
+									</tr>
+									<tr>
+										<td>World Championships</td>
+										<td>N/A</td>
+									</tr>
+									<tr>
+										<td>Highest Grid Position</td>
+										<td>2(x2)</td>
+									</tr>
+									<tr>
+										<td>Fastest Laps</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<td>Date of Birth</td>
+										<td>26 JAN 1990</td>
+									</tr>
+								</table>
+								<ul>
+									<li><a href="https://twitter.com/schecoperez"><span>Twitter</span></a></li>
+									<li><a href="https://www.instagram.com/checopereznews/"><span>Instagram</span></a></li>
+									<li><a href="https://www.youtube.com/channel/UCw-ipyIc9gUWunmswPRYVAA"><span>YouTube</span></a></li>
+									<li><a href="https://www.facebook.com/sergioperezf1/"><span>Facebook</span></a></li>
+								</ul>
+							</div>
+							<div class="info-image">
+								<!-- Swiper -->
+								<div class="swiper-container gallery-top4 gallery-top4">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez1.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez2.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez3.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez4.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez5.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez6.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez7.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez8.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez9.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez10.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez11.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez12.jpg)"></div>
+									</div>
+									<!-- Add Arrows -->
+									<div class="swiper-button-next swiper-button-next4 swiper-button-white"></div>
+									<div class="swiper-button-prev swiper-button-prev4 swiper-button-white"></div>
+								</div>
+								<div class="swiper-container gallery-thumbs4 gallery-thumbs4">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez1.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez2.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez3.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez4.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez5.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez6.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez7.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez8.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez9.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez10.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez11.jpg)"></div>
+										<div class="swiper-slide" style="background: url(images/team/perez-slide/perez12.jpg)"></div>
+									</div>
+								</div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+					<div class="info-bio">
+						<h3>BIOGRAPHY</h3>
+						<div class="bio-text">
+							<p>
+								Sergio Perez – often referred to by his nickname Checo – made his F1 debut for Sauber in 2011 and before the end of his second season he’d signed to drive for McLaren. However that proved to be a short-lived relationship.
+							</p>
+							<p>
+								Perez started karting in 1996. In 2004, with the support of prominent Mexican businessman Carlos Slim’s Escuderia Telmex, he began racing in the Skip Barber series in the USA. The following year he moved to Europe and spent two years in the German Formula BMW championship.
+							</p>
+							<p>
+								Arriving in Britain in 2007 he raced for T-Sport, winning the national (junior) championship that year before graduating into the main series. He began his 2008 campaign strongly with three wins in the first six races, but faded to fourth by the end of the season.
+							</p>
+							<p>
+								He moved up to GP2 the following year, finishing on the podium in both races at Valencia and ending the year 12th. Switching from Arden to Addax he had a stronger 2010, but was beaten to the title by Pastor Maldonado.
+							</p>
+							<p>
+								Before the season was over he was signed by Sauber to partner Kamui Kobayashi in 2011. He also joined the driver development programme of Sauber’s engine supplier Ferrari.
+							</p>
+						</div>
+					</div>
+					<div class="driver-latest">
+						<div class="driver-latest-inner">
+							<div class="driver-sns latest-content">
+								<h3>SNS</h3>
+								<div class="driver-sns-inner">
+									<a href="https://www.instagram.com/schecoperez/">
+										<div class="sns-image">
+											<img src="images/team/perez-sns.png" alt="sns사진">
+										</div>
+										<div class="sns-text">
+											<p class="sns-profile">
+												<img src="images/team/profile-perez.png" alt="sns프로필">
+												<span>schecoperez</span>
+											</p>
+											<p>We believe that if something frightens you, but makes you happy, then you should go for it. That’s the essence of adventure, and life is a big one.</p>
+											<p class="show-more">show more</p>
+										</div>
+										<div class="cover">
+											<p>go to Instagram</p>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="driver-news latest-content">
+								<h3>LATEST NEWS</h3>
+								<div class="driver-news-inner">
+									<a href="news.html">
+										<div class="news-text">
+											<p class="news-head">
+												Perez apologises to Styx for 'stupid mistake' at Hockenheim
+											</p>
+											<p class="news-sum">
+												Sergio Perez took responsibility for his “stupid mistake” after crashing out of the German Grand Prix. The Mexican driver qualified eighth after...
+											</p>
+											<p class="show-more">read more</p>
+										</div>
+										<div class="news-image">
+											<img src="images/team/perez-news.jpg" alt="뉴스이미지">
+										</div>
+										<div class="cover">
+											<p>go to News</p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!--drivers-perez-info-->
+			</article>
+
+			<article id="m-other-drivers">
+				<h2>OTHER DRIVERS</h2>
+				<input type="checkbox" id="m-other1" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="other-drivers-box drivers-box-other1 box">
+					<label for="m-other1"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">Reserve Driver</p>
+						<p class="thumb-name">Charles Leclerc</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover">
+					
+					</div>
+				</div><!--drivers-box-other1-->
+				<div class="other-driver-info other-driver1-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Reserve Driver</h3>
+								<table>
+									<caption>Cahrles Leclerc Profile</caption>
+									<tr>
+										<td>Nationality</td>
+										<td>Monaco</td>
+									</tr>
+									<tr>
+										<td>Podiums</td>
+										<td>5</td>
+									</tr>
+									<tr>
+										<td>Points</td>
+										<td>171</td>
+									</tr>
+									<tr>
+										<td>Grands Prix Entered</td>
+										<td>55</td>
+									</tr>
+									<tr>
+										<td>World Championships</td>
+										<td>N/A</td>
+									</tr>
+									<tr>
+										<td>Highest Grid Position</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>Fastest Laps</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>Date of Birth</td>
+										<td>16 OCT 1997</td>
+									</tr>
+								</table>
+								<ul>
+									<li><a href="https://twitter.com/charles_leclerc"><span>Twitter</span></a></li>
+									<li><a href="https://www.instagram.com/charles_leclerc/"><span>Instagram</span></a></li>
+									<li><a href="https://www.youtube.com/channel/UCIzIX1qgW7P3eF6JCk_afCA"><span>YouTube</span></a></li>
+									<li><a href="https://www.facebook.com/CharlesLeclercOfficiel/"><span>Facebook</span></a></li>
+								</ul>
+							</div><!--info-text-->
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/leclerc2.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+					<div class="info-bio">
+						<h3>BIOGRAPHY</h3>
+						<div class="bio-text">
+							<p>
+								Charles Leclerc is a Monégasque racing driver, currently driving in Formula One for Ferrari. Leclerc won the GP3 Series championship in 2016 and the FIA Formula 2 Championship in 2017.
+							</p>
+							<p>
+								Leclerc made his Formula One debut in 2018 for Sauber, a team affiliated with Ferrari, for which he was part of Ferrari Driver Academy. With Sauber having finished last the year before, Leclerc led the charge to improve the finishing position in the constructors' championship to eighth, being the highest ranked of the two Sauber drivers.
+							</p>
+							<p>
+								Leclerc agreed on a contract with Ferrari for the 2019 season where he is driving alongside Sebastian Vettel. Leclerc became the second-youngest driver to qualify on pole position in Formula One at the 2019 Bahrain Grand Prix.
+							</p>
+						</div>
+					</div>
+				</div><!--other-drivers-info1-->
+
+				<input type="checkbox" id="m-other2" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="other-drivers-box drivers-box-other2 box">
+					<label for="m-other2"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">Test Driver</p>
+						<p class="thumb-name">Valtteri Bottas</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover">
+					
+					</div>
+				</div><!--drivers-box-other2-->
+				<div class="other-driver-info other-driver2-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Test Driver</h3>
+								<table>
+									<caption>Valtteri Bottas Profile</caption>
+									<tr>
+										<td>Nationality</td>
+										<td>Finland</td>
+									</tr>
+									<tr>
+										<td>Podiums</td>
+										<td>8</td>
+									</tr>
+									<tr>
+										<td>Points</td>
+										<td>542</td>
+									</tr>
+									<tr>
+										<td>Grands Prix Entered</td>
+										<td>167</td>
+									</tr>
+									<tr>
+										<td>World Championships</td>
+										<td>N/A</td>
+									</tr>
+									<tr>
+										<td>Highest Grid Position</td>
+										<td>2(x2)</td>
+									</tr>
+									<tr>
+										<td>Fastest Laps</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<td>Date of Birth</td>
+										<td>28 AUG 1989</td>
+									</tr>
+								</table>
+								<ul>
+									<li><a href="https://twitter.com/valtteribottas"><span>Twitter</span></a></li>
+									<li><a href="https://www.instagram.com/valtteribottas/"><span>Instagram</span></a></li>
+									<li><a href="https://www.facebook.com/ValtteriBottas/"><span>Facebook</span></a></li>
+								</ul>
+							</div>
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/bottas.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+					<div class="info-bio">
+						<h3>BIOGRAPHY</h3>
+						<div class="bio-text">
+							<p>
+								Bottas finished eighth in the 2005 Karting World Cup for the P.D.B. Racing Team, using Gillard chassis and Parilla engines.
+							</p>
+							<p>
+								Bottas competing at the second round of the 2010 Formula 3 Euro Series at Hockenheim.
+								Bottas won both the 2008 Formula Renault Eurocup and the 2008 Formula Renault Northern European Cup. In doing so, he repeated the feat of Filipe Albuquerque, who won both the NEC and Eurocup in the same season, in 2006.
+							</p>
+							<p>
+								He moved up into the Formula Three Euroseries for the 2009 season, competing for reigning champions ART Grand Prix. Despite not winning a race, Bottas set two pole positions on his way to third in the championship, edging out Alexander Sims at the final race. In June 2009, Bottas won the 2009 Masters of Formula 3, also claiming the pole position and setting the fastest lap of the race. By winning the event again in 2010, he became the first driver to win the F3 Masters title for the second time.
+							</p>
+							<p>
+								In 2010 Bottas was assigned test driver for the Williams Formula One team and would continue as such for the 2011 and 2012 (where he took part in 15 Friday Free Practice sessions) seasons. Also in 2011, the Finn contested the GP3 Series, remaining with F3 squad ART.[10] After a tough start to the season, he claimed a win in each of the last four race weekends and secured the title by winning the penultimate race ahead of his teammate James Calado.
+							</p>
+						</div>
+					</div>
+				</div><!--other-drivers-info2-->
+
+				<input type="checkbox" id="m-other3" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="other-drivers-box drivers-box-other3 box">
+					<label for="m-other3"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">Development Driver</p>
+						<p class="thumb-name">Romain Grosjean</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover">
+					
+					</div>
+				</div><!--drivers-box-other3-->
+				<div class="other-driver-info other-driver3-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Development Driver</h3>
+								<table>
+									<caption>Romain Grosjean Profile</caption>
+									<tr>
+										<td>Nationality</td>
+										<td>Switzerland</td>
+									</tr>
+									<tr>
+										<td>Podiums</td>
+										<td>8</td>
+									</tr>
+									<tr>
+										<td>Points</td>
+										<td>542</td>
+									</tr>
+									<tr>
+										<td>Grands Prix Entered</td>
+										<td>167</td>
+									</tr>
+									<tr>
+										<td>World Championships</td>
+										<td>N/A</td>
+									</tr>
+									<tr>
+										<td>Highest Grid Position</td>
+										<td>2(x2)</td>
+									</tr>
+									<tr>
+										<td>Fastest Laps</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<td>Date of Birth</td>
+										<td>17 APR 1986</td>
+									</tr>
+								</table>
+								<ul>
+									<li><a href="https://twitter.com/rgrosjean"><span>Twitter</span></a></li>
+									<li><a href="https://www.instagram.com/grosjeanromain/"><span>Instagram</span></a></li>
+									<li><a href="https://www.facebook.com/grosjeanromain/"><span>Facebook</span></a></li>
+								</ul>
+							</div>
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/grosjean.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+					<div class="info-bio">
+						<h3>BIOGRAPHY</h3>
+						<div class="bio-text">
+							<p>
+								He dominated the 2005 French Formula Renault championship at his first attempt and joined the Renault young driver programme. He was the 2007 Formula 3 Euro Series drivers' champion. In 2008 he became the inaugural GP2 Asia Series champion and came 4th in his first year in GP2. In 2009 he made his Formula One debut for Renault at the European Grand Prix and came 4th again in GP2 despite missing the final eight races.
+							</p>
+							<p>
+								After being dropped by Renault he returned to junior formulae, winning the 2010 Auto GP championship at the first attempt and winning the 2011 GP2 Asia Series and GP2 Series becoming the first – and as of 2018, only – two-time GP2 Asia champion and the only driver to hold both the GP2 Asia series and main GP2 series titles simultaneously. Due to the Asia and Main GP2 series being combined, it is likely that this will remain true for the foreseeable future.
+							</p>
+							<p>
+								In 2012, Grosjean returned to Formula One with the Lotus F1 Team, alongside Kimi Räikkönen.[3] He took his first Formula One podium at the 2012 Bahrain Grand Prix and took his first fastest lap in the 2012 Spanish Grand Prix. He became the first driver since 1994 to receive a race ban after causing a multi-car pile up, at the 2012 Belgian Grand Prix. In 2013 he remained with Lotus, taking six podiums. He drove for Lotus again alongside Venezuelan Pastor Maldonado in the 2014 and 2015 seasons. He moved to Haas in 2016.
+							</p>
+						</div>
+					</div>
+				</div><!--other-drivers-info3-->
+			</article>
+
+			<article id="m-team-principal">
+				<h2>TEAM PRINCIPAL</h2>
+				<input type="checkbox" id="m-principal" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="principal-box box">
+					<label for="m-principal"></label>
+					<div class="thumbnail">
+						<p class="thumb-name">Andreas Seidl</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--principal-box-->
+				<div class="principal-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Andreas Seidl</h3>
+								<p>
+									Andreas joined Styx as Team Principal at the start of May 2019. His role is to manage Styx's Formula 1 team, both on and off track. Andreas reports directly to Zak Brown, Chief Executive Officer of McLaren Styx.
+								</p>
+								<p>
+									Andreas joins Styx from his position as Porsche LMP1 Team Principal. His appointment marks Andreas’ return to Formula 1, having previously worked at BMW Motorsport from 2000 and 2006, then at BMW Sauber as head of track operations until 2009. He graduated from the Technical University in Munich with a diploma in Mechanical Engineering.
+								</p>
+							</div><!--info-text-->
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/principal.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+				</div><!--principal-info-->
+			</article>
+
+			<article id="m-team-manager">
+				<h2>TEAM MANAGER</h2>
+				<input type="checkbox" id="m-manager1" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="manager-box manager-box1 box">
+					<label for="m-manager1"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">CHIEF EXECUTIVE OFFICER</p>
+						<p class="thumb-name">Zak Brown</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--manager-box1-->
+				<div class="manager-info manager1-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Zak Brown</h3>
+								<p>
+									As Chief Executive of Styx Racing, Zak Brown has overall responsibility for the business, including strategic direction, operational performance, marketing and commercial development. In his role Zak leads McLaren’s direction and involvement in professional motorsport, spearheaded by the Styx Formula 1 team. Operating at the pinnacle of global motorsport, Styx uses the white heat of competition to drive innovation and develop synergies across the group.
+								</p>
+								<p>
+									Born and raised in California, Zak raced professionally around the world for 10 years before developing his skills in motorsport’s business and commercial worlds.
+								</p>
+								<p>
+									In 1995, he founded JMI, which grew to become the largest and most successful motorsport marketing agency in the world. When JMI was acquired by CSM, a division of Chime Communications, in 2013, Brown became the company’s Chief Executive Officer. He then relinquished that post to embark on his journey at Styx in the winter of 2016.
+								</p>
+								<p>
+									A passionate racer, collector and enthusiast, Brown also sits on the board of Cosworth Engineering, holds the position of Non-Executive Chairman on the board of media company Motorsport Network, and competes and races as a partner and driver in Anglo-American racing team United Autosports.
+								</p>
+							</div><!--info-text-->
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/manager1-profile.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+				</div><!--manager1-info-->
+
+				<input type="checkbox" id="m-manager2" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="manager-box manager-box2 box">
+					<label for="m-manager2"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">TECHNICAL DIRECTOR</p>
+						<p class="thumb-name">James Key</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--manager-box2-->
+				<div class="manager-info manager2-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>James Key</h3>
+								<p>
+									James joined the team as Technical Director in March 2019 and is responsible for developing the MCL34 and leading the production of our future Formula 1 racecars.
+								</p>
+								<p>
+									James has been a familiar face in the paddock for more than 14 years and brings a wealth of F1 experience to his role. He has held the role of Technical Director with multiple teams, starting in 2005 with Midland F1 Racing where he took up the role at just 33 years old, making him one of the youngest Technical Directors on the grid. Since then James has served at Williams, Force India, Sauber and most recently Toro Rosso.
+								</p>
+							</div>
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/manager2-profile.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+				</div><!--manager2-info-->
+		
+				<input type="checkbox" id="m-manager3" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="manager-box manager-box3 box">
+					<label for="m-manager3"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">SPORTING DIRECTOR</p>
+						<p class="thumb-name">Gil de Ferran</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--manager-box3-->
+				<div class="manager-info manager3-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Gil de Ferran</h3>
+								<p>
+									Migrating to Europe from his home in Brazil, Gil de Ferran followed the time-honoured path of all hungry young South American drivers, working his way up the British single-seater ladder as he bid for motorsport success.
+								</p>
+								<p>
+									After a successful European stint, including  the 1992 British Formula 3 crown, de Ferran turned his attentions Stateside to IndyCar, where he earned Rookie of the Year honours for the ’95 season.
+								</p>
+								<p>
+									By the end of that decade, now driving for the legendary Penske marque, he truly made his name in the American single-seater series, winning the IndyCar title in 2000 and 2001. Two years later, he would win the legendary Indy 500.
+								</p>
+								<p>
+									After hanging up his helmet, Gil brought racing and business together to form a race-winning North American sports car team. He was also was elected onto Champ Car’s advisory board by his team-owner peers, and developed an extensive corporate and consultancy portfolio.
+								</p>
+								<p>
+									In 2017, he worked with Styx and Fernando Alonso as the team made its sensational return to the Indy 500. In July 2018, he was appointed Sporting Director, with a remit to develop and improve every element of the race team’s operating procedures.
+								</p>
+							</div>
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/manager3-profile.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+				</div><!--manager3-info-->
+
+				<input type="checkbox" id="m-manager4" name="team" onClick="setCheckBoxAsRadio(t1.team, this);">
+				<div class="manager-box manager-box4 box">
+					<label for="m-manager4"></label>
+					<div class="thumbnail">
+						<p class="thumb-work">TEAM MANAGER</p>
+						<p class="thumb-name">Paul James</p>
+						<div class="thumb-img"></div>
+					</div>
+					<div class="thumb-cover"></div>
+				</div><!--manager-box4-->
+				<div class="manager-info manager4-info">
+					<div class="info-title">
+						<div class="info-title-inner">
+							<div class="info-text">
+								<h3>Paul James</h3>
+								<p>
+									Paul James has spent his entire career in motorsport, first working for Mazda Rally Team Europe aged just 17. 
+								</p>
+								<p>
+									After stints at Onyx, Benetton Formula, and in North America’s Indy Car World Series, he joined Styx in 1995, working on the Styx F1 road car. In 1997, he joined the Formula 1 team, and has remained on the F1 frontlines ever since.
+								</p>
+								<p>
+									He has worked closely with drivers such as David Coulthard, Juan Pablo Montoya and Lewis Hamilton, and was the number-one mechanic during Lewis’ title-winning 2008 season.
+								</p>
+								<p>
+									He became chief mechanic in 2012, and was appointed as team manager, with overall responsibility for race team	operations, at the start of the 2017 season.
+								</p>
+							</div>
+							<div class="info-image">
+								<div class="team-photo" style="background: url(images/team/manager4-profile.jpg)no-repeat center center"></div>
+							</div>
+						</div><!--info-title-inner-->
+					</div><!--info-title-->
+				</div><!--manager4-info-->
+			</article>
+		</section>
+	</form>
+
+	<div id="bottom-banner">
+		<a href="car.html">
+			<div class="bottom-banner-inner">
+				<p>Explore<br><strong>The Historic Cars</strong><br>of Styx</p>
+				<p>Explore NOW</p>
+			</div>
+		</a>
+	</div><!--bottom-banner-->
+	<div id="partners">
+		<div id="partners-inner">
+			<div class="pt pt1">
+				<h4>TITLE PARTNER</h4>
+				<p>
+					<a href="#">
+						<img src="images/partners/ubs_w.png" alt="타이틀파트너로고">
+					</a>
+				</p>
+			</div>
+			<div class="pt pt2">
+				<h4>TEAM PARTNERS</h4>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/intel_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/lg_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/hp_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/ge_w.png" alt="파트너로고">
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/bwt_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/claro_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/santander_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/asus_w.png" alt="파트너로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/british_airways_w.png" alt="파트너로고">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="pt pt3">
+				<h4>TEAM SUPPLIERS</h4>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/pirelli_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/puma_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/mobil1_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/bose_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/rayban_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/patek_w.png" alt="공급업체로고">
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="images/partners/accor_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/dynamite_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/ea_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/perrier_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/novotel_w.png" alt="공급업체로고">
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="images/partners/rockstar_w.png" alt="공급업체로고">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div><!--partners_inner end-->
+	</div><!--partners end-->
+
+	<footer id="main-footer">
+		<div id="footer-inner">
+			<div id="footer-left">
+				<ul>
+					<li><p class="copy">All rights reserved 2019ⓒ Styx</p></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="#">Cookie Policy</a></li>
+					<li><a href="#">Media</a></li>
+					<li class="lang lang-first">
+						<a href="#"><img src="images/footer/eng.png" alt="영어아이콘"></a>
+						<p class="lang-tooltip">ENG</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ita.png" alt="이탈리아어아이콘"></a>
+						<p class="lang-tooltip">ITA</p>
+					</li>
+					<li class="lang">
+						<a href="#"><img src="images/footer/ger.png" alt="독일어아이콘"></a>
+						<p class="lang-tooltip">GER</p>
+					</li>
+				</ul>
+			</div><!--footer-left end-->
+			<div id="footer-right">
+				<ul>
+					<li>
+						<a href="#" class="sns sns1">
+							<p class="hide">twitter</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns2">
+							<p class="hide">instagram</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns3">
+							<p class="hide">facebook</p>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sns sns4">
+							<p class="hide">youtube</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--footer-right end-->
+		</div>
+	</footer>
+  <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+
+	var galleryTop1 = new Swiper('.gallery-top1', {
+      spaceBetween: 5,
+      loop:true,
+	  loopedSlides: 12,
+	  autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next1',
+        prevEl: '.swiper-button-prev1',
+      },
+    });
+    var galleryThumbs1 = new Swiper('.gallery-thumbs1', {
+      spaceBetween: 5,
+      slidesPerView: 8,
+      touchRatio: 0.2,
+      loop: true,
+	  loopedSlides: 12,
+      slideToClickedSlide: true,
+    });
+    galleryTop1.controller.control = galleryThumbs1;
+    galleryThumbs1.controller.control = galleryTop1;
+  
+  var galleryTop2 = new Swiper('.gallery-top2', {
+      spaceBetween: 5,
+      loop:true,
+	  loopedSlides: 12,
+	  autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next2',
+        prevEl: '.swiper-button-prev2',
+      },
+    });
+    var galleryThumbs2 = new Swiper('.gallery-thumbs2', {
+      spaceBetween: 5,
+      slidesPerView: 8,
+      touchRatio: 0.2,
+      loop: true,
+	  loopedSlides: 12,
+      slideToClickedSlide: true,
+    });
+    galleryTop2.controller.control = galleryThumbs2;
+    galleryThumbs2.controller.control = galleryTop2;
+
+  var galleryTop3 = new Swiper('.gallery-top3', {
+      spaceBetween: 5,
+      loop:true,
+	  loopedSlides: 12,
+	  autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next3',
+        prevEl: '.swiper-button-prev3',
+      },
+    });
+    var galleryThumbs3 = new Swiper('.gallery-thumbs3', {
+      spaceBetween: 5,
+      slidesPerView: 8,
+      touchRatio: 0.2,
+      loop: true,
+	  loopedSlides: 12,
+      slideToClickedSlide: true,
+    });
+    galleryTop3.controller.control = galleryThumbs3;
+    galleryThumbs3.controller.control = galleryTop3;
+  
+  var galleryTop4 = new Swiper('.gallery-top4', {
+      spaceBetween: 5,
+      loop:true,
+	  loopedSlides: 12,
+	  autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next4',
+        prevEl: '.swiper-button-prev4',
+      },
+    });
+    var galleryThumbs4 = new Swiper('.gallery-thumbs4', {
+      spaceBetween: 5,
+      slidesPerView: 8,
+      touchRatio: 0.2,
+      loop: true,
+	  loopedSlides: 12,
+      slideToClickedSlide: true,
+    });
+    galleryTop4.controller.control = galleryThumbs4;
+    galleryThumbs4.controller.control = galleryTop4;
+  </script>
+ </body>
+</html>
