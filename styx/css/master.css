@@ -3996,14 +3996,19 @@ h1 img {
 	}
 	#car #d-heritage-cars .row {
 		max-width: 1300px;
+		height: 315px;
 		margin: 7px auto;
 	}
 	#car #d-heritage-cars .car {
 		width: 24.25%;
 		height: 315px;
 		margin-right: 1%;
+		float: left;
 		position: relative;
 		border: 1px solid #222;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 	#car #d-heritage-cars .car4 {
 		margin-right: 0;
@@ -9221,13 +9226,18 @@ h1 img {
 	#car #d-heritage-cars .row {
 		max-width: 90%;
 		margin: 7px auto;
+		height: 250px;
 	}
 	#car #d-heritage-cars .car {
 		width: 24.25%;
 		height: 250px;
+		float: left;
 		margin-right: 1%;
 		position: relative;
 		border: 1px solid #222;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 	#car #d-heritage-cars .car4 {
 		margin-right: 0;
@@ -14463,13 +14473,18 @@ h1 img {
 	#car #t-heritage-cars .row {
 		max-width: 90%;
 		margin: 7px auto;
+		height: 230px;
 	}
 	#car #t-heritage-cars .car {
 		width: 49.5%;
 		height: 230px;
+		float: left;
 		margin-right: 1%;
 		position: relative;
 		border: 1px solid #222;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 	#car #t-heritage-cars .row>div:last-child {
 		margin-right: 0;
