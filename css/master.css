@@ -1,0 +1,1092 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,600,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,500,600,700&display=swap');
+@import url("S-Core-Dream-light/s-core-dream.css");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+body {
+  font-size: 16px;
+  font-family: "Titillium Web";
+}
+body::-webkit-scrollbar {
+  width: 0.7em;
+}
+body::-webkit-scrollbar-thumb{
+  width: 0.7em;
+   background-color: #90f;
+   border: 4px solid transparent;
+   border-radius: 11px;
+}
+body::-webkit-scrollbar * {
+   background: transparent;
+}
+ol, ul {
+  list-style: none;
+}
+a, a:link {
+  text-decoration: none;
+  color: #000;
+}
+img {
+  vertical-align: top;
+  border: 0;
+}
+
+/*desktop*/
+@media screen and (min-width: 1280px) {
+  /*main*/
+  #main section {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #main section>h2 {
+    text-indent: -99999px;
+    height: 0;
+  }
+  #main #home-inner {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  #main #home {
+    background: #0b0022;
+    color: #fff;
+  }
+  #main #home .home-bg {
+    width: 75%;
+    height: 100%;
+    position: absolute;
+    right: 2%;
+    bottom: 0;
+    background: url('../images/main/home-bg.png')no-repeat left bottom;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    opacity: .8;
+  }
+  #main #home h2 {
+    font-size: 6rem;
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+    text-shadow: 0px 0px 10px #0b0022;
+  }
+  #main #home h2>span {
+    padding-left: 20px;
+    border-right: .05em solid #fff;
+    -webkit-animation: cursor 1s steps(1) infinite;
+    -moz-animation: cursor 1s steps(1) infinite;
+    -o-animation: cursor 1s steps(1) infinite;
+    animation: cursor 1s steps(1) infinite;
+  }
+  @-webkit-keyframes cursor {
+    50% {border-color: rgba(255, 255, 255, 0);}
+  }
+  @-moz-keyframes cursor {
+    50% {border-color: rgba(255, 255, 255, 0);}
+  }
+  @-o-keyframes cursor {
+    50% {border-color: rgba(255, 255, 255, 0);}
+  }
+  @keyframes cursor {
+    50% {border-color: rgba(255, 255, 255, 0);}
+  }
+  #main #home p {
+    line-height: 150%;
+    font-family: 's-core-dream-regular';
+    font-size: 1.2vw;
+    text-shadow: 0px 0px 10px #0b0022;
+    position: absolute;
+    left: 0;
+    top: 65%;
+  }
+  #main #works-inner {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  #main .pub h3 {
+    display: none;
+  }
+  #main .pub-title {
+    position: absolute;
+    bottom: 30px;
+    left: -15px;
+  }
+  #main .title-re {
+    position: relative;
+  }
+  #main .title-re>p {
+    font: bold 10vw "Chakra Petch";
+    color: #fff;
+  }
+  #main .title-re-bg {
+    width: 96%;
+    height: 46%;
+    background: #f09;
+    position: absolute;
+    top: 27%;
+    left: 2%;
+    z-index: -1;
+  }
+  #main .design h3 {
+    color: #90f;
+    font: bold 5vw "Chakra Petch";
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+  }
+  #main #publishing-masked {
+    mask: url('#publishing-title');
+  }
+  #main .works-box {
+    background: #fff;
+    position: absolute;
+    -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+  }
+  #main .box-pj1 {
+    background: url('../images/main/works-styx.jpg')no-repeat center center;
+  }
+  #main .box-pj2 {
+    background: url('../images/main/works-yieum.jpg')no-repeat center center;
+  }
+  #main .box-design {
+    background: url('../images/main/works-design.jpeg')no-repeat left center;
+  }
+  #main .works-box a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  #main .work-name {
+    position: absolute;
+    padding: 1vh 2vw;
+    background: #306;
+    color: #fff;
+    font: lighter 2vh "Titillium Web";
+  }
+  #main .box-pj1 .work-name {
+    right: 0;
+    top: 20px;
+    text-align: right;
+  }
+  #main .box-pj2 .work-name {
+    left: 0;
+    top: 20px;
+  }
+  #main .works-box-hover:hover {
+    opacity: 1;
+  }
+  #main .works-box-hover {
+    opacity: 0;
+    position: absolute;
+    color: #fff;
+    padding: 2vw;;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: opacity .35s;
+    -moz-transition: opacity .35s;
+    -o-transition: opacity .35s;
+    transition: opacity .35s;
+  }
+  #main .works-box-hover img {
+    width: 1.5vw;
+    margin: -5px .5vw 0 0;
+    vertical-align: middle;
+  }
+  #main .works-box-hover .work-title {
+    text-align: center;
+    font: bold 1.5vw/1.75vw "Titillium Web";
+    position: relative;
+  }
+  #main .works-box-hover .work-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -2vw;
+    width: 1px;
+    height: 190%;
+    background: -webkit-linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: -moz-linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: -o-linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: linear-gradient(to bottom, #fff 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+  }
+  #main .works-box-hover .work-dscr {
+    text-align: center;
+    font: normal .8vw 's-core-dream-light';
+    margin-top: 1.7vw;
+  }
+  #main .works-box-hover .work-details {
+    text-align: center;
+    font-size: 1.25vw;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+  #main .works-box-hover .work-details::after {
+    content: '';
+    position: absolute;
+    top: 55%;
+    left: -25%;
+    width: 150%;
+    height: 1px;
+    background: -webkit-linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: -moz-linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: -o-linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+    background: linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, #fff 90%);
+  }
+  #main .box-pj1 {
+    width: 30%;
+    max-height: 50%;
+    left: 0;
+    bottom: 14vw;
+  }
+  #main .box-pj1::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  #main .box-pj1-hover {
+    width: 100%;
+    height: 100%;
+    background: #90f;
+    left: 30px;
+    bottom: 30px;
+    z-index: 1;
+  }
+  #main .box-pj2 {
+    width: 35%;
+    max-height: 60%;
+    left: 25%;
+    bottom: 17vw;
+  }
+  #main .box-pj2::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  #main .box-pj2-hover {
+    width: 100%;
+    height: 100%;
+    background: #90f;
+    left: -30px;
+    bottom: -30px;
+    z-index: 2;
+  }
+  #main .box-design {
+    width: 25%;
+    max-height: 40%;
+    right: 0;
+    bottom: 100px;
+  }
+  #main .box-design::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  #main .box-design-hover {
+    width: 100%;
+    height: 100%;
+    background: #90f;
+    left: -30px;
+    bottom: 30px;
+    z-index: 2;
+  }
+  #main #about-intro,
+  #main #about-skills {
+    background-attachment: fixed !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+    color: #fff;
+  }
+  #main #about-intro {
+    background: url('../images/main/about-bg1.png')no-repeat center center;
+  }
+  #main #about-skills {
+    position: relative;
+    background: url('../images/main/about-bg2.png')no-repeat center center;
+  }
+  #main #about-skills-inner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5.5%;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  #main .skills-box {
+    width: 25%;
+    position: relative;
+    visibility:hidden;
+  }
+  #main .skills-box.html-box {
+    margin-left: 12.5%;
+  }
+  #main .skills-box::after{
+    content:'';
+    display:block;
+    padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+  }
+  #main .skills-box-inner {
+    position: absolute;
+    width:96%;
+    padding-bottom: 110.851%; /* =  width / sin(60) */
+    margin: 0 2%;
+    overflow: hidden;
+    visibility: hidden;
+    -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    -moz-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    -o-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+    transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+  }
+  #main .skills-box-inner * {
+    position: absolute;
+    visibility: visible;
+  }
+  #main .skills-content {
+    display:block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    -moz-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    -o-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    background: rgba(20, 0, 61, .6);
+  }
+  #main .skills-icon {
+    width: 40%;
+    padding: 50% 0 30px 0;
+    bottom: 50%;
+    left: 50%;
+    border-bottom: 1px solid #0f9;
+    -webkit-transform: translate(-50%, -10%);
+    -moz-transform: translate(-50%, -10%);
+    -ms-transform: translate(-50%, -10%);
+    -o-transform: translate(-50%, -10%);
+    transform: translate(-50%, -10%);
+  }
+  #main .skills-icon img {
+    height: 5vh;
+    max-width: 8vw;
+    display: block;
+    margin: 0 auto;
+    position: static;
+  }
+  #main .skills-text {
+    width: 100%;
+    padding-bottom: 50%;
+    top: 50%;
+  }
+  #main .skills-text p {
+    font: normal 1.5vh/3vh 's-core-dream-regular';
+    position: static;
+  }
+  #main #contact {
+    background: #0b0022;
+    color: #fff;
+    position: relative;
+  }
+  #main .self-info {
+    width: 100%;
+    padding: 6vh 0;
+    background: #241a39;
+    position: absolute;
+    left: 0;
+    bottom: 12%;
+  }
+  #main .self-info-inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+  #main .info-text li {
+    overflow: hidden;
+    margin-bottom: 1vh;
+  }
+  #main .info-text li:last-child {
+    margin: 0;
+  }
+  #main .info-text li span {
+    display: inline-block;
+    width: 2vw;
+    height: 2.5vw;
+    float: left;
+  }
+  #main .info-text li p {
+    font: normal .8vw/1.25vw 's-core-dream-light';
+    float: left;
+    margin: 5px 0 0 10px;
+  }
+  #main .info-photo {
+    width: 40%;
+    height: 100%;
+    background: #0f9;
+    position: absolute;
+    right: 8%;
+    top: -30px;
+    z-index: 1;
+  }
+  #main .info-photo>p {
+    font: bold 8vh "Chakra Petch";
+    color: #0f9;
+    position: absolute;
+    left: 20px;
+    top: -7.5vh;
+  }
+  #main .photo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  #main .photo p {
+    color: #0f9;
+    font: bold 1.5vw "Titillium Web";
+    position: absolute;
+    right: 0;
+    bottom: -2.5vw;
+  }
+  /*works*/
+  #works-web .project-intro {
+    width: 100vw;
+    padding-top: 15vh;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #works-web .intro-title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 100px;
+    line-height: 2.5vw;
+  }
+  #works-web .intro-title::after {
+    content: '';
+    display: block;
+    height: 200%;
+    width: 1px;
+    background: -webkit-linear-gradient(to bottom, #000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000 75%);
+    background: -moz-linear-gradient(to bottom, #000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000 75%);
+    background: -o-linear-gradient(to bottom, #000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000 75%);
+    background: linear-gradient(to bottom, #000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000 75%);
+    position: absolute;
+    left: 50%;
+    top: -50%;
+  }
+  #works-web .intro-title>p:first-of-type {
+    font: lighter 1.5vw/2.5vw "Titillium Web";
+  }
+  #works-web .intro-title>p:last-of-type {
+    font: bold 2.5vw/2.5vw "Titillium Web";
+  }
+  #works-web .project-preview {
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+  }
+  #works-web .project-bg {
+    height: 100%;
+    position: absolute;
+  }
+  #works-web .project-bg-left {
+    left: -10%;
+    top: 0;
+  }
+  #works-web .project-bg-right {
+    right: -10%;
+    top: 0;
+  }
+  #works-web .project-bg img {
+    height: 100%;
+    opacity: .2;
+  }
+  #works-web .project-video {
+    height: 50vh;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+  #works-web video {
+    height: 100%;
+    -webkit-box-shadow: 0 0 20px rgba(176, 176, 176, .75);
+    -moz-box-shadow: 0 0 20px rgba(176, 176, 176, .75);
+    box-shadow: 0 0 20px rgba(176, 176, 176, .75);
+  }
+  #works-web .project-detail {
+    margin-top: 100px;
+  }
+  #works-web .detail-intro p {
+    text-align: center;
+    font: normal 1rem/1.5rem 's-core-dream-light';
+  }
+  #works-web .project-skills ul {
+    display: table;
+    overflow: hidden;
+    padding: 15px;
+    margin: 50px auto 0;
+  }
+  #works-web .project-skills li {
+    float: left;
+    margin: 10px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  #works-web .project-skills span {
+    color: #90f;
+    font: normal .8rem 's-core-dream-light';
+    white-space: nowrap;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+  }
+  #works-web .project-skills img {
+    width: 50px;
+    position: absolute;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+  }
+  #works-web .project-skills img:last-of-type {
+    opacity: 0;
+    -webkit-box-shadow: 0 0 20px rgba(153, 0, 255, .6);
+    -moz-box-shadow: 0 0 20px rgba(153, 0, 255, .6);
+    box-shadow: 0 0 20px rgba(153, 0, 255, .6);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+  }
+  #works-web .project-skills li:hover img:last-of-type,
+  #works-web .project-skills li:hover span {
+    opacity: 1;
+  }
+  #works-web .project-pages {
+    overflow: hidden;
+    margin: 50px auto 0;
+    padding-bottom: 20px;
+    display: table;
+  }
+  #works-web .project-pages>p {
+    font: normal 1.25rem "Titillium Web";
+    position: relative;
+    display: table;
+    margin: 0 auto 50px;
+  }
+  #works-web .project-pages>p::after {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: 50%;
+    width: 200%;
+    height: 1px;
+    background: -webkit-linear-gradient(to right, black 20%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, black 80%);
+    background: -moz-linear-gradient(to right, black 20%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, black 80%);
+    background: -o-linear-gradient(to right, black 20%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, black 80%);
+    background: linear-gradient(to right, black 20%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, black 80%);
+  }
+  #works-web .page {
+    width: 10vw;
+    margin: 0 10px;
+    float: left;
+    position: relative;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    -webkit-background-size: 100% !important;
+    -moz-background-size: 100% !important;
+    -o-background-size: 100% !important;
+    background-size: 100% !important;
+    overflow: hidden;
+    -webkit-transition: background-size 1s;
+    -moz-transition: background-size 1s;
+    -o-transition: background-size 1s;
+    transition: background-size 1s;
+  }
+  #works-web .page::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  #works-web .page:hover {
+    -webkit-background-size: 110% !important;
+    -moz-background-size: 110% !important;
+    -o-background-size: 110% !important;
+    background-size: 110% !important;
+  }
+  #works-web .page .cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(153, 0, 255, .6);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  #works-web .page .cover1 {
+    top: -100%;
+    -webkit-transform: skew(45deg) translate(50%, 50%);
+    -moz-transform: skew(45deg) translate(50%, 50%);
+    -ms-transform: skew(45deg) translate(50%, 50%);
+    -o-transform: skew(45deg) translate(50%, 50%);
+    transform: skew(45deg) translate(50%, 50%);
+  }
+  #works-web .page .cover2 {
+    bottom: -100%;
+    -webkit-transform: skew(45deg) translate(-50%, -50%);
+    -moz-transform: skew(45deg) translate(-50%, -50%);
+    -ms-transform: skew(45deg) translate(-50%, -50%);
+    -o-transform: skew(45deg) translate(-50%, -50%);
+    transform: skew(45deg) translate(-50%, -50%);
+  }
+  #works-web .page:hover .cover1 {
+    top: 0;
+    -webkit-transform: skew(45deg) translate(50%, 0);
+    -moz-transform: skew(45deg) translate(50%, 0);
+    -ms-transform: skew(45deg) translate(50%, 0);
+    -o-transform: skew(45deg) translate(50%, 0);
+    transform: skew(45deg) translate(50%, 0);
+  }
+  #works-web .page:hover .cover2 {
+    bottom: 0;
+    -webkit-transform: skew(45deg) translate(-50%, 0);
+    -moz-transform: skew(45deg) translate(-50%, 0);
+    -ms-transform: skew(45deg) translate(-50%, 0);
+    -o-transform: skew(45deg) translate(-50%, 0);
+    transform: skew(45deg) translate(-50%, 0);
+  }
+  #works-web .page>a>p {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    line-height: 10vw !important;
+    color: #fff;
+    font: bold 1.5rem "Titillium Web";
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+  }
+  #works-web .page:hover>a>p {
+    opacity: 1;
+  }
+  #works-web .project-links {
+    overflow: hidden;
+    display: table;
+    margin: 50px auto 0;
+  }
+  #works-web .project-links p {
+    float: left;
+    margin: 0 10px;
+  }
+  #works-web .project-links a {
+    display: block;
+    padding: 10px 50px;
+    font: bold 1.5rem "Titillium Web";
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    position: relative;
+  }
+  #works-web .project-links a::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    background: -webkit-linear-gradient(to right, #90f 15%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 85%, #90f 85%);
+    background: -moz-linear-gradient(to right, #90f 15%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 85%, #90f 85%);
+    background: -o-linear-gradient(to right, #90f 15%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 85%, #90f 85%);
+    background: linear-gradient(to right, #90f 15%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 85%, #90f 85%);
+    opacity: 0;
+    -webkit-transform: scaleX(.3);
+    -moz-transform: scaleX(.3);
+    -ms-transform: scaleX(.3);
+    -o-transform: scaleX(.3);
+    transform: scaleX(.3);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+  }
+  #works-web .project-links a:hover {
+    color: #90f;
+  }
+  #works-web .project-links a:hover::after {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  #works-web .project-design {
+    margin: 200px 0;
+  }
+  #works-web .p-design1 {
+    margin-bottom: 200px;
+  }
+  #works-web .design-title {
+    position: relative;
+    width: 100px;
+    margin: 0 auto 100px;
+    text-align: center;
+  }
+  #works-web .design-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 300%;
+    height: 1px;
+    background: -webkit-linear-gradient(to right, #000 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, #000 70%);
+    background: -moz-linear-gradient(to right, #000 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, #000 70%);
+    background: -o-linear-gradient(to right, #000 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, #000 70%);
+    background: linear-gradient(to right, #000 30%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, #000 70%);
+  }
+  #works-web .design-title p:first-of-type {
+    font: bold 4rem/80% "Chakra Petch";
+  }
+  #works-web .design-title p:last-of-type {
+    font: 200 1.5rem "Titillium Web";
+  }
+  #works-web .design-dscr {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  #works-web .dscr-text {
+    float: left;
+  }
+  #works-web .dscr-text>div:first-of-type {
+    margin-bottom: 2vw;
+  }
+  #works-web .dscr-text>div:first-of-type>div:last-of-type {
+    font: normal .8vw/150% 's-core-dream-light';
+  }
+  #works-web .dscr-text>div:last-of-type ul {
+    overflow: hidden;
+    display: table;
+    margin: 0 auto;
+  }
+  #works-web .dscr-text>div:last-of-type ul li {
+    float: left;
+    width: 65px;
+  }
+  #works-web .dscr-text>div:last-of-type ul li .color {
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin: 0 auto 10px;
+  }
+  #works-web .dscr-text>div:last-of-type ul li .color+p {
+    font: lighter .8rem/100% "Titilllium Web";
+    text-align: center;
+  }
+  #works-web .dscr-text>div>p {
+    width: 100px;
+    margin: 0 auto 30px;
+    text-align: center;
+    position: relative;
+  }
+  #works-web .dscr-text>div>p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    background: -webkit-linear-gradient(to right, #000 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, #000 75%);
+    background: -moz-linear-gradient(to right, #000 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, #000 75%);
+    background: -o-linear-gradient(to right, #000 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, #000 75%);
+    background: linear-gradient(to right, #000 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, #000 75%);
+  }
+  #works-web .dscr-text .keywords {
+    display: table;
+    margin: 0 auto 2vw;
+  }
+  #works-web .dscr-text .keywords p {
+    width: 8vw;
+    height: 8vw;
+    margin: 0 10px;
+    float: left;
+    position: relative;
+    color: #fff;
+    background: #90f;
+    -webkit-border-radius: 50vw;
+    -moz-border-radius: 50vw;
+    border-radius: 50vw;
+  }
+  #works-web .dscr-text .keywords>p>.key-kor {
+    font: bold 1.25vw "s-core-dream-regular";
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+  #works-web .dscr-text .keywords>p>.key-eng {
+    font: 100 .8vw "Titillium Web";
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+  #works-web .dscr-img {
+    width: 40vw;
+    height: 26vw;
+    max-height: 50vh;
+    float: right;
+    position: relative;
+  }
+  #works-web .dscr-img-photo {
+    width: 90%;
+    height: 90%;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+  #works-web .dscr-img-photo+div {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    border: 4px solid #90f;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #works-web .img-box {
+    width: 100%;
+    height: 700px;
+    background: #f5f5f5;
+    position: relative;
+    -webkit-box-shadow: 0px 10px 15px #e0e0e0;
+    -moz-box-shadow: 0px 10px 15px #e0e0e0;
+    box-shadow: 0px 10px 15px #e0e0e0;
+  }
+  #works-web .img-box img {
+    height: 95%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+  }
+
+  #works-design section {
+    width: 100vw;
+    height: 100vh;
+  }
+  #works-design .work-inner {
+    width: 90vw;
+    height: 100%;
+    margin: auto;
+    padding: 120px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  #works-design input {
+    display: none;
+  }
+  #works-design .tab-btn {
+    height: 100%;
+    margin-right: 5vw;
+    float: left;
+  }
+  #works-design .btn label {
+    display: block;
+    width: 8vw;
+    height: 8vw;
+    margin-bottom: 1vw;
+    font: bold 1.5vw/8vw "Titillum web";
+    text-align: center;
+    cursor: pointer;
+  }
+  #works-design .btn label:hover {
+  }
+
+  /*loader*/
+  .loader {
+    width: 100vw;
+    height: 100vh;
+    background: #0b0022;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    z-index: 100;
+  }
+  .loader-circle {
+    width: 10vw;
+    height: 10vw;
+    -webkit-border-radius: 500vw;
+    -moz-border-radius: 500vw;
+    border-radius: 500vw;
+    background: -webkit-linear-gradient(90deg, #0b0022, #90f);
+    background: -moz-linear-gradient(90deg, #0b0022, #90f);
+    background: -o-linear-gradient(90deg, #0b0022, #90f);
+    background: linear-gradient(90deg, #0b0022, #90f);
+    -webkit-animation: loader .25s infinite;
+    -moz-animation: loader .25s infinite;
+    -o-animation: loader .25s infinite;
+    animation: loader .25s infinite;
+  }
+  @-webkit-keyframes loader {
+    0% {-webkit-transform: rotate(0deg);}
+    25% {-webkit-transform: rotate(90deg);}
+    50% {-webkit-transform: rotate(180deg);}
+    75% {-webkit-transform: rotate(270deg);}
+    100% {-webkit-transform: rotate(360deg);}
+  }
+  @-moz-keyframes loader {
+    0% {-moz-transform: rotate(0deg);}
+    25% {-moz-transform: rotate(90deg);}
+    50% {-moz-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(270deg);}
+    100% {-moz-transform: rotate(360deg);}
+  }
+  @-o-keyframes loader {
+    0% {-o-transform: rotate(0deg);}
+    25% {-o-transform: rotate(90deg);}
+    50% {-o-transform: rotate(180deg);}
+    75% {-o-transform: rotate(270deg);}
+    100% {-o-transform: rotate(360deg);}
+  }
+  @keyframes loader {
+    0% {transform: rotate(0deg);}
+    25% {transform: rotate(90deg);}
+    50% {transform: rotate(180deg);}
+    75% {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+  }
+  .loader-inner {
+    width: 98%;
+    height: 98%;
+    margin: 0 auto;
+    -webkit-border-radius: 500vw;
+    -moz-border-radius: 500vw;
+    border-radius: 500vw;
+    background: #0b0022;
+  }
+  .loader-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .loader-text>p {
+    text-align: center;
+    color: rgba(255, 255, 255, .6);
+    font: normal 1vw 'Chakra Petch';
+  }
+
+}
+/*tablet*/
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+
+}
+@media screen and (max-width: 767px) {
+
+}

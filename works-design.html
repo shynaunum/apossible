@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>＜a＞:possible - works</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+    <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+    <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+    <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+      //loader
+      $(window).on('load',function(){
+        $('.loader').fadeOut('slow');
+      });
+
+      $(document).ready(function () {
+        $('#main-title').mousemove(function (e) {
+          parallax(e, document.getElementById('text1'), 1);
+          parallax(e, document.getElementById('text2'), 2);
+        });
+        function parallax(e, target, layer) {
+          var layer_coeff = 10 / layer;
+          var x = ($(window).width() - target.offsetWidth) / 2 - (e.pageX - ($(window).width() / 2)) / layer_coeff;
+          var y = ($(window).height() - target.offsetHeight) / 2 - (e.pageY - ($(window).height() / 2)) / layer_coeff;
+          $(target).offset({ top: y ,left : x });
+        };
+
+        var titleIcon = $('.title-icon>div');
+
+        $(titleIcon).each(function(index){
+          $(this).mouseover(function(){
+            $('.title-text>p').eq(index).css('opacity','1');
+          }).mouseout(function(){
+            $('.title-text>p').css('opacity','0');
+          });
+        });
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+  </head>
+  <body id="works-design" class="works">
+    <div id="gnb">
+      <div class="gnb-inner">
+        <div class="logo">
+          <h1><a href="main.html">a:possible</a></h1>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="works-web.html#project1">PROJECT1</a></li>
+            <li><a href="works-web.html#project2">PROJECT2</a></li>
+            <li><a href="works-design.html" class="menu-active">DESIGN</a></li>
+          </ul>
+        </div>
+      </div><!--gnr-inner-->
+    </div><!--gnb-->
+    <section id="main-title">
+      <div id="text1" class="bg-text bg-text1"></div>
+      <div id="text2" class="bg-text bg-text2"></div>
+      <div class="title-content">
+        <p>I pursue this:</p>
+        <div class="title-icon">
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-idea-w.svg" class="icon-normal" alt="UI/UX아이콘">
+              <img src="images/icon/icon-idea.svg" class="icon-hover" alt="UI/UX아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-theme-w.svg" class="icon-normal" alt="W3C아이콘">
+              <img src="images/icon/icon-theme.svg" class="icon-hover" alt="W3C아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-guide-w.svg" class="icon-normal" alt="반응형아이콘">
+              <img src="images/icon/icon-guide.svg" class="icon-hover" alt="반응형아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-shortkey-w.svg" class="icon-normal" alt="크로스브라우징아이콘">
+              <img src="images/icon/icon-shortkey.svg" class="icon-hover" alt="크로스브라우징아이콘">
+            </a>
+          </div>
+        </div><!--title-icon-->
+        <div class="title-text">
+          <p>아이디어가 돋보이는 디자인</p>
+          <p>주제가 명확히 드러나는 결과물</p>
+          <p>가이드를 이용한 정확한 사이즈</p>
+          <p>단축키를 이용한 쉽고 빠른 작업</p>
+        </div>
+      </div><!--title-content-->
+    </section>
+    <section id="work">
+      <div class="work-inner">
+        <input type="radio" id="banner" name="gal-btn" checked>
+        <input type="radio" id="logo" name="gal-btn">
+        <input type="radio" id="etc" name="gal-btn">
+        <div class="tab-btn">
+          <p class="btn btn-banner">
+            <label for="banner" value="banner"><span>BANNER</span></label>
+          </p>
+          <p class="btn btn-logo">
+            <label for="logo" value="logo"><span>LOGO</span></label>
+          </p>
+          <p class="btn btn-etc">
+            <label for="etc" value="etc"><span>ETC.</span></label>
+          </p>
+        </div><!--tab-btn-->
+        <div class="tab-content">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div><!--tab-content-->
+      </div>
+    </section>
+    <div class="loader">
+      <div class="loader-circle">
+        <div class="loader-inner"></div>
+      </div>
+      <div class="loader-text"><p>LOADING</p></div>
+    </div>
+  </body>
+</html>

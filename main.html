@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>＜a＞:possible - MAIN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+    <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+    <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+    <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/typingCarousel.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2542/jquery.scrollie.min_1.js"></script>
+    <script>
+      $(window).on('load',function(){
+        $('.loader').fadeOut('slow');
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+  </head>
+  <body id="main">
+    <div id="gnb">
+      <div class="gnb-inner">
+        <div class="logo">
+          <h1><a href="main.html">a:possible</a></h1>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="#main-title" class="menu-active">HOME</a></li>
+            <li><a href="#works">WORKS</a></li>
+            <li><a href="#about-intro">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </div>
+      </div><!--gnr-inner-->
+    </div><!--gnb-->
+    <section id="main-title">
+      <h2>main title</h2>
+      <div class="clipping">
+        <svg width="100%" height="100vh">
+          <mask id="mask-layer">
+          <rect width="100%" height="100%" fill="#fff"></rect>
+          <text x="40%" y="45%" class="title">&lt;a&gt;</text>
+          <text x="75%" y="52%" class="title-after">:possible</text>
+          <text x="8%" y="74%" class="subtitle">I'm</text>
+          <text x="8%" y="79%" class="subtitle">web publisher</text>
+          <text x="8%" y="85%" class="subtitle name">NAM HYUNSU</text>
+          <text x="50%" y="92%" class="scroll">scroll down</text>
+          </mask>
+          <rect id="masked" width="100%" height="100%" fill="#fff"></rect>
+        </svg>
+      </div>
+      <video id="bg-video" autoplay loop muted>
+        <source src="videos/nebula.mp4" type="video/mp4">
+      </video>
+    </section>
+    <section id="home">
+      <h2>home</h2>
+      <div id="home-inner">
+        <div class="home-bg"></div>
+        <h2 class="typewrite" data-period="3000" data-type='[ "❮a❯ is possible.", "WEB MOST LIKE WEB" ]'></h2>
+        <div>
+          <p>
+          모든 링크를 가능하게 하는 &lt;a&gt;.<br>
+          이 태그가 빠진 웹문서는 종이와 다를 바 없다 생각합니다.<br><br>
+          웹을 가장 웹답게 하며, 무수한 가능성을 만드는 그런 &lt;a&gt; 태그처럼<br>
+          가장 웹다운 웹을 만들며 꾸준히 가능성을 품고 구현하는 웹 퍼블리셔가 되겠습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="works">
+      <h2>works</h2>
+      <div id="works-inner">
+        <article class="pub">
+          <div class="title-bg">
+            <div class="pub-title">
+              <h3>PUBLISHING</h3>
+              <div class="title-re">
+                <p>PUBLISHING</p>
+                <div class="title-re-bg"></div>
+              </div>
+            </div>
+          </div>
+          <div class="works-box box-pj2">
+            <a href="works-web.html#project2">
+              <div class="work-name">Publishing<br>Company</div>
+              <div class="works-box-hover box-pj2-hover">
+                <p class="work-title">Publishing<br>Company</p>
+                <p class="work-dscr">
+                  <img src="images/icon/icon-responsive-w.svg" alt="반응형아이콘">
+                  데스크탑, 태블릿, 모바일을 위한 반응형웹
+                </p>
+                <p class="work-details">show details</p>
+              </div>
+            </a>
+          </div>
+          <div class="works-box box-pj1">
+            <a href="works-web.html#project1">
+              <div class="work-name">Racing Team<br>Official Website</div>
+              <div class="works-box-hover box-pj1-hover">
+                <p class="work-title">Racing Team<br>Official Website</p>
+                <p class="work-dscr">
+                  <img src="images/icon/icon-responsive-w.svg" alt="반응형아이콘">
+                  데스크탑, 태블릿, 모바일을 위한 반응형웹
+                </p>
+                <p class="work-details">show details</p>
+              </div>
+            </a>
+          </div>
+        </article>
+        <article class="design">
+          <h3>DESIGN</h3>
+          <div class="works-box box-design">
+            <a href="works-design.html">
+              <div class="works-box-hover box-design-hover">
+                <p class="work-title">Design things<br>for website</p>
+                <p class="work-dscr">
+                  로고, 배너 등
+                </p>
+                <p class="work-details">show details</p>
+              </div>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="about-intro">
+      <h2>about</h2>
+    </section>
+    <section id="about-skills">
+      <h2>skiils</h2>
+      <div id="about-skills-inner">
+        <div class="skills-box html-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-html.svg" alt="HTML아이콘">
+              </div>
+              <div class="skills-text">
+                <p>HTML5를 이용한 간결한 코드작성</p>
+                <p>웹 접근성 고려 & 웹 표준 준수</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box css-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-css.svg" alt="CSS아이콘">
+              </div>
+              <div class="skills-text">
+                <p>각종 셀렉터 다루기</p>
+                <p>반응형 웹 & 크로스 브라우징</p>
+                <p>animation을 활용한 동적 기능 구현</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box js-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-js.svg" alt="자바스크립트-제이쿼리아이콘">
+              </div>
+              <div class="skills-text">
+                <p>조건문, 반복문을 이용한 이벤트 작성</p>
+                <p>상황에 맞는 적절한 플러그인의 활용</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box ps-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-photoshop.svg" alt="포토샵아이콘">
+              </div>
+              <div class="skills-text">
+                <p>이미지 합성 및 보정</p>
+                <p>웹페이지 시안 & 배너 제작</p>
+                <p>Mockup을 활용한 제품 이미지 제작</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box ai-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-illustrator.svg" alt="일러스트레이터아이콘">
+              </div>
+              <div class="skills-text">
+                <p>웹 와이어프레임 제작</p>
+                <p>배너 & 아이콘 디자인</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box fcp-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-finalcutpro.svg" alt="파이널컷프로아이콘">
+              </div>
+              <div class="skills-text">
+                <p>영상 분할, 병합 및 색상 보정</p>
+                <p>각종 효과 및 장면전환</p>
+                <p>타이틀 제작</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-box msoffice-box">
+          <div class="skills-box-inner">
+            <div class="skills-content">
+              <div class="skills-icon">
+                <img src="images/icon/skills/icon-msoffice.svg" alt="ms오피스아이콘">
+              </div>
+              <div class="skills-text">
+                <p>워드, 프레젠테이션을 활용한 기획서 제작</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>contact</h2>
+      <article class="self-info">
+        <div class="self-info-inner">
+          <div class="info-text">
+            <ul>
+              <li>
+                <span style="background: url('images/icon/icon-name.svg')no-repeat center top;"></span>
+                <p>남현수</p>
+              </li>
+              <li>
+                <span style="background: url('images/icon/icon-birth.svg')no-repeat center top;"></span>
+                <p>16 JAN 1992</p>
+              </li>
+              <li>
+                <span style="background: url('images/icon/icon-mobile.svg')no-repeat center top;"></span>
+                <p>010.7456.7515</p>
+              </li>
+              <li>
+                <span style="background: url('images/icon/icon-mail.svg')no-repeat center top;"></span>
+                <p>shynaunum@gmail.com</p>
+              </li>
+              <li>
+                <span style="background: url('images/icon/icon-edu.svg')no-repeat center top;"></span>
+                <p>2014.02<br>동아방송예술대학교 패션스타일리스트과 졸업</p>
+              </li>
+              <li>
+                <span></span>
+                <p>2019.10<br>더조은컴퓨터아카데미 스마트기기 UI/UX 디지털앱&amp;웹디자인 과정 수료</p>
+              </li>
+            </ul>
+          </div>
+          <div class="info-photo">
+            <p>HELLO</p>
+            <div class="photo" style="background: url('images/main/self-photo2.jpg')no-repeat;">
+              <p>&lt;a&gt; is possible.</p>
+            </div>
+          </div>
+        </div><!--self-info-inner-->
+      </article>
+    </section>
+    <div class="loader">
+      <div class="loader-circle">
+        <div class="loader-inner"></div>
+      </div>
+      <div class="loader-text"><p>LOADING</p></div>
+    </div>
+  </body>
+</html>

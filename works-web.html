@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>＜a＞:possible - works</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+    <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+    <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+    <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/title.js"></script>
+    <script>
+      //loader
+      $(window).on('load',function(){
+        $('.loader').fadeOut('slow');
+      });
+
+      $(document).ready(function () {
+
+        //title-background
+        $('#main-title').mousemove(function (e) {
+          parallax(e, document.getElementById('text1'), 1);
+          parallax(e, document.getElementById('text2'), 3);
+        });
+        function parallax(e, target, layer) {
+          var layer_coeff = 10 / layer;
+          var x = ($(window).width() - target.offsetWidth) / 2 - (e.pageX - ($(window).width() / 2)) / layer_coeff;
+          var y = ($(window).height() - target.offsetHeight) / 2 - (e.pageY - ($(window).height() / 2)) / layer_coeff;
+          $(target).offset({ top: y ,left : x });
+        };
+
+        //title-icon-hover
+        var titleIcon = $('.title-icon>div');
+
+        $(titleIcon).each(function(index){
+          $(this).mouseover(function(){
+            $('.title-text>p').eq(index).css('opacity','1');
+          }).mouseout(function(){
+            $('.title-text>p').css('opacity','0');
+          });
+        });
+
+        //video-play
+        $(window).scroll(function(e){
+          var offsetRange = $(window).height() / 3,
+              offsetTop = $(window).scrollTop() + offsetRange,
+              offsetBottom = offsetTop + offsetRange;
+
+          $(".pj-video").each(function () {
+            var y1 = $(this).offset().top;
+            var y2 = offsetTop;
+            if (y1 + $(this).outerHeight(true) < y2 || y1 > offsetBottom) {
+              this.pause();
+            } else {
+              this.play();
+            }
+          });
+        });
+
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link rel="stylesheet" type="text/css" href="css/title.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+  </head>
+  <body id="works-web" class="works">
+    <div id="gnb">
+      <div class="gnb-inner">
+        <div class="logo">
+          <h1><a href="main.html">a:possible</a></h1>
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="#project1" class="menu-active">PROJECT1</a></li>
+            <li><a href="#project2">PROJECT2</a></li>
+            <li><a href="works-design.html">DESIGN</a></li>
+          </ul>
+        </div>
+      </div><!--gnr-inner-->
+    </div><!--gnb-->
+    <section id="main-title">
+      <div id="text1" class="bg-text bg-text1"></div>
+      <div id="text2" class="bg-text bg-text2"></div>
+      <div class="title-content">
+        <p>I pursue this:</p>
+        <div class="title-icon">
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-uiux-w.svg" class="icon-normal" alt="UI/UX아이콘">
+              <img src="images/icon/icon-uiux.svg" class="icon-hover" alt="UI/UX아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-w3c-w.svg" class="icon-normal" alt="W3C아이콘">
+              <img src="images/icon/icon-w3c.svg" class="icon-hover" alt="W3C아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-responsive-w.svg" class="icon-normal" alt="반응형아이콘">
+              <img src="images/icon/icon-responsive.svg" class="icon-hover" alt="반응형아이콘">
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <img src="images/icon/icon-cross-w.svg" class="icon-normal" alt="크로스브라우징아이콘">
+              <img src="images/icon/icon-cross.svg" class="icon-hover" alt="크로스브라우징아이콘">
+            </a>
+          </div>
+        </div><!--title-icon-->
+        <div class="title-text">
+          <p>사용자 편의를 고려한 예쁜 UI/UX 디자인</p>
+          <p>웹 표준을 준수하고 웹 접근성을 높인 웹페이지</p>
+          <p>장치기기별 최적화된 레이아웃의 반응형 웹페이지</p>
+          <p>어느 브라우저와도 완벽한 크로스 브라우징</p>
+        </div>
+      </div><!--title-content-->
+    </section>
+    <section id="project1" class="project">
+      <article class="project-title project1-title">
+        <div class="title title1 pj1-title1">
+          <div class="pj-title-bg pj-title-bg1">
+            <div>
+              <div class="num num1">
+                <p>0</p>
+                <div class="num num2">
+                  <p>1</p>
+                  <div>
+                    <p>Formula 1 Racing Team<br><strong>STYX</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title title1">
+          <div class="pj-title-text pj-title-bg2">
+            <div>
+              <p>Formula 1 Racing Team<strong> STYX</strong></p>
+              <p>Responsive Web for Desktop, Tablet, and Mobile</p>
+            </div>
+            <div>
+              <ul>
+                <li class="role-title"><strong>ROLE</strong></li>
+                <li>brand identity</li>
+                <li>photo editing</li>
+                <li>UI/UX design</li>
+                <li>web publishing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article><!--project1-title-->
+      <article class="project-intro">
+        <div class="intro-title">
+          <p>Formula 1 Racing Team</p>
+          <p>STYX</p>
+        </div>
+        <div class="project-preview">
+          <div class="project-bg project-bg-left">
+            <img src="images/works/styx-0001.png" alt="웹페이지이미지">
+          </div>
+          <div class="project-bg project-bg-right">
+            <img src="images/works/styx-0002.png" alt="웹페이지이미지">
+          </div>
+          <div class="project-video">
+            <a href="http://shynaunum.github.io/apossible/styx/main.html">
+              <video class="pj-video" muted loop>
+                <source src="videos/styx.mp4" type="video/mp4">
+                <source src="videos/styx.ogv" type="video/ogg">
+                <source src="videos/styx.webm" type="video/webm">
+              </video>
+            </a>
+          </div>
+        </div>
+        </div>
+      </article>
+      <article class="project-detail">
+        <div class="detail-intro">
+          <p>
+            세계적으로 인기있는 모터 스포츠 종목 중 하나인 Formula1.<br>
+            이 스포츠의 가상팀을 하나 설정하여 브랜드 아이덴티티부터 디자인, 코딩을 맡아<br>
+            다양한 볼거리와 정보를 갖춘 팀의 공식 홈페이지로 구현.
+          </p>
+        </div>
+        <div class="project-skills">
+          <ul>
+            <li>
+              <span>HTML5</span>
+              <img src="images/icon/icon-html.svg" alt="HTML5아이콘">
+              <img src="images/icon/icon-html-90f.svg" alt="HTML5아이콘">
+            </li>
+            <li>
+              <span>CSS3</span>
+              <img src="images/icon/icon-css.svg" alt="CSS3아이콘">
+              <img src="images/icon/icon-css-90f.svg" alt="CSS3아이콘">
+            </li>
+            <li>
+              <span>자바스크립트</span>
+              <img src="images/icon/icon-js.svg" alt="자바스크립트아이콘">
+              <img src="images/icon/icon-js-90f.svg" alt="자바스크립트아이콘">
+            </li>
+            <li>
+              <span>반응형</span>
+              <img src="images/icon/icon-responsive.svg" alt="반응형아이콘">
+              <img src="images/icon/icon-responsive-90f.svg" alt="반응형아이콘">
+            </li>
+            <li>
+              <span>UI/UX 디자인</span>
+              <img src="images/icon/icon-uiux.svg" alt="UI/UX아이콘">
+              <img src="images/icon/icon-uiux-90f.svg" alt="UI/UX아이콘">
+            </li>
+            <li>
+              <span>크로스브라우징</span>
+              <img src="images/icon/icon-cross.svg" alt="크로스브라우징아이콘">
+              <img src="images/icon/icon-cross-90f.svg" alt="크로스브라우징아이콘">
+            </li>
+          </ul>
+        </div><!--project-skills-->
+        <div class="project-pages">
+          <p>main 1 page, sub 5 pages</p>
+          <div class="page page1" style="background: url('images/works/page/styx1.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/main.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>MAIN</p>
+            </a>
+          </div>
+          <div class="page page2" style="background: url('images/works/page/styx2.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/race.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>RACE</p>
+            </a>
+          </div>
+          <div class="page page3" style="background: url('images/works/page/styx3.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/news.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>NEWS</p>
+            </a>
+          </div>
+          <div class="page page4" style="background: url('images/works/page/styx4.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/team.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>TEAM</p>
+            </a>
+          </div>
+          <div class="page page5" style="background: url('images/works/page/styx5.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/car.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>CAR</p>
+            </a>
+          </div>
+          <div class="page page6" style="background: url('images/works/page/styx6.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/styx/store.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>STORE</p>
+            </a>
+          </div>
+        </div><!--project-pages-->
+        <div class="project-links">
+          <p>
+            <a href="https://shynaunum.github.io/apossible/styx/main.html">GO TO THIS SITE</a>
+          </p>
+          <p>
+            <a href="https://github.com/shynaunum/apossible/tree/master/styx">VIEW SOURCE CODE</a>
+          </p>
+        </div>
+      </article><!--project-detail-->
+      <article class="project-design">
+        <div class="p-design1">
+          <div class="design-title">
+            <p>01</p>
+            <p>CONCEPT</p>
+          </div><!--design-title-->
+          <div class="design-dscr">
+            <div class="dscr-img">
+              <div class="dscr-img-photo" style="background: url('images/works/styx-image.jpg')no-repeat;"></div>
+              <div></div>
+            </div>
+            <div class="dscr-text">
+              <div>
+                <p>KEYWORDS</p>
+                <div class="keywords">
+                  <p>
+                    <span class="key-kor">경쾌한</span>
+                    <span class="key-eng">cheerful</span>
+                  </p>
+                  <p>
+                    <span class="key-kor">화려한</span>
+                    <span class="key-eng">splendid</span>
+                  </p>
+                  <p>
+                    <span class="key-kor">다이나믹</span>
+                    <span class="key-eng">dynamic</span>
+                  </p>
+                </div><!--keywords-->
+                <div>
+                  <p>
+                    해당 팀은 물론, 모터스포츠 팬을 타겟으로 하여 다양한 정보와 볼거리를 제공하는 웹사이트로<br>
+                    화려한 색상과 이러한 색상들의 대비, 그리고 애니메이션을 통해 시각적으로 화려한 분위기를 추구함.<br>
+                    또한 고화질의 사진만을 사용하여 세계 최고의 모터스포츠에 어울리는 퀄리티 높은 페이지 구축을 목적으로 함.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p>COLOR</p>
+                <ul>
+                  <li>
+                    <p class="color" style="background: #000113;"></p>
+                    <p>Midnight<br>Express</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #6609b7;"></p>
+                    <p>Purple<br>Heart</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #ffd700;"></p>
+                    <p>Gold</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #c0c0c0;"></p>
+                    <p>Silver</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #990000;"></p>
+                    <p>Crimson<br>Red</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div><!--p-design1-->
+        <div class="p-design2">
+          <div class="design-title">
+            <p>02</p>
+            <p>LAYOUT</p>
+          </div><!--design-title-->
+          <div class="img-box">
+            <img src="images/works/wire-styx.png" alt="레이아웃이미지">
+          </div>
+        </div><!--p-design2-->
+      </article><!--project-design-->
+    </section><!--project1-->
+    <section id="project2" class="project">
+      <article class="project-title project2-title">
+        <div class="title title2 pj2-title1">
+          <div class="pj-title-bg pj-title-bg1">
+            <div>
+              <div class="num num1">
+                <p>0</p>
+                <div class="num num2">
+                  <p>2</p>
+                  <div>
+                    <p>Publishing Company<br><strong>YIEUM</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title title2">
+          <div class="pj-title-text pj-title-bg2">
+            <div>
+              <p>Publishing Company<strong> YIEUM</strong></p>
+              <p>Responsive Web for Desktop, Tablet, and Mobile</p>
+            </div>
+            <div>
+              <ul>
+                <li class="role-title"><strong>ROLE</strong></li>
+                <li>brand identity</li>
+                <li>photo editing</li>
+                <li>UI/UX design</li>
+                <li>web publishing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article><!--project2-title-->
+      <article class="project-intro">
+        <div class="intro-title">
+          <p>Publishing Company</p>
+          <p>YIEUM</p>
+        </div>
+        <div class="project-preview">
+          <div class="project-bg project-bg-left">
+            <img src="images/works/yieum-0001.png" alt="웹페이지이미지">
+          </div>
+          <div class="project-bg project-bg-right">
+            <img src="images/works/yieum-0002.png" alt="웹페이지이미지">
+          </div>
+          <div class="project-video">
+            <a href="http://shynaunum.github.io/apossible/yieum/main.html">
+              <video class="pj-video" muted loop>
+                <source src="videos/yieum.mp4" type="video/mp4">
+                <source src="videos/yieum.ogv" type="video/ogg">
+                <source src="videos/yieum.webm" type="video/webm">
+              </video>
+            </a>
+          </div>
+        </div>
+        </div>
+      </article>
+      <article class="project-detail">
+        <div class="detail-intro">
+          <p>
+            초판본 디자인을 그대로 재현하여 도서를 출판하는 가상의 문학 도서 출판사.<br>
+            도서의 커버디자인을 잘 살릴 수 있는 레이아웃 디자인을 바탕으로<br>
+            동적 요소를 추가하여 사용자 편의를 높인 홈페이지를 구현.
+          </p>
+        </div>
+        <div class="project-skills">
+          <ul>
+            <li>
+              <span>HTML5</span>
+              <img src="images/icon/icon-html.svg" alt="HTML5아이콘">
+              <img src="images/icon/icon-html-90f.svg" alt="HTML5아이콘">
+            </li>
+            <li>
+              <span>CSS3</span>
+              <img src="images/icon/icon-css.svg" alt="CSS3아이콘">
+              <img src="images/icon/icon-css-90f.svg" alt="CSS3아이콘">
+            </li>
+            <li>
+              <span>자바스크립트</span>
+              <img src="images/icon/icon-js.svg" alt="자바스크립트아이콘">
+              <img src="images/icon/icon-js-90f.svg" alt="자바스크립트아이콘">
+            </li>
+            <li>
+              <span>jQuery</span>
+              <img src="images/icon/icon-jquery.svg" alt="제이쿼리아이콘">
+              <img src="images/icon/icon-jquery-90f.svg" alt="제이쿼리아이콘">
+            </li>
+            <li>
+              <span>반응형</span>
+              <img src="images/icon/icon-responsive.svg" alt="반응형아이콘">
+              <img src="images/icon/icon-responsive-90f.svg" alt="반응형아이콘">
+            </li>
+            <li>
+              <span>UI/UX 디자인</span>
+              <img src="images/icon/icon-uiux.svg" alt="UI/UX아이콘">
+              <img src="images/icon/icon-uiux-90f.svg" alt="UI/UX아이콘">
+            </li>
+            <li>
+              <span>크로스브라우징</span>
+              <img src="images/icon/icon-cross.svg" alt="크로스브라우징아이콘">
+              <img src="images/icon/icon-cross-90f.svg" alt="크로스브라우징아이콘">
+            </li>
+          </ul>
+        </div><!--project-skills-->
+        <div class="project-pages">
+          <p>main 1 page, sub 2 pages</p>
+          <div class="page page1" style="background: url('images/works/page/yieum1.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/yieum/main.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>MAIN</p>
+            </a>
+          </div>
+          <div class="page page2" style="background: url('images/works/page/yieum2.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/yieum/genre.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>GENRE</p>
+            </a>
+          </div>
+          <div class="page page3" style="background: url('images/works/page/yieum3.jpg')no-repeat center center;">
+            <a href="https://shynaunum.github.io/apossible/yieum/detail.html">
+              <div class="cover cover1"></div>
+              <div class="cover cover2"></div>
+              <p>DETAIL</p>
+            </a>
+          </div>
+        </div><!--project-pages-->
+        <div class="project-links">
+          <p>
+            <a href="https://shynaunum.github.io/apossible/yieum/main.html">GO TO THIS SITE</a>
+          </p>
+          <p>
+            <a href="https://github.com/shynaunum/apossible/tree/master/yieum">VIEW SOURCE CODE</a>
+          </p>
+        </div>
+      </article><!--project-detail-->
+      <article class="project-design">
+        <div class="p-design1">
+          <div class="design-title">
+            <p>01</p>
+            <p>CONCEPT</p>
+          </div><!--design-title-->
+          <div class="design-dscr">
+            <div class="dscr-img">
+              <div class="dscr-img-photo" style="background: url('images/works/yieum-image.jpeg')no-repeat;"></div>
+              <div></div>
+            </div>
+            <div class="dscr-text">
+              <div>
+                <p>KEYWORDS</p>
+                <div class="keywords">
+                  <p>
+                    <span class="key-kor">향수</span>
+                    <span class="key-eng">nostalgia</span>
+                  </p>
+                  <p>
+                    <span class="key-kor">소장가치</span>
+                    <span class="key-eng">worth keeping</span>
+                  </p>
+                  <p>
+                    <span class="key-kor">클래식</span>
+                    <span class="key-eng">classical</span>
+                  </p>
+                </div><!--keywords-->
+                <div>
+                  <p>
+                    초판본 디자인을 그대로 재현하여 출판하는 고전 문학 전문 출판사의 웹사이트.<br>
+                    도서가 돋보일 수 있는 레이아웃에 클래식한 컬러와 포인트 컬러를 적절히 믹스하고 serif 폰트를 사용하는 등,<br>
+                    흔한 출판사 웹사이트의 이미지에서 벗어나 클래식하면서도 세련된 디자인을 추구함.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p>COLOR</p>
+                <ul>
+                  <li>
+                    <p class="color" style="background: #d9c6c6;"></p>
+                    <p>Light Graysh<br>Red</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #9e0062;"></p>
+                    <p>Dark<br>Pink</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #2a006b;"></p>
+                    <p>Very Dark<br>Violet</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #bcad91;"></p>
+                    <p>Graysh<br>Orange</p>
+                  </li>
+                  <li>
+                    <p class="color" style="background: #1e1e1e;"></p>
+                    <p>Very Dark<br>Gray</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div><!--p-design1-->
+        <div class="p-design2">
+          <div class="design-title">
+            <p>02</p>
+            <p>LAYOUT</p>
+          </div><!--design-title-->
+          <div class="img-box">
+            <img src="images/works/wire-yieum.png" alt="레이아웃이미지">
+          </div>
+        </div><!--p-design2-->
+      </article><!--project-design-->
+    </section><!--project2-->
+    <div class="loader">
+      <div class="loader-circle">
+        <div class="loader-inner"></div>
+      </div>
+      <div class="loader-text"><p>LOADING</p></div>
+    </div>
+  </body>
+</html>
