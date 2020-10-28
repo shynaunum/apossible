@@ -14,7 +14,6 @@
   <![endif]-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
   <script src="js/scrollfix.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script>
@@ -121,12 +120,6 @@
   			},600);
   		});
 		  
-		//counterup
-		$('.counter').counterUp({
-		  delay: 10,
-		  time: 1000
-		});
-
 	  });
   </script>
   <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
@@ -779,7 +772,14 @@
 			},
 		});
 	</script>
-	
+	<script src="js/jquery.counterup.min.js"></script>
+	<script>
+	 	//counterup
+		$('.counter').counterUp({
+		  delay: 10,
+		  time: 1000
+		});
 
+	</script>
  </body>
 </html>
