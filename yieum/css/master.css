@@ -2339,15 +2339,7 @@ img {
     background-size: cover;
     position: relative;
   }
-  #main #scatter-box {
-  	position: relative !important;
-    height: 100% !important;
-    width: 100% !important;
-    background-color: rgba(255,255,255,0) !important;
-    margin: 0 !important;
-    background-image: none !important;
-  }
-  #main #scatter-box .genre-text {
+  #main .genre-text {
   	width: 90px !important;
     height: 30px !important;
     -webkit-background-size: contain !important;
@@ -2355,16 +2347,48 @@ img {
     -o-background-size: contain !important;
     background-size: contain !important;
     -webkit-border-radius: 0 !important;
-  	-moz-border-radius: 0 !important;
-  	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
     position: absolute;
   	background-color: rgba(255,255,255,0) !important;
   }
-  #main #scatter-box .genre-text:hover {
+  #main .genre-text1 {
+    top: 39%;
+    left: 5%;
+  }
+  #main .genre-text2 {
+    top: 14%;
+    left: 29%;
+  }
+  #main .genre-text3 {
+    top: 24%;
+    right: 19%;
+  }
+  #main .genre-text4 {
+    top: 45%;
+    left: 33%;
+  }
+  #main .genre-text5 {
+    bottom: 34%;
+    right: 7%;
+  }
+  #main .genre-text6 {
+    bottom: 26%;
+    left: 15%;
+  }
+  #main .genre-text7 {
+    bottom: 16%;
+    left: 28%;
+  }
+  #main .genre-text8 {
+    bottom: 19%;
+    right: 22%;
+  }
+  #main .genre-text:hover {
   	background: none !important;
   }
-  #main #scatter-box .genre-text img {
-  	opacity: 0;
+  #main .genre-text img {
+    opacity: 0;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     -o-transition: all .35s;
@@ -2380,7 +2404,7 @@ img {
   	object-fit: cover;
   	border: 1px solid #444;
   }
-  #main #scatter-box .genre-text:hover img {
+  #main .genre-text:hover img {
   	opacity: 1;
   	-webkit-transform: scale(1.1);
   	-moz-transform: scale(1.1);
@@ -2389,7 +2413,7 @@ img {
   	transform: scale(1.1);
   	z-index: 5;
   }
-  #main #scatter-box .genre-text a {
+  #main .genre-text a {
   	display: block;
   	width: 100%;
   	height: 100%;
@@ -4254,15 +4278,7 @@ img {
     background-size: cover;
     position: relative;
   }
-  #main #scatter-box {
-  	position: relative !important;
-    height: 100% !important;
-    width: 100% !important;
-    background-color: rgba(255,255,255,0) !important;
-    margin: 0 !important;
-    background-image: none !important;
-  }
-  #main #scatter-box .genre-text {
+  #main .genre-text {
   	width: 90px !important;
     height: 30px !important;
     -webkit-background-size: contain !important;
@@ -4275,10 +4291,42 @@ img {
     position: absolute;
   	background-color: rgba(255,255,255,0) !important;
   }
-  #main #scatter-box .genre-text:hover {
+  #main .genre-text1 {
+    top: 39%;
+    left: 5%;
+  }
+  #main .genre-text2 {
+    top: 14%;
+    left: 29%;
+  }
+  #main .genre-text3 {
+    top: 24%;
+    right: 19%;
+  }
+  #main .genre-text4 {
+    top: 45%;
+    left: 33%;
+  }
+  #main .genre-text5 {
+    bottom: 34%;
+    right: 7%;
+  }
+  #main .genre-text6 {
+    bottom: 26%;
+    left: 15%;
+  }
+  #main .genre-text7 {
+    bottom: 16%;
+    left: 28%;
+  }
+  #main .genre-text8 {
+    bottom: 19%;
+    right: 22%;
+  }
+  #main .genre-text:hover {
   	background: none !important;
   }
-  #main #scatter-box .genre-text img {
+  #main .genre-text img {
   	opacity: 0;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
@@ -4295,7 +4343,7 @@ img {
   	object-fit: cover;
   	border: 1px solid #444;
   }
-  #main #scatter-box .genre-text:hover img {
+  #main .genre-text:hover img {
   	opacity: 1;
   	-webkit-transform: scale(1.1);
   	-moz-transform: scale(1.1);
@@ -4304,7 +4352,7 @@ img {
   	transform: scale(1.1);
   	z-index: 5;
   }
-  #main #scatter-box .genre-text a {
+  #main .genre-text a {
   	display: block;
   	width: 100%;
   	height: 100%;
