@@ -15,130 +15,118 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
   <script src="js/swiper.min.js"></script>
-  <script src="js/scrollfix.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-  <script src="js/scatterplot.min.js"></script>
   <script src="js/jquery.counterup.min.js"></script>
+  <script src="js/scrollfix.js"></script>
+  <script src="js/scatterplot.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script>
 	  $(document).ready(function() {
-		$('a[href="#"]').on('click', function(e){
-			e.preventDefault();
-		});
-		$(".new-book").addClass("fadeIn");
-		$(window).scroll( function(){
+  		$('a[href="#"]').on('click', function(e){
+  			e.preventDefault();
+  		});
+  		$(".new-book").addClass("fadeIn");
+  		$(window).scroll( function(){
 
-			if($(window).width() >= 1280){
-				var scroll = $(document).scrollTop();
-				if(scroll >= 100 ){
-					$("section>div").addClass("fadeIn");
-				}
-				/* Check the location of each desired element */
-				$('.fadeIn').each( function(i){
-					var bottom_of_object = $(this).offset().top + $(this).outerHeight() * 0.2;
-					var bottom_of_window = scroll + $(window).height();
+  			if($(window).width() >= 1280){
+  				var scroll = $(document).scrollTop();
+  				if(scroll >= 100 ){
+  					$("section>div").addClass("fadeIn");
+  				}
+  				/* Check the location of each desired element */
+  				$('.fadeIn').each( function(i){
+  					var bottom_of_object = $(this).offset().top + $(this).outerHeight() * 0.2;
+  					var bottom_of_window = scroll + $(window).height();
 
-					/* If the object is completely visible in the window, fade in it */
-					if( bottom_of_window > bottom_of_object ){
-						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
-					}else{
-						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
-					}
-				});
-			}else if($(window).width() < 1280){
-				var scroll = $(document).scrollTop();
-				if(scroll >= 100 ){
-					$("section>div").addClass("fadeIn");
-				}
-				/* Check the location of each desired element */
-				$('.fadeIn').each( function(i){
-					var bottom_of_object = $(this).offset().top + $(this).outerHeight() *0.1;
-					var bottom_of_window = scroll + $(window).height();
+  					/* If the object is completely visible in the window, fade in it */
+  					if( bottom_of_window > bottom_of_object ){
+  						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
+  					}else{
+  						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
+  					}
+  				});
+  			}else if($(window).width() < 1280){
+  				var scroll = $(document).scrollTop();
+  				if(scroll >= 100 ){
+  					$("section>div").addClass("fadeIn");
+  				}
+  				/* Check the location of each desired element */
+  				$('.fadeIn').each( function(i){
+  					var bottom_of_object = $(this).offset().top + $(this).outerHeight() *0.1;
+  					var bottom_of_window = scroll + $(window).height();
 
-					/* If the object is completely visible in the window, fade in it */
-					if( bottom_of_window > bottom_of_object ){
-						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
-					}else{
-						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
-					}
-				});
-			}
-			//top menu fix, btn-top
-			var topMenu = $(document).scrollTop();
-			if(topMenu >= 750 ){
-				$("#gnb").addClass("fix-menu");
-				$(".btn-top").css('opacity','1');
-			}else{
-				$("#gnb").removeClass("fix-menu");
-				$(".btn-top").css('opacity','0');
-			}
-		});
+  					/* If the object is completely visible in the window, fade in it */
+  					if( bottom_of_window > bottom_of_object ){
+  						$(this).stop().animate({'opacity':'1','paddingTop':'0'},400);
+  					}else{
+  						$(this).stop().animate({'opacity':'0','paddingTop':'20'},100);
+  					}
+  				});
+  			}
+  			//top menu fix, btn-top
+  			var topMenu = $(document).scrollTop();
+  			if(topMenu >= 750 ){
+  				$("#gnb").addClass("fix-menu");
+  				$(".btn-top").css('opacity','1');
+  			}else{
+  				$("#gnb").removeClass("fix-menu");
+  				$(".btn-top").css('opacity','0');
+  			}
+  		});
 
-		//counterup
-		$('.counter').counterUp({
-		  delay: 10,
-		  time: 1000
-		});
+  		//counterup
+  		$('.counter').counterUp({
+  		  delay: 10,
+  		  time: 1000
+  		});
 
-		//search
-		var searchIcon = $('.search img');
-		$(".search").mouseenter(function() {
-			$(searchIcon).attr('src','images/icon-search-color.svg');
-		}).mouseleave(function(){
-			$(searchIcon).attr('src','images/icon-search.svg');
-		});
-		$('.search').click(function (e) {
-			$(this).attr('rel','modal:open');
-		});
+  		//search
+  		var searchIcon = $('.search img');
+  		$(".search").mouseenter(function() {
+  			$(searchIcon).attr('src','images/icon-search-color.svg');
+  		}).mouseleave(function(){
+  			$(searchIcon).attr('src','images/icon-search.svg');
+  		});
+  		$('.search').click(function (e) {
+  			$(this).attr('rel','modal:open');
+  		});
 
-		//menu
-		if($(window).width()>=1280){
-			var menu = $('#gnb-menu>ul>li');
-			menu.mouseenter(function(){
-				$('.sub-menu').addClass('on');
-			}).mouseleave(function(){
-				$('.sub-menu').removeClass('on');
-			});
-		}
-		$('.menu').append('<span class="btn-drop"></span>');
-		$('#gnb-inner').append('<div class="cover"></div>');
+  		//menu
+  		if($(window).width()>=1280){
+  			var menu = $('#gnb-menu>ul>li');
+  			menu.mouseenter(function(){
+  				$('.sub-menu').addClass('on');
+  			}).mouseleave(function(){
+  				$('.sub-menu').removeClass('on');
+  			});
+  		}
+  		$('.menu').append('<span class="btn-drop"></span>');
+  		$('#gnb-inner').append('<div class="cover"></div>');
 
+  		//tablet & mobile menu
+  		var btn = $('.btn-menu');
+  		var gnb = $('#gnb');
+  		var allMenu = $('#gnb-menu');
 
-		//tablet & mobile menu
-		var btn = $('.btn-menu');
-		var gnb = $('#gnb');
-		var allMenu = $('#gnb-menu');
+  		btn.on('click',function(e){
+  			e.preventDefault;
+  			$(this).toggleClass('btn-close');
+  			allMenu.toggleClass('width');
+  			$('.cover').toggleClass('cover-bg');
+  			$('body').toggleClass('no-scroll');
+  		});
 
-		btn.on('click',function(e){
-			e.preventDefault;
-			$(this).toggleClass('btn-close');
-			allMenu.toggleClass('width');
-			$('.cover').toggleClass('cover-bg');
-			$('body').toggleClass('no-scroll');
-		});
+  		var subBtn = $('.menu');
+  		$(subBtn).on('click',function() {
+  			$(this).find('.sub-menu').toggleClass('sub-menu-on');
+  			$(this).find('.btn-drop').toggleClass('btn-up');
+  		});
 
-		var subBtn = $('.menu');
-		$(subBtn).on('click',function() {
-			$(this).find('.sub-menu').toggleClass('sub-menu-on');
-			$(this).find('.btn-drop').toggleClass('btn-up');
-		});
-
-		//btn-top
-		$('.btn-top').click(function() {
-			$('body,html').animate({
-				scrollTop: 0
-			},600);
-		});
-
-		//scatter
-		$('#scatter-box').scatter({ height: '100%', width: '100%', rows: 5, columns: 5, subsections: 5, responsive: true });
-		$('.genre-text1').plot({ xPos: '18%', yPos: '62%' });
-		$('.genre-text2').plot({ xPos: '42%', yPos: '86%' });
-		$('.genre-text3').plot({ xPos: '67%', yPos: '78%' });
-		$('.genre-text4').plot({ xPos: '46%', yPos: '52%' });
-		$('.genre-text5').plot({ xPos: '80%', yPos: '48%' });
-		$('.genre-text6').plot({ xPos: '28%', yPos: '38%' });
-		$('.genre-text7').plot({ xPos: '42%', yPos: '29%' });
-		$('.genre-text8').plot({ xPos: '68%', yPos: '32%' });
+  		//btn-top
+  		$('.btn-top').click(function() {
+  			$('body,html').animate({
+  				scrollTop: 0
+  			},600);
+  		});
 
 	  });
   </script>
@@ -574,47 +562,45 @@
 			<div class="genre">
 				<h2>장르별 도서</h2>
 				<div class="genre-box">
-					<div id="scatter-box">
-						<div class="genre-text genre-text1" style="background: url('images/main/genre/genre-mystery.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-mystery.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text2" style="background: url('images/main/genre/genre-fairy.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-fairy.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text3" style="background: url('images/main/genre/genre-romance.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-romance.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text4" style="background: url('images/main/genre/genre-historical.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-historical.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text5" style="background: url('images/main/genre/genre-science.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-science.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text6" style="background: url('images/main/genre/genre-fantasy.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-fantasy.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text7" style="background: url('images/main/genre/genre-poet.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-poet.jpg" alt="도서이미지">
-							</a>
-						</div>
-						<div class="genre-text genre-text8" style="background: url('images/main/genre/genre-horror.svg')no-repeat center center">
-							<a href="genre.html">
-								<img src="images/main/genre/book-horror.jpg" alt="도서이미지">
-							</a>
-						</div>
+					<div class="genre-text genre-text1" style="background: url('images/main/genre/genre-mystery.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-mystery.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text2" style="background: url('images/main/genre/genre-fairy.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-fairy.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text3" style="background: url('images/main/genre/genre-romance.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-romance.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text4" style="background: url('images/main/genre/genre-historical.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-historical.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text5" style="background: url('images/main/genre/genre-science.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-science.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text6" style="background: url('images/main/genre/genre-fantasy.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-fantasy.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text7" style="background: url('images/main/genre/genre-poet.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-poet.jpg" alt="도서이미지">
+						</a>
+					</div>
+					<div class="genre-text genre-text8" style="background: url('images/main/genre/genre-horror.svg')no-repeat center center">
+						<a href="genre.html">
+							<img src="images/main/genre/book-horror.jpg" alt="도서이미지">
+						</a>
 					</div>
 				</div>
 			</div><!--genre-->
