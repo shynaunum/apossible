@@ -13,7 +13,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
   <script src="js/swiper.min.js"></script>
   <script src="js/jquery.counterup.min.js"></script>
   <script src="js/scrollfix.js"></script>
@@ -26,10 +26,10 @@
 		});
 		$(".new-book").addClass("fadeIn");
 		$(window).scroll( function(){
-			
+
 			if($(window).width() >= 1280){
-				var scroll = $(document).scrollTop(); 
-				if(scroll >= 100 ){ 
+				var scroll = $(document).scrollTop();
+				if(scroll >= 100 ){
 					$("section>div").addClass("fadeIn");
 				}
 				/* Check the location of each desired element */
@@ -45,8 +45,8 @@
 					}
 				});
 			}else if($(window).width() < 1280){
-				var scroll = $(document).scrollTop(); 
-				if(scroll >= 100 ){ 
+				var scroll = $(document).scrollTop();
+				if(scroll >= 100 ){
 					$("section>div").addClass("fadeIn");
 				}
 				/* Check the location of each desired element */
@@ -63,8 +63,8 @@
 				});
 			}
 			//top menu fix, btn-top
-			var topMenu = $(document).scrollTop(); 
-			if(topMenu >= 750 ){ 
+			var topMenu = $(document).scrollTop();
+			if(topMenu >= 750 ){
 				$("#gnb").addClass("fix-menu");
 				$(".btn-top").css('opacity','1');
 			}else{
@@ -72,7 +72,7 @@
 				$(".btn-top").css('opacity','0');
 			}
 		});
-		
+
 		//counterup
 		$('.counter').counterUp({
 		  delay: 10,
@@ -87,7 +87,7 @@
 			$(searchIcon).attr('src','images/icon-search.svg');
 		});
 		$('.search').click(function (e) {
-			$(this).attr('rel','modal:open'); 
+			$(this).attr('rel','modal:open');
 		});
 
 		//menu
@@ -101,7 +101,7 @@
 		}
 		$('.menu').append('<span class="btn-drop"></span>');
 		$('#gnb-inner').append('<div class="cover"></div>');
-		
+
 
 		//tablet & mobile menu
 		var btn = $('.btn-menu');
@@ -345,14 +345,54 @@
 					<div class="swiper-slide">
 						<a href="detail.html">
 							<div class="book-img-box">
-								<img src="images/books/yoon.jpg" alt="도서이미지" class="book-img">
+								<img src="images/books/emma.jpg" alt="도서이미지" class="book-img">
 							</div>
-							<p class="book-disc">1955년 10주기 기념 증보판<br>100주년 기념 패키지</p>
-							<p class="book-title">하늘과 바람과 별과 詩</p>
-							<p class="book-author">윤동주 지음</p>
+							<p class="book-disc">오리지널 커버 디자인, 양장본<br>제인 오스틴 전집 4</p>
+							<p class="book-title">엠마</p>
+							<p class="book-author">제인 오스틴 지음 / 임종기 옮김</p>
 						</a>
 					</div><!--swiper-slide-->
-				
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/leesang.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1949년 초판본 디자인<br>미니북 증정</p>
+							<p class="book-title">이상선집</p>
+							<p class="book-author">이상 지음</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/prince.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1943년 초판본 디자인<br>한글+영어+불어 텍스트</p>
+							<p class="book-title">어린왕자</p>
+							<p class="book-author">생 텍쥐페리 지음 / 김미정 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/world.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1932년 오리지널 디자인<br>양장본</p>
+							<p class="book-title">멋진 신세계</p>
+							<p class="book-author">올더스 헉슬리 지음 / 김동연 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/silence.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1988년 초판본 디자인<br>국문, 영문 동시수록</p>
+							<p class="book-title">양들의 침묵</p>
+							<p class="book-author">토마스 해리스 지음 / 정지은 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+
 				</div><!--swiper-wrapper-->
 			</div><!--swiper-container-->
 			<div class="swiper-btn">
@@ -417,14 +457,54 @@
 					<div class="swiper-slide">
 						<a href="detail.html">
 							<div class="book-img-box">
-								<img src="images/books/galactic.jpg" alt="도서이미지" class="book-img">
+								<img src="images/books/sense.jpg" alt="도서이미지" class="book-img">
 							</div>
-							<p class="book-disc">1934년 초판본 디자인<br>18세기 별자리 그림 수록</p>
-							<p class="book-title">은하철도의 밤</p>
-							<p class="book-author">미야자와 겐지 지음 / 김동근 옮김</p>
+							<p class="book-disc">오리지널 커버 디자인, 양장본<br>제인 오스틴 전집 3</p>
+							<p class="book-title">이성과 감성</p>
+							<p class="book-author">제인 오스틴 지음 / 임종기 옮김</p>
 						</a>
 					</div><!--swiper-slide-->
-				
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/rashomon.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">오리지널 커버 디자인<br>일본 고전 추천작 7</p>
+							<p class="book-title">라쇼몽(나생문)</p>
+							<p class="book-author">아쿠타가와 류노스케 지음 / 김영식 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/oz.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1900년 초판본 디자인, 양장본<br>국문, 영문 동시수록</p>
+							<p class="book-title">오즈의 마법사</p>
+							<p class="book-author">L. 프랭크 바움 지음 / 김석희 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/paradise.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1920년 초판본 디자인<br>양장본</p>
+							<p class="book-title">낙원의 이쪽</p>
+							<p class="book-author">F. 스콧 피츠제럴드 지음 / 이난영 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+          <div class="swiper-slide">
+						<a href="detail.html">
+							<div class="book-img-box">
+								<img src="images/books/interview.jpg" alt="도서이미지" class="book-img">
+							</div>
+							<p class="book-disc">1976년 초판본 디자인<br>국문, 영문 동시수록</p>
+							<p class="book-title">뱀파이어와의 인터뷰</p>
+							<p class="book-author">앤 라이스 지음 / 최진우 옮김</p>
+						</a>
+					</div><!--swiper-slide-->
+
 				</div><!--swiper-wrapper-->
 			</div><!--swiper-container-->
 			<div class="swiper-btn">
@@ -592,24 +672,24 @@
 					<h2>공지사항</h2>
 					<ul>
 						<li><a href="#"><p>
-							<span>[공지] 2019 추석 연휴 고객센터 휴무 안내</span>
-							<span class="date">19.09.02</span>
+							<span>[공지] 2020 설날 연휴 고객센터 휴무 안내</span>
+							<span class="date">20.01.12</span>
 						</p></a></li>
 						<li><a href="#"><p>
-							<span>[당첨자발표] 8월 오프라인 우수 고객 공연 초대권 안내</span>
-							<span class="date">19.09.01</span>
+							<span>[당첨자발표] 12월 오프라인 우수 고객 공연 초대권 안내</span>
+							<span class="date">20.01.10</span>
 						</p></a></li>
 						<li><a href="#"><p>
 							<span>[공지] 개인정보 처리방침 변경 안내</span>
-							<span class="date">19.08.31</span>
+							<span class="date">20.01.06</span>
 						</p></a></li>
 						<li><a href="#"><p>
-							<span>[안내] '8월의 리뷰어' 선정 결과 안내</span>
-							<span class="date">19.08.31</span>
+							<span>[안내] '12월의 리뷰어' 선정 결과 안내</span>
+							<span class="date">20.01.02</span>
 						</p></a></li>
 						<li><a href="#"><p>
 							<span>[공지] '웰컴박스 & 생일도서' 정책 변경 안내</span>
-							<span class="date">19.08.25</span>
+							<span class="date">20.01.02</span>
 						</p></a></li>
 					</ul>
 				</div>
