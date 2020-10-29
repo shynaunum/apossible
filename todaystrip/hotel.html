@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>오늘의 여행</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+    <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+    <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+    <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+      $(function() {
+        $( ".datepicker" ).datepicker();
+      } );
+    </script>
+    <script src="js/tabMenu.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('a[href="#"]').on('click', function(e){
+    			e.preventDefault();
+    		});
+        $('.tab-menu').menuBar();
+
+        //search-box-fix
+        $(window).on('scroll', function(){
+          var scrollY = $(document).scrollTop();
+          var searchBar = $('.searching-box>div');
+          var fakeBar = $('.fakebar');
+          if(scrollY > 414) {
+            searchBar.addClass('fixed');
+            fakeBar.addClass('fixed');
+          }else{
+            searchBar.removeClass('fixed');
+            fakeBar.removeClass('fixed');
+          }
+        });
+
+        //join form - check all
+        $('#agree-all').change(function(){
+          if($(this).is(':checked')){
+            $('input[name="agreement"]').prop('checked', true);
+          }else{
+            $('input[name="agreement"]').prop('checked', false);
+          }
+        });
+
+
+        //user lang & user currency
+        $('#gnb label[for="user-lang"]').on('click', function(){
+          if($('input#user-lang').is(':checked')){
+            $('.lang-box>div').addClass('gnb-lang');
+          }
+        });
+
+        //today in placeholder
+        var date = new Date(),
+            day = ['일','월','화','수','목','금','토'],
+            dayToday = date.getDay(),
+            curDay = day[dayToday],
+            curTomorrow = day[(dayToday+1)%7];
+
+        var today = ('0'+(date.getMonth()+1)).slice(-2) + '월 ' + ('0'+date.getDate()).slice(-2) + '일(' + curDay + ')';
+        var tomorrow = ('0'+(date.getMonth()+1)).slice(-2) + '월 ' + ('0'+(date.getDate()+1)).slice(-2) + '일(' + curTomorrow + ')';
+
+        $('.dateToday').attr('placeholder',today);
+        $('.dateTomorrow').attr('placeholder',tomorrow);
+
+        //current time in placeholder
+        var time = date.getHours();
+        if(time < 12){
+          var curTime = time%12 + ':00am';
+        }else{
+          var curTime = time%12 + ':00pm';
+        }
+        $('.curTime').attr('placeholder',curTime);
+
+        //footer-menu toggle
+        $('.footer-menu h4').on('click', function(){
+          $(this).toggleClass('menu-on');
+        });
+
+        //item-list image orientation
+        var ratio = $('.item-img>img').width() / $('.item-img>img').height();
+        $('.item-img>img').each(function(){
+          if(ratio > 1){
+            $('.item-img>img').addClass('landscape');
+          }else if(ratio < 1){
+            $('.item-img>img').addClass('portrait');
+          }else{
+            $('.item-img>img').addClass('square');
+          }
+          console.log(ratio)
+        });
+
+
+
+        //recent-item toggle
+        $('.recent>p>span ').on('click', function(){
+          $(this).parents('div.recent').toggleClass('hide');
+          $(this).parent('p').next('ul').toggleClass('hide');
+        });
+        //recent-item close
+        $('.recent-item .close').on('click', function(e){
+          e.preventDefault();
+          $(this).parents('li').remove();
+        });
+
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+  </head>
+  <body id="hotel">
+    <input type="checkbox" id="open-login" name="pop-up1" class="hidden">
+    <input type="checkbox" id="open-join" name="pop-up2" class="hidden">
+    <div id="modal-login" class="modal-page">
+      <label for="open-login"></label>
+      <div class="modal-window login-window">
+        <label for="open-login" class="btn-close">
+          <span></span>
+          <span></span>
+        </label>
+        <form method="post" action>
+          <p class="modal-title">로그인</p>
+          <ul>
+            <li>
+              <label for="user-mail">
+                <img src="images/icon/userid.svg" alt="로그인아이디아이콘">
+                <input type="email" id="user-mail" placeholder="ID@example.com" required>
+              </label>
+            </li>
+            <li>
+              <label for="user-pw">
+                <img src="images/icon/userpw.svg" alt="로그인비밀번호아이콘">
+                <input type="password" id="user-pw" placeholder="8-12자리의 영문 및 숫자" required>
+              </label>
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <input type="checkbox" id="save-id" name="user-save">
+                  <label for="save-id">로그인 정보 저장</label>
+                </li>
+                <li>
+                  <a href="#"><span>비밀번호 찾기</span></a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <input type="submit" value="로그인">
+            </li>
+          </ul>
+        </form>
+        <div class="sns-login">
+          <p class="modal-title">SNS로 로그인하기</p>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="images/sns/naver.png" alt="네이버로로그인">
+                <span>Naver</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/kakao.png" alt="카카오톡으로로그인">
+                <span>Kakao</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/facebook.png" alt="페이스북으로로그인">
+                <span>Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/google.png" alt="구글로로그인">
+                <span>Google</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/line.png" alt="라인으로로그인">
+                <span>LINE</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/twitter.png" alt="트위터로로그인">
+                <span>Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/wechat.png" alt="위챗으로로그인">
+                <span>WeChat</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="modal-join" class="modal-page">
+      <label for="open-join"></label>
+      <div class="modal-window join-window">
+        <label for="open-join" class="btn-close">
+          <span></span>
+          <span></span>
+        </label>
+        <form method="post" action>
+          <p class="modal-title">회원가입</p>
+          <ul class="join-form">
+            <li>
+              <label for="user-name">이름</label>
+              <input type="text" placeholder="이름을 입력해주세요." id="user-name" required>
+            </li>
+            <li>
+              <label for="user-email">이메일</label>
+              <input type="email" placeholder="ID@example.com" id="user-email" required>
+            </li>
+            <li>
+              <label for="user-password">비밀번호</label>
+              <input type="password" minlength="8" maxlength="12" id="user-password" placeholder="8-12자리의 영문 및 숫자" required>
+            </li>
+            <li>
+              <label for="user-password-re">비밀번호 확인</label>
+              <input type="password" minlength="8" maxlength="12" id="user-password-re" placeholder="비밀번호를 다시 입력해주세요." required>
+            </li>
+            <li>
+              <span>관심여행지(선택)</span>
+              <ul>
+                <li>
+                  <input type="text" placeholder="관심여행지1">
+                  <input type="image" src="images/btn/btn_search.png" alt="검색버튼">
+                </li>
+                <li>
+                  <input type="text" placeholder="관심여행지2">
+                  <input type="image" src="images/btn/btn_search.png" alt="검색버튼">
+                </li>
+                <li>
+                  <input type="text" placeholder="관심여행지3">
+                  <input type="image" src="images/btn/btn_search.png" alt="검색버튼">
+                </li>
+              </ul>
+              <p>*관심여행지를 설정하시면 여행지에 대한 추천을 빠르게 받아보실 수 있습니다.</p>
+            </li>
+          </ul>
+          <ul class="agreement">
+            <li>
+              <input type="checkbox" id="agree-all">
+              <label for="agree-all" class="agree">아래 약관에 모두 동의합니다.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="agree1" name="agreement" required>
+              <label for="agree1" class="agree">
+                <a href="#">회원가입 및 운영약관(필수)</a>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="agree2" name="agreement" required>
+              <label for="agree2" class="agree">
+                <a href="#">위치정보 이용약관(필수)</a>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="agree3" name="agreement" required>
+              <label for="agree3" class="agree">
+                <a href="#">개인정보 수집 및 이용(필수)</a>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" id="agree4" name="agreement">
+              <label for="agree4" class="agree">추천 상품, 이벤트 및 마케팅 정보 수신 동의(선택)</label>
+            </li>
+          </ul>
+          <div class="join-btn">
+            <p>
+              <input type="reset" value="다시 쓰기">
+            </p>
+            <p>
+              <input type="submit" value="회원가입">
+            </p>
+          </div>
+        </form>
+        <div class="sns-login">
+          <p class="modal-title">SNS로 가입하기</p>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="images/sns/naver.png" alt="네이버로로그인">
+                <span>Naver</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/kakao.png" alt="카카오톡으로로그인">
+                <span>Kakao</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/facebook.png" alt="페이스북으로로그인">
+                <span>Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/google.png" alt="구글로로그인">
+                <span>Google</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/line.png" alt="라인으로로그인">
+                <span>LINE</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/twitter.png" alt="트위터로로그인">
+                <span>Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/sns/wechat.png" alt="위챗으로로그인">
+                <span>WeChat</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <header id="header">
+      <div id="header-inner">
+        <div id="gnb">
+          <h1><a href="main.html">오늘의 여행</a></h1>
+          <ul id="main-menu">
+            <li><a href="hotel.html"><span>호텔</span></a></li>
+            <li><a href="#"><span>항공권</span></a></li>
+            <li><a href="#"><span>에어텔</span></a></li>
+            <li><a href="#"><span>렌터카</span></a></li>
+            <li><a href="#"><span>기차표</span></a></li>
+            <li>
+              <a href="#"><span>더보기</span></a>
+              <ul id="menu-more">
+                <li><a href="#"><span>여행준비</span></a></li>
+                <li><a href="#"><span>공항픽업</span></a></li>
+                <li><a href="#"><span>액티비티</span></a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul id="sub-menu">
+            <li><a href="#"><span>검색기록</span></a></li>
+            <li><a href="support.html" id="supoort"><span>고객센터</span></a></li>
+            <li><a href="#"><span>예약확인</span></a></li>
+            <li id="u-login">
+              <a href="#">
+                <span>로그인</span>
+              </a>
+              <ul id="u-login-sub">
+                <li>
+                  <label for="open-login">로그인</label>
+                </li>
+                <li>
+                  <label for="open-join">회원가입</label>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <label for="user-lang"><span>KR</span></label>
+            </li>
+            <li><label for="user-currency"><span>KRW</span></label></li>
+          </ul>
+        </div><!--gnb-->
+      </div><!--header-inner-->
+      <div class="search">
+        <div class="search-inner">
+          <div class="searching-box">
+            <ul class="tab-menu search-tab">
+              <li class="menu1 active">
+                <a href="#">
+                  <img src="images/icon/menu/hotel.svg" alt="호텔검색탭아이콘">
+                  <span class="tab-name">호텔</span>
+                </a>
+              </li>
+              <li class="menu2">
+                <a href="#">
+                  <img src="images/icon/menu/airtel.svg" alt="에어텔검색탭아이콘">
+                  <span class="tab-name">에어텔</span>
+                </a>
+              </li>
+            </ul>
+            <div class="tab-menu">
+              <div class="menu1 search-hotel active">
+                <form class="search-main active" method="post" action>
+                  <div class="search-essential">
+                    <div class="width400 resp-width100">
+                      <label for="h-search">어디로 떠날까요?</label>
+                      <input type="text" id="h-search" placeholder="도시, 호텔명, 공항, 랜드마크 등으로 검색" autocomplete="on" required>
+                    </div>
+                    <div class="width175 resp-width29">
+                      <label for="h-checkin">체크인 날짜</label>
+                      <input type="text" class="datepicker dateToday" id="h-checkin" required>
+                    </div>
+                    <div class="width175 resp-width29">
+                      <label for="h-checkout">체크아웃 날짜</label>
+                      <input type="text" class="datepicker dateTomorrow" id="h-checkout" required>
+                    </div>
+                    <div class="width125 resp-width19">
+                      <label for="s-people">인원 수</label>
+                      <input type="number" id="s-people" min="1" max="9" placeholder="1" required>
+                    </div>
+                    <div class="width125 resp-width20">
+                      <label for="s-room">객실 수</label>
+                      <input type="number" id="s-room" min="1" max="9" placeholder="1" required>
+                    </div>
+                  </div>
+                  <div class="search-opt">
+                    <div>
+                      <div>
+                        <label><input type="checkbox"><span>출장</span></label>
+                      </div>
+                      <div>
+                        <label><input type="checkbox"><span>한인민박</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div><span>호텔 등급</span></div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star1.svg" alt="1성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star2.svg" alt="2성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star3.svg" alt="3성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star4.svg" alt="4성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star5.svg" alt="5성호텔옵션">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <input type="submit" value="검색">
+                  </p>
+                </form>
+              </div>
+              <div class="menu2 search-airtel">
+                <form class="search-main active" method="post" action>
+                  <div class="search-essential">
+                    <div class="width300 resp-width49">
+                      <label for="airtel-origin">출발지</label>
+                      <input type="text" id="airtel-origin" placeholder="도시명 또는 공항명" autocomplete="on" required>
+                    </div>
+                    <div class="width300 resp-width50">
+                      <label for="airtel-destination">도착지</label>
+                      <input type="text" id="airtel-destination" placeholder="도시명 또는 공항명" autocomplete="on" required>
+                    </div>
+                    <div class="width150 resp-width39">
+                      <label for="airtel-go">가는날</label>
+                      <input type="text" class="datepicker dateToday" id="airtel-go" required>
+                    </div>
+                    <div class="width150 resp-width39">
+                      <label for="airtel-coming">오는날</label>
+                      <input type="text" class="datepicker dateTomorrow" id="airtel-coming" required>
+                    </div>
+                    <div class="width100 resp-width20">
+                      <label for="airtel-people">인원 수</label>
+                      <input type="number" id="airtel-people" min="1" max="9" placeholder="1" required>
+                    </div>
+                  </div>
+                  <div class="search-opt">
+                    <div>
+                      <div>
+                        <label><input type="checkbox"><span>직항만</span></label>
+                      </div>
+                      <div>
+                        <label><input type="checkbox"><span>무료 수하물 가능</span></label>
+                      </div>
+                      <div>
+                        <label><input type="checkbox"><span>출장</span></label>
+                      </div>
+                      <div>
+                        <label><input type="checkbox"><span>한인민박</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div><span>호텔 등급</span></div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star1.svg" alt="1성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star2.svg" alt="2성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star3.svg" alt="3성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star4.svg" alt="4성호텔옵션">
+                        </label>
+                      </div>
+                      <div>
+                        <label>
+                          <input type="checkbox">
+                          <img src="images/icon/star5.svg" alt="5성호텔옵션">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <input type="submit" value="검색">
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div><!--searching-box-->
+          <div class="fakebar"></div>
+        </div><!--search-inner-->
+      </div><!--search-->
+    </header>
+    <div id="content-hotel" class="main-content">
+      <p id="route"><a href="main.html">홈</a> > 호텔</p>
+      <section>
+        <div class="recent">
+          <p>
+            최근에 본 호텔
+            <span class="arrow arrow1"></span>
+            <span class="arrow arrow2"></span>
+          </p>
+          <ul class="recent-item">
+            <li>
+              <a href="#">
+                <div class="close">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="item-img">
+                  <img src="images/hotel-list/lavalsebusan.jpg" alt="라발스호텔부산전경">
+                </div>
+                <div class="item-info">
+                  <p class="item-title">라 발스 호텔 부산</p>
+                  <p class="item-score"><span class="grade">8.8</span>/10</p>
+                  <p class="price">111,000원</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <div class="close">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="item-img">
+                  <img src="images/hotel-list/lavalsebusan.jpg" alt="라발스호텔부산전경">
+                </div>
+                <div class="item-info">
+                  <p class="item-title">라 발스 호텔 부산</p>
+                  <p class="item-score"><span class="grade">8.8</span>/10</p>
+                  <p class="price">111,000원</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <div class="close">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="item-img">
+                  <img src="images/hotel-list/lavalsebusan.jpg" alt="라발스호텔부산전경">
+                </div>
+                <div class="item-info">
+                  <p class="item-title">라 발스 호텔 부산</p>
+                  <p class="item-score"><span class="grade">8.8</span>/10</p>
+                  <p class="price">111,000원</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="offer-item">
+          <h2>지금 인기있는 호텔</h2>
+          <ul class="tab-menu">
+            <li class="menu1 active">국내</li>
+            <li class="menu2">오사카</li>
+            <li class="menu3">다낭</li>
+            <li class="menu4">파리</li>
+            <li class="menu5">로스앤젤레스</li>
+          </ul>
+          <div class="tab-menu">
+            <div class="menu1 active">
+              <ul class="item-list">
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/sillastaymapo.jpg" alt="신라스테이마포호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">신촌/홍대</p>
+                      <p class="item-title">신라스테이 마포</p>
+                      <p class="item-score"><span class="grade">9</span>/10</p>
+                      <p class="comment">"편리한 대중교통"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/jejuhamdeok.jpeg" alt="제주비치함덕호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">함덕해수욕장</p>
+                      <p class="item-title">제주 비치 함덕 호텔</p>
+                      <p class="item-score"><span class="grade">9</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/hotelhuincheon.jpg" alt="제주비치함덕호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">인천공항</p>
+                      <p class="item-title">호텔 휴 인천공항</p>
+                      <p class="item-score"><span class="grade">8.8</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/lavalsebusan.jpg" alt="라발스호텔부산전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">함덕해수욕장</p>
+                      <p class="item-title">라 발스 호텔 부산</p>
+                      <p class="item-score"><span class="grade">9.5</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/sillastaymapo.jpg" alt="신라스테이마포호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">신촌/홍대</p>
+                      <p class="item-title">신라스테이 마포</p>
+                      <p class="item-score"><span class="grade">8.5</span>/10</p>
+                      <p class="comment">"편리한 대중교통"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/jejuhamdeok.jpeg" alt="제주비치함덕호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">함덕해수욕장</p>
+                      <p class="item-title">제주 비치 함덕 호텔</p>
+                      <p class="item-score"><span class="grade">8</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/hotelhuincheon.jpg" alt="제주비치함덕호텔전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">함덕해수욕장</p>
+                      <p class="item-title">호텔 휴 인천공항</p>
+                      <p class="item-score"><span class="grade">7.6</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="item-img">
+                      <img src="images/hotel-list/lavalsebusan.jpg" alt="라발스호텔부산전경">
+                    </div>
+                    <div class="item-info">
+                      <p class="item-location">함덕해수욕장</p>
+                      <p class="item-title">라 발스 호텔 부산</p>
+                      <p class="item-score"><span class="grade">8.9</span>/10</p>
+                      <p class="comment">"바다 뷰 최고"</p>
+                      <p class="price"><span>110,000원</span>/1박</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <p class="offer-more">
+                <a href="#">
+                  더보기
+                  <span class="arrow arrow1"></span>
+                  <span class="arrow arrow2"></span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>인기있는 여행지</h2>
+
+      </section>
+    </div>
+
+    <footer id="footer">
+      <div class="footer-inner">
+        <div>
+          <div class="lang-currency">
+            <div class="select-lang">
+              <input type="checkbox" id="user-lang">
+              <label for="user-lang">
+                <img src="images/flags/south-korea.svg" alt="대한민국국기">
+                <span>한국어</span>
+                <span class="arrow arrow1"></span>
+                <span class="arrow arrow2"></span>
+              </label>
+              <div class="lang-box">
+                <label for="user-lang" class="hide"></label>
+                <div>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/south-korea.svg" alt="대한민국국기">
+                        <span>한국어</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/united-states.svg" alt="미국국기">
+                        <span>English</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/germany.svg" alt="독일국기">
+                        <span>Deutsch</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/netherlands.svg" alt="네덜란드국기">
+                        <span>Nederlands</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/france.svg" alt="프랑스국기">
+                        <span>Français</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/spain.svg" alt="스페인국기">
+                        <span>Español</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/czech.svg" alt="체코국기">
+                        <span>Čeština</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/italy.svg" alt="이탈리아국기">
+                        <span>Italiano</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/portugal.svg" alt="포르투갈국기">
+                        <span>Português</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/brazil.svg" alt="브라질국기">
+                        <span>Português Brasileiro</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/norway.svg" alt="노르웨이국기">
+                        <span>Norsk</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/sweden.svg" alt="스웨덴국기">
+                        <span>Svenska</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/denmark.svg" alt="덴마크국기">
+                        <span>Dansk</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/romania.svg" alt="루마니아국기">
+                        <span>Română</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/uae.svg" alt="아랍에미리트국기">
+                        <span>العربية</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/israel.svg" alt="이스라엘국기">
+                        <span>עברית</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/poland.svg" alt="폴란드국기">
+                        <span>Polski</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/greece.svg" alt="그리스국기">
+                        <span>Ελληνικά</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/russia.svg" alt="러시아국기">
+                        <span>Русский</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/turkey.svg" alt="터키국기">
+                        <span>Türkçe</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/japan.svg" alt="일본국기">
+                        <span>日本語</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/china.svg" alt="중국국기">
+                        <span>简体中文</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/hongkong.svg" alt="홍콩국기">
+                        <span>繁體中文(香港)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/taiwan.svg" alt="타이완국기">
+                        <span>繁體中文(台灣)</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/finland.svg" alt="핀란드국기">
+                        <span>Suomi</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/indonesia.svg" alt="인도네시아국기">
+                        <span>Bahasa Indonesia</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/thailand.svg" alt="태국국기">
+                        <span>ภาษาไทย</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/malaysia.svg" alt="말레이시아국기">
+                        <span>Bahasa Malaysia</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/vietnam.svg" alt="베트남국기">
+                        <span>Tiếng Việt</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/philippines.svg" alt="필리핀국기">
+                        <span>Filipino</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/ukraine.svg" alt="우크라이나국기">
+                        <span>Українська</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="images/flags/estonia.svg" alt="에스토니아국기">
+                        <span>Eesti</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="select-currency">
+              <input type="checkbox" id="user-currency">
+              <label for="user-currency">
+                <span>KRW</span>
+                <span class="arrow arrow1"></span>
+                <span class="arrow arrow2"></span>
+              </label>
+              <div class="currency-box">
+                <label for="user-currency" class="hide"></label>
+                <div>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span>KRW</span>
+                        <span>대한민국 한화(원)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>AED</span>
+                        <span>아랍에미리트 디르함</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>AUD</span>
+                        <span>호주 달러 (AU$)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>BRL</span>
+                        <span>브라질 레알</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>CAD</span>
+                        <span>캐나다 달러</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>CHF</span>
+                        <span>스위스 프랑</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>CNY</span>
+                        <span>중국 위안</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>DKK</span>
+                        <span>덴마크 크로네</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span>EUR</span>
+                        <span>유로</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>GBP</span>
+                        <span>영국 파운드 (£)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>HKD</span>
+                        <span>홍콩 달러 (HK$)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>IDR</span>
+                        <span>인도네시아 루피아</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>INR</span>
+                        <span>인도 루피</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>JPY</span>
+                        <span>일본 엔</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>MOP</span>
+                        <span>마카오 파타카</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>MYR</span>
+                        <span>말레이시아 링깃</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span>NZD</span>
+                        <span>뉴질랜드 달러</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>PHP</span>
+                        <span>필리핀 페소</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>PLN</span>
+                        <span>폴란드 즈워티</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>RUB</span>
+                        <span>러시아 루블</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>SAR</span>
+                        <span>사우디아라비아 리얄</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>SGD</span>
+                        <span>싱가포르 달러</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>THB</span>
+                        <span>태국 바트</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>TRY</span>
+                        <span>터키 리라</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span>TWD</span>
+                        <span>신타이완 달러</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>USD</span>
+                        <span>미국 달러 (US$)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>VND</span>
+                        <span>베트남 동</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>MXN</span>
+                        <span>멕시코 페소 (Mex$)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>ARS</span>
+                        <span>아르헨티나 페소 (AR$)</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>SEK</span>
+                        <span>스웨덴 크로나</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>UAH</span>
+                        <span>우크라이나 흐리브냐</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-menu">
+            <h4>회사소개<span></span><span></span></h4>
+            <ul>
+              <li><a href="#">오늘의 여행 소개</a></li>
+              <li><a href="#">채용정보</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+          </div>
+          <div class="footer-menu">
+            <h4>파트너<span></span><span></span></h4>
+            <ul>
+              <li><a href="#">숙박시설 관리</a></li>
+              <li><a href="#">항공사 전용</a></li>
+              <li><a href="#">B2B 제휴</a></li>
+              <li><a href="#">광고 관리</a></li>
+            </ul>
+          </div>
+          <div class="footer-menu">
+            <h4>고객 지원<span></span><span></span></h4>
+            <ul>
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">1:1 문의</a></li>
+              <li><a href="#">광고 관리</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-support">
+          <p>일반 전화문의: <span>1670-8207</span> | 일반 이메일문의: <span>help@todaysaway.com</span> 24시 연중무휴</p>
+          <p>숙박 전화문의: <span>1670-8208</span> | 숙박 이메일문의: <span>hotel@todaysaway.com</span> 24시 연중무휴</p>
+          <p>항공 전화문의: <span>1670-8209</span> | 항공 이메일문의: <span>flights@todaysaway.com</span> 24시 연중무휴</p>
+          <p>마케팅/제휴 이메일문의: <span>marketing@todaysaway.com</span> 09:00 ~ 18:00(한국), 주말/공휴일 휴무</p>
+        </div>
+        <p class="copyright">Copyright © 2020 todaysaway.com Ltd. All rights reserved.</p>
+      </div><!--footer-inner-->
+    </footer>
+    <script>
+      $.datepicker.setDefaults({
+        dateFormat: 'mm월 dd일(DD)',
+        dayNames: ['일', '월', '화', '수', '목', '금', '토']
+      });
+
+      $('.timepicker').timepicker({
+        'step': '60',
+        'disableTextInput': 'true',
+        'scrollDefault': 'now'
+      });
+    </script>
+  </body>
+</html>
