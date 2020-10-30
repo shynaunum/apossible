@@ -3114,7 +3114,7 @@ ol, ul {
   }
   .promo-inner {
     display: flex;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     overflow: hidden;
   }
@@ -3145,7 +3145,7 @@ ol, ul {
     display: none;
   }
   .main-content {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
   }
   .banner {
