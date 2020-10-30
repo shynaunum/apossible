@@ -15,8 +15,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.min.css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script type="text/javascript">
       $(function() {
         $( ".datepicker" ).datepicker();
@@ -946,6 +948,25 @@
       </div><!--main-promo-->
     </header>
     <div class="main-content">
+      <div class="banner">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#">
+                <img src="images/banner/desktop1.jpg" class="ban-desktop" alt="카드사별할인배너">
+                <img src="images/banner/mobile1.jpg" class="ban-mobile" alt="카드사별할인배너">
+              </a>
+            </div>
+            <div class="swiper-slide" style="background: pink;"></div>
+            <div class="swiper-slide" style="background: yellowgreen;"></div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
       <section class="rec-content rec-place">
         <div class="rec-title">
           <h2>추천 여행지</h2>
@@ -2485,5 +2506,23 @@
         'scrollDefault': 'now'
       });
     </script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+  </script>
   </body>
 </html>
