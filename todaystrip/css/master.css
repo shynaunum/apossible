@@ -2707,10 +2707,10 @@ ol, ul {
   .search {
     width: 100%;
     background: url('../images/bg/bg-main.png')50% 0 no-repeat;
-    -webkit-background-size: 250%;
-    -moz-background-size: 250%;
-    -o-background-size: 250%;
-    background-size: 250%;
+    -webkit-background-size: 300%;
+    -moz-background-size: 300%;
+    -o-background-size: 300%;
+    background-size: 300%;
   }
   .search-inner {
     width: 90%;
@@ -2859,7 +2859,7 @@ ol, ul {
     float: left;
   }
   .add-flight {
-    width: 90%;
+    width: 100%;
     float: left;
     text-align: center;
     line-height: 50px;
@@ -2885,7 +2885,7 @@ ol, ul {
     height: 2px;
     background: #fff;
     position: absolute;
-    left: 39%;
+    left: 33%;
     top: 46%;
   }
   .add-flight span:last-of-type {
