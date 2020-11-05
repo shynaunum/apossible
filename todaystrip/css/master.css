@@ -2633,7 +2633,7 @@ ol, ul {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: 18px;
-    right: 5px;
+    right: 15px;
   }
   .footer-menu h4 span:last-of-type {
     -webkit-transform: rotate(-45deg);
@@ -2642,7 +2642,7 @@ ol, ul {
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top: 18px;
-    right: 0;
+    right: 10px;
   }
   .footer-menu h4.menu-on span:first-of-type {
     -webkit-transform: rotate(-45deg);
@@ -2651,7 +2651,7 @@ ol, ul {
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top: 18px;
-    right: 5px;
+    right: 15px;
   }
   .footer-menu h4.menu-on span:last-of-type {
     -webkit-transform: rotate(45deg);
@@ -2660,7 +2660,7 @@ ol, ul {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: 18px;
-    right: 0;
+    right: 10px;
   }
   .footer-menu h4+ul {
     display: none;
@@ -3663,7 +3663,7 @@ ol, ul {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: 18px;
-    right: 5px;
+    right: 15px;
   }
   .footer-menu h4 span:last-of-type {
     -webkit-transform: rotate(-45deg);
@@ -3672,7 +3672,7 @@ ol, ul {
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top: 18px;
-    right: 0;
+    right: 10px;
   }
   .footer-menu h4.menu-on span:first-of-type {
     -webkit-transform: rotate(-45deg);
@@ -3681,7 +3681,7 @@ ol, ul {
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top: 18px;
-    right: 5px;
+    right: 15px;
   }
   .footer-menu h4.menu-on span:last-of-type {
     -webkit-transform: rotate(45deg);
@@ -3690,7 +3690,7 @@ ol, ul {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: 18px;
-    right: 0;
+    right: 10px;
   }
   .footer-menu h4+ul {
     display: none;
@@ -3725,7 +3725,7 @@ ol, ul {
     clear: both;
     margin-top: 25px;
     text-align: center;
-    font-size: .8rem;
+    font-size: .7rem;
     color: #aaa;
   }
 }
