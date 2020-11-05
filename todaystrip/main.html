@@ -19,7 +19,7 @@
 	  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.min.css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script type="text/javascript">
+    <script>
       $(function() {
         $( ".datepicker" ).datepicker();
       } );
@@ -43,8 +43,19 @@
 
         //user lang & user currency
         $('#gnb label[for="user-lang"]').on('click', function(){
-          if($('input#user-lang').is(':checked')){
-            $('.lang-box>div').addClass('gnb-lang');
+          $('.lang-box>div').addClass('gnb-lang');
+          if($('.lang-box>div').hasClass('gnb-lang')){
+            $('label.hide').on('click', function(){
+              $('.lang-box>div').removeClass('gnb-lang');
+            });
+          }
+        });
+        $('#gnb label[for="user-currency"]').on('click', function(){
+          $('.currency-box>div').addClass('gnb-currency');
+          if($('.currency-box>div').hasClass('gnb-currency')){
+            $('label.hide').on('click', function(){
+              $('.currency-box>div').removeClass('gnb-currency');
+            });
           }
         });
 
@@ -671,23 +682,23 @@
               <div class="menu3 search-airtel">
                 <form class="search-main active" method="post" action>
                   <div class="search-essential">
-                    <div class="width300 t-width49">
+                    <div class="width300 t-width49 m-width49">
                       <label for="airtel-origin">출발지</label>
                       <input type="text" id="airtel-origin" placeholder="도시명 또는 공항명" autocomplete="on" required>
                     </div>
-                    <div class="width300 t-width50">
+                    <div class="width300 t-width50 m-width50">
                       <label for="airtel-destination">도착지</label>
                       <input type="text" id="airtel-destination" placeholder="도시명 또는 공항명" autocomplete="on" required>
                     </div>
-                    <div class="width150 t-width39">
+                    <div class="width150 t-width39 m-width39">
                       <label for="airtel-go">가는날</label>
                       <input type="text" class="datepicker dateToday" id="airtel-go" required>
                     </div>
-                    <div class="width150 t-width39">
+                    <div class="width150 t-width39 m-width39">
                       <label for="airtel-coming">오는날</label>
                       <input type="text" class="datepicker dateTomorrow" id="airtel-coming" required>
                     </div>
-                    <div class="width100 t-width20">
+                    <div class="width100 t-width20 m-width20">
                       <label for="airtel-people">인원 수</label>
                       <input type="number" id="airtel-people" min="1" max="9" placeholder="1" required>
                     </div>
@@ -749,23 +760,23 @@
               <div class="menu4 search-rentcar">
                 <form class="search-main active" method="post" action>
                   <div class="search-essential">
-                    <div class="width300 t-width49">
+                    <div class="width300 t-width49 m-width49">
                       <label for="c-pickup">인수 장소</label>
                       <input type="text" id="c-pickup" placeholder="도시, 공항, 랜드마크 등으로 검색" autocomplete="on" required>
                     </div>
-                    <div class="width300 t-width50">
+                    <div class="width300 t-width50 m-width50">
                       <label for="c-return">반납 장소</label>
                       <input type="text" id="c-return" placeholder="도시, 공항, 랜드마크 등으로 검색" autocomplete="on" required>
                     </div>
-                    <div class="width150 t-width39">
+                    <div class="width150 t-width39 m-width39">
                       <label for="c-pickup-date">인수일</label>
                       <input type="text" class="datepicker dateToday" id="c-pickup-date" required>
                     </div>
-                    <div class="width150 t-width39">
+                    <div class="width150 t-width39 m-width39">
                       <label for="c-return-date">반납일</label>
                       <input type="text" class="datepicker dateTomorrow" id="c-return-date" required>
                     </div>
-                    <div class="width100 t-width20">
+                    <div class="width100 t-width20 m-width20">
                       <label for="c-age">운전자 연령</label>
                       <input type="number" placeholder="예: 19" id="c-age" min="19" required>
                     </div>
@@ -787,133 +798,133 @@
                   </ul>
                   <div class="tab-menu">
                     <div class="menu1 active search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin1">출발지</label>
                         <input type="text" id="train-origin1" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination1">도착지</label>
                         <input type="text" id="train-destination1" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date1">출발일</label>
                         <input type="text" class="datepicker dateToday" id="train-date1" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-time1">출발 시각</label>
                         <input type="text" class="timepicker curTime" id="train-time1" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-people1">좌석 수</label>
                         <input type="number" id="train-people1" min="1" max="9" placeholder="1" required>
                       </div>
                     </div>
                     <div class="menu2 search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin2">출발지</label>
                         <input type="text" id="train-origin2" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination2">도착지</label>
                         <input type="text" id="train-destination2" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date2">출발일</label>
                         <input type="text" class="datepicker dateToday" id="train-date2" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-time2">출발 시각</label>
                         <input type="text" class="timepicker curTime" id="train-time2" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-people2">좌석 수</label>
                         <input type="number" id="train-people2" min="1" max="9" placeholder="1" required>
                       </div>
                     </div>
                     <div class="menu3 search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin3">출발지</label>
                         <input type="text" id="train-origin3" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination3">도착지</label>
                         <input type="text" id="train-destination3" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date3-1">가는날</label>
                         <input type="text" class="datepicker dateToday" id="train-date3-1" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date3-2">오는날</label>
                         <input type="text" class="datepicker dateTomorrow" id="train-date3-2" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-num">열차번호 (선택)</label>
                         <input type="text" id="train-num" placeholder="예: G102">
                       </div>
                     </div>
                     <div class="menu4 search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin4">출발지</label>
                         <input type="text" id="train-origin4" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination4">도착지</label>
                         <input type="text" id="train-destination4" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date4">출발일</label>
                         <input type="text" class="datepicker dateToday" id="train-date4" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-time4">출발 시각</label>
                         <input type="text" class="timepicker curTime" id="train-time4" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-people4">좌석 수</label>
                         <input type="number" id="train-people4" min="1" max="9" placeholder="1" required>
                       </div>
                     </div>
                     <div class="menu5 search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin5">출발지</label>
                         <input type="text" id="train-origin5" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination5">도착지</label>
                         <input type="text" id="train-destination5" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date5">출발일</label>
                         <input type="text" class="datepicker dateToday" id="train-date5" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-time5">출발 시각</label>
                         <input type="text" class="timepicker curTime" id="train-time5" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-people5">좌석 수</label>
                         <input type="number" id="train-people5" min="1" max="9" placeholder="1" required>
                       </div>
                     </div>
                     <div class="menu6 search-essential">
-                      <div class="width300 t-width49">
+                      <div class="width300 t-width49 m-width49">
                         <label for="train-origin6">출발지</label>
                         <input type="text" id="train-origin6" placeholder="도시 이름 또는 출발역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width300 t-width50">
+                      <div class="width300 t-width50 m-width50">
                         <label for="train-destination6">도착지</label>
                         <input type="text" id="train-destination6" placeholder="도시 이름 또는 도착역으로 검색" autocomplete="on" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-date6">출발일</label>
                         <input type="text" class="datepicker dateToday" id="train-date6" required>
                       </div>
-                      <div class="width150 t-width39">
+                      <div class="width150 t-width39 m-width39">
                         <label for="train-time6">출발 시각</label>
                         <input type="text" class="timepicker curTime" id="train-time6" required>
                       </div>
-                      <div class="width100 t-width20">
+                      <div class="width100 t-width20 m-width20">
                         <label for="train-people6">좌석 수</label>
                         <input type="number" id="train-people6" min="1" max="9" placeholder="1" required>
                       </div>
