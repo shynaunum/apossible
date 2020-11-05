@@ -357,6 +357,9 @@ ol, ul {
     padding: 0;
     letter-spacing: 4px;
   }
+  .ui-datepicker {
+    z-index: 5 !important;
+  }
   .fakebar.fixed {
     padding-top: 223px;
   }
@@ -798,32 +801,18 @@ ol, ul {
     border-radius: 5px;
     z-index: 6;
   }
-  .lang-box>div::after {
-    content: '';
-    display: block;
-    width: 15px;
-    height: 15px;
-    background: #fff;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    position: absolute;
-    bottom: 57px;
-    left: -6px;
-  }
+  .lang-box>div::after,
   .currency-box>div::after {
     content: '';
     display: block;
     width: 15px;
     height: 15px;
     background: #fff;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    transform: rotate(225deg);
     position: absolute;
     bottom: 57px;
     left: -6px;
@@ -1900,6 +1889,9 @@ ol, ul {
     color: #fff;
     border-bottom: 2px solid #fff;
   }
+  .ui-datepicker {
+    z-index: 5 !important;
+  }
   .main-promo {
     width: 100%;
     background: #36556b;
@@ -2707,10 +2699,10 @@ ol, ul {
   .search {
     width: 100%;
     background: url('../images/bg/bg-main.png')50% 0 no-repeat;
-    -webkit-background-size: 300%;
-    -moz-background-size: 300%;
-    -o-background-size: 300%;
-    background-size: 300%;
+    -webkit-background-size: 350%;
+    -moz-background-size: 350%;
+    -o-background-size: 350%;
+    background-size: 350%;
   }
   .search-inner {
     width: 90%;
@@ -2794,7 +2786,7 @@ ol, ul {
   .search-essential.menu3>div {
     margin-bottom: 5px;
   }
-  .search-essential.menu3>div:first-of-type {
+  .search-air .search-essential.menu3>div:first-of-type {
     height: 105px;
   }
   .search-essential input {
@@ -2944,6 +2936,10 @@ ol, ul {
     overflow: hidden;
     margin-bottom: 5px;
   }
+  .search-opt>div:nth-of-type(2)>div:first-of-type {
+    width: 100%;
+    margin-bottom: 5px;
+  }
   .search-opt>div:last-of-type {
     margin: 0;
   }
@@ -2979,6 +2975,9 @@ ol, ul {
   .tab-train>li.active>a {
     color: #fff;
     border-bottom: 2px solid #fff;
+  }
+  .ui-datepicker {
+    z-index: 5 !important;
   }
   .main-promo {
     display: none;
@@ -3712,11 +3711,7 @@ ol, ul {
     text-decoration: underline;
   }
   .footer-support {
-    margin-top: 25px;
-    text-align: center;
-    line-height: 1.25rem;
-    font-size: .8rem;
-    color: #aaa;
+    display: none;
   }
   .footer-support span {
     color: #ddd;

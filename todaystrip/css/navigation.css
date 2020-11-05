@@ -223,8 +223,29 @@
     display: block;
     width: 100%;
   }
-  #gnb .lang-box {
-    position: absolute;
+  .gnb-lang {
+    bottom: unset !important;
+    left: unset !important;
+    top: -2680px;
+    right: -850px;
+  }
+  .gnb-lang::after {
+    left: unset !important;
+    right: 70px;
+    top: -7px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+  }
+  .gnb-currency {
+    bottom: unset !important;
+    left: unset !important;
+    top: -2735px;
+    right: -850px;
+  }
+  .gnb-currency::after {
+    left: unset !important;
+    right: 20px;
+    top: -7px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
   }
   .hidden {
     display: none;
