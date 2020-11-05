@@ -2752,7 +2752,7 @@ ol, ul {
   }
   .searching-box form {
     width: 100%;
-    padding: 20px;
+    padding: 20px 10px;
     background: rgba(0, 0, 0, .6);
     -webkit-border-radius: 0 10px 10px 10px;
     -moz-border-radius: 0 10px 10px 10px;
@@ -2885,7 +2885,7 @@ ol, ul {
     height: 2px;
     background: #fff;
     position: absolute;
-    left: 33%;
+    left: 30%;
     top: 46%;
   }
   .add-flight span:last-of-type {
@@ -2908,7 +2908,7 @@ ol, ul {
     height: 100%;
   }
   .del-flight>a:hover span {
-    background: #fff;
+    background: #000;
   }
   .del-flight span {
     display: inline-block;
@@ -3761,7 +3761,7 @@ ol, ul {
   }
 }
 @media screen and (min-width:769px) and (max-width:1199px) {
-  .width100 {
+  .t-width100 {
     width: 100%;
     margin-bottom: 1%;
   }
@@ -3800,7 +3800,7 @@ ol, ul {
   }
 }
 @media screen and (max-width: 768px) {
-  .width100 {
+  .m-width100 {
     width: 100%;
     margin-bottom: 1%;
   }
