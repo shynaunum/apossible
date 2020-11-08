@@ -2032,7 +2032,6 @@
       </section><!--rec-activity-->
     </div>
     <div id="newsletter">
-      <div class="newsletter-bg"></div>
       <div>
         <div>
           <p>카카오톡 아이디만 입력하면 최저가 알람이 실시간으로!</p>
@@ -2050,6 +2049,32 @@
         </form>
       </div>
     </div><!--newsletter-->
+    <div id="main-support">
+      <p>문제가 생겼나요? 24시간 열려있는 고객지원 서비스로 도움을 드립니다.</p>
+      <p>1670-8207</p>
+      <p>24시 연중무휴, 이메일 문의: help@todaystrip.com<br>숙박 전화문의: 1670-8208, 항공 전화문의: 1670-8209</p>
+      <p><a href="#">채팅서비스</a></p>
+    </div>
+    <div id="main-sns">
+      <div class="sns-link sns-youtube">
+        <a href="#">
+          <img src="images/icon/sns-youtube-w.svg" alt="유튜브아이콘">
+          <p>오늘의 여행 유튜브</p>
+        </a>
+      </div>
+      <div class="sns-link sns-insta">
+        <a href="#">
+          <img src="images/icon/sns-insta-w.svg" alt="인스타그램아이콘">
+          <p>오늘의 여행 인스타그램</p>
+        </a>
+      </div>
+      <div class="sns-link sns-blog">
+        <a href="#">
+          <img src="images/icon/sns-blog-w.svg" alt="네이버블로그아이콘">
+          <p>오늘의 여행 블로그</p>
+        </a>
+      </div>
+    </div>
     <footer id="footer">
       <div class="footer-inner">
         <div>
@@ -2497,20 +2522,20 @@
           <div class="footer-menu">
             <h4>고객 지원<span></span><span></span></h4>
             <ul>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">1:1 문의</a></li>
+              <li><a href="support.html">고객센터</a></li>
+              <li><a href="support.html">FAQ</a></li>
+              <li><a href="support.html">1:1 문의</a></li>
               <li><a href="#">광고 관리</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-support">
-          <p>일반 전화문의: <span>1670-8207</span> | 일반 이메일문의: <span>help@todaysaway.com</span> 24시 연중무휴</p>
-          <p>숙박 전화문의: <span>1670-8208</span> | 숙박 이메일문의: <span>hotel@todaysaway.com</span> 24시 연중무휴</p>
-          <p>항공 전화문의: <span>1670-8209</span> | 항공 이메일문의: <span>flights@todaysaway.com</span> 24시 연중무휴</p>
-          <p>마케팅/제휴 이메일문의: <span>marketing@todaysaway.com</span> 09:00 ~ 18:00(한국), 주말/공휴일 휴무</p>
+          <p>일반 전화문의: <span>1670-8207</span> | 일반 이메일문의: <span>help@todaystrip.com</span> 24시 연중무휴</p>
+          <p>숙박 전화문의: <span>1670-8208</span> | 숙박 이메일문의: <span>hotel@todaystrip.com</span> 24시 연중무휴</p>
+          <p>항공 전화문의: <span>1670-8209</span> | 항공 이메일문의: <span>flights@todaystrip.com</span> 24시 연중무휴</p>
+          <p>마케팅/제휴 이메일문의: <span>marketing@todaystrip.com</span> 09:00 ~ 18:00(한국), 주말/공휴일 휴무</p>
         </div>
-        <p class="copyright">Copyright © 2020 todaysaway.com Ltd. All rights reserved.</p>
+        <p class="copyright">Copyright © 2020 todaystrip.com Ltd. All rights reserved.</p>
       </div><!--footer-inner-->
     </footer>
     <script>
@@ -2529,8 +2554,9 @@
       var swiper = new Swiper('.swiper-container', {
         centeredSlides: true,
         loop: true,
+        speed: 1000,
         autoplay: {
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         },
         pagination: {
