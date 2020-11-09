@@ -3312,8 +3312,8 @@ ol, ul {
   }
   #newsletter {
     width: 90%;
-    margin: 0 auto 50px;
-    padding: 30px 40px;
+    margin: 0 auto 20px;
+    padding: 20px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -3374,8 +3374,8 @@ ol, ul {
   }
   #main-support {
     width: 90%;
-    padding: 30px;
-    margin: 0 auto 50px;
+    padding: 20px;
+    margin: 0 auto 20px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
