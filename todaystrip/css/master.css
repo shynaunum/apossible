@@ -4072,7 +4072,6 @@ ol, ul {
     -moz-border-radius: 8px;
     border-radius: 8px;
     cursor: pointer;
-    position: relative;
   }
   .lang-currency label.user-currency {
     margin: 0;
@@ -4123,7 +4122,7 @@ ol, ul {
     left: 0;
     top: 0;
     background: #fff;
-    padding: 5vw;
+    padding: 70px 5% 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -4133,8 +4132,8 @@ ol, ul {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 5vw;
-    right: 5vw;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
   }
   .close-box span {
@@ -4144,22 +4143,22 @@ ol, ul {
     background: #000;
   }
   .close-box span:first-of-type {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+    -webkit-transform: translate(0, 20px) rotate(45deg);
+    -moz-transform: translate(0, 20px) rotate(45deg);
+    -ms-transform: translate(0, 20px) rotate(45deg);
+    -o-transform: translate(0, 20px) rotate(45deg);
+    transform: translate(0, 20px) rotate(45deg);
   }
   .close-box span:last-of-type {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    -webkit-transform: translate(0, 20px) rotate(-45deg);
+    -moz-transform: translate(0, 20px) rotate(-45deg);
+    -ms-transform: translate(0, 20px) rotate(-45deg);
+    -o-transform: translate(0, 20px) rotate(-45deg);
+    transform: translate(0, 20px) rotate(-45deg);
   }
   .lang-box ul,
   .currency-box ul {
-    width: 40%;
+    width: 50%;
     float: left;
   }
   .lang-box ul li a,
