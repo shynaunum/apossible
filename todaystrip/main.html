@@ -27,19 +27,32 @@
     </script>
     <script src="js/tabMenu.js"></script>
     <script>
+      //gnb, select lang & currency fullscreen
+      $(window).on('resize', function(){
+        if($(window).width() <= 1199) {
+          $('.toggle-fullscreen').on('click', function(){
+            if($('.fullscreen').is(':checked')){
+              $('html').css({'overflow':'auto','padding-right':'0'});
+            }else{
+              $('html').css({'overflow':'hidden','padding-right':'15px'});
+            }
+          });
+        }else{
+          $('.toggle-fullscreen').on('click', function(){
+            $('html').css({'overflow':'auto','padding-right':'0'});
+          });
+        }
+      });
+    </script>
+    <script>
       $(document).ready(function(){
         $('a[href="#"]').on('click', function(e){
     			e.preventDefault();
     		});
         $('.tab-menu').menuBar();
 
-        //gnb
-        if($('#gnb-toggle').is(':checked')){
-          $('html').css('overflow','hidden');
-        }
-        $('#gnb-toggle').on('click', function(){
-          console.log($('#gnb-toggle').is(':checked'));
-        });
+
+
 
 
         //join form - check all
@@ -343,8 +356,8 @@
       <div id="header-inner">
         <div id="gnb">
           <h1><a href="main.html">오늘의 여행</a></h1>
-          <input type="checkbox" id="gnb-toggle">
-          <label for="gnb-toggle">
+          <input type="checkbox" id="gnb-toggle" class="fullscreen">
+          <label for="gnb-toggle" class="toggle-fullscreen">
             <span></span>
             <span></span>
             <span></span>
@@ -2096,8 +2109,8 @@
         <div>
           <div class="lang-currency">
             <div class="select-lang">
-              <input type="checkbox" id="user-lang">
-              <label for="user-lang">
+              <input type="checkbox" id="user-lang" class="fullscreen">
+              <label for="user-lang" class="toggle-fullscreen">
                 <img src="images/flags/south-korea.svg" alt="대한민국국기">
                 <span>한국어</span>
                 <span class="arrow arrow1"></span>
@@ -2106,7 +2119,7 @@
               <div class="lang-box">
                 <label for="user-lang" class="hide"></label>
                 <div>
-                  <label for="user-lang" class="close-box"><span></span><span></span></label>
+                  <label for="user-lang" class="close-box toggle-fullscreen"><span></span><span></span></label>
                   <ul>
                     <li>
                       <a href="#">
@@ -2311,8 +2324,8 @@
               </div>
             </div>
             <div class="select-currency">
-              <input type="checkbox" id="user-currency">
-              <label for="user-currency">
+              <input type="checkbox" id="user-currency" class="fullscreen">
+              <label for="user-currency" class="toggle-fullscreen">
                 <span>KRW</span>
                 <span class="arrow arrow1"></span>
                 <span class="arrow arrow2"></span>
@@ -2320,7 +2333,7 @@
               <div class="currency-box">
                 <label for="user-currency" class="hide"></label>
                 <div>
-                  <label for="user-currency" class="close-box"><span></span><span></span></label>
+                  <label for="user-currency" class="close-box toggle-fullscreen"><span></span><span></span></label>
                   <ul>
                     <li>
                       <a href="#">
