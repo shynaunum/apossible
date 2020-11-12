@@ -11,6 +11,7 @@
 body {
   font: normal 16px 'SeoulNamsanM', sans-serif;
   overflow-x: hidden;
+  user-select: none;
 }
 a, a:link {
   text-decoration: none;
@@ -831,15 +832,11 @@ ol, ul {
   .lang-currency label span {
     color: #fff;
   }
-  .lang-currency .arrow::after {
-    content: '';
+  .lang-currency .arrow {
     display: block;
     width: 10px;
     height: 1px;
     background: #fff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
   }
   .lang-currency .arrow1 {
     position: absolute;
@@ -2807,16 +2804,13 @@ ol, ul {
   }
   .lang-currency label span {
     color: #fff;
+    font-size: .8rem;
   }
-  .lang-currency .arrow::after {
-    content: '';
+  .lang-currency .arrow {
     display: block;
     width: 10px;
     height: 1px;
     background: #fff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
   }
   .lang-currency .arrow1 {
     position: absolute;
@@ -2855,7 +2849,7 @@ ol, ul {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    z-index: 6;
+    z-index: 16;
   }
   .close-box {
     width: 40px;
@@ -4078,20 +4072,17 @@ ol, ul {
   }
   .lang-currency label span {
     color: #fff;
+    font-size: .8rem;
   }
-  .lang-currency .arrow::after {
-    content: '';
+  .lang-currency .arrow {
     display: block;
     width: 10px;
     height: 1px;
     background: #fff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
   }
   .lang-currency .arrow1 {
     position: absolute;
-    top: 41%;
+    top: 17px;
     right: 20px;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -4101,7 +4092,7 @@ ol, ul {
   }
   .lang-currency .arrow2 {
     position: absolute;
-    top: 60%;
+    top: 24px;
     right: 20px;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
@@ -4126,7 +4117,7 @@ ol, ul {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    z-index: 6;
+    z-index: 16;
   }
   .close-box {
     width: 40px;
