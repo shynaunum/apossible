@@ -32,6 +32,15 @@
     		});
         $('.tab-menu').menuBar();
 
+        //gnb
+        if($('#gnb-toggle').is(':checked')){
+          $('html').css('overflow','hidden');
+        }
+        $('#gnb-toggle').on('click', function(){
+          console.log($('#gnb-toggle').is(':checked'));
+        });
+
+
         //join form - check all
         $('#agree-all').change(function(){
           if($(this).is(':checked')){
@@ -333,6 +342,12 @@
       <div id="header-inner">
         <div id="gnb">
           <h1><a href="main.html">오늘의 여행</a></h1>
+          <input type="checkbox" id="gnb-toggle">
+          <label for="gnb-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
           <ul id="main-menu">
             <li><a href="hotel.html"><span>호텔</span></a></li>
             <li><a href="#"><span>항공권</span></a></li>
@@ -2090,6 +2105,7 @@
               <div class="lang-box">
                 <label for="user-lang" class="hide"></label>
                 <div>
+                  <label for="user-lang" class="close-box"><span></span><span></span></label>
                   <ul>
                     <li>
                       <a href="#">
@@ -2303,6 +2319,7 @@
               <div class="currency-box">
                 <label for="user-currency" class="hide"></label>
                 <div>
+                  <label for="user-currency" class="close-box"><span></span><span></span></label>
                   <ul>
                     <li>
                       <a href="#">
