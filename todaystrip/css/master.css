@@ -805,7 +805,8 @@ ol, ul {
     height: 16px;
     margin-right: 6px;
   }
-  .lang-currency input {
+  .lang-currency input,
+  .lang-currency label.close-box {
     display: none;
   }
   .lang-currency label {
@@ -2763,8 +2764,166 @@ ol, ul {
     margin: 0 auto;
     padding: 40px 0;
   }
+  .footer-inner>div:first-of-type {
+    width: 100%;
+  }
   .lang-currency {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .lang-currency>div {
+    flex: 1 1 0;
+    position: relative;
+  }
+  .select-lang {
+    margin-right: 1%;
+  }
+  .lang-currency img {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+  .lang-currency input {
     display: none;
+  }
+  .lang-currency>div>label {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 11px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+  }
+  .lang-currency label.user-currency {
+    margin: 0;
+  }
+  .lang-currency label span {
+    color: #fff;
+  }
+  .lang-currency .arrow::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 1px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .lang-currency .arrow1 {
+    position: absolute;
+    top: 41%;
+    right: 20px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .lang-currency .arrow2 {
+    position: absolute;
+    top: 60%;
+    right: 20px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  input[id="user-lang"]:checked+label+div>div,
+  input[id="user-currency"]:checked+label+div>div {
+    display: block;
+  }
+  .lang-box>div,
+  .currency-box>div {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    padding: 5vw;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 6;
+  }
+  .close-box {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
+    cursor: pointer;
+  }
+  .close-box span {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #000;
+  }
+  .close-box span:first-of-type {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .close-box span:last-of-type {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .lang-box ul,
+  .currency-box ul {
+    width: 40%;
+    float: left;
+  }
+  .lang-box ul li a,
+  .currency-box ul li a {
+    display: block;
+    padding: 5px 10px;
+  }
+  .lang-box ul li a:hover,
+  .currency-box ul li a:hover {
+    background: #03b4cd;
+    color: #fff;
+  }
+  .lang-box span,
+  .currency-box span {
+    font-size: .8rem;
+  }
+  .currency-box span:first-of-type {
+    font: normal .8rem "BMJUA", sans-serif;
+    color: #03b4cd;
+  }
+  .currency-box ul li a:hover span:first-of-type {
+    color: #000;
+  }
+  .lang-currency label.hide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 0;
+  }
+  input[id="user-lang"]:checked+label+div>label.hide,
+  input[id="user-currency"]:checked+label+div>label.hide {
+    display: block;
+    z-index: 5;
   }
   .footer-menu h4 {
     color: #fff;
@@ -3877,8 +4036,166 @@ ol, ul {
     margin: 0 auto;
     padding: 40px 0;
   }
+  .footer-inner>div:first-of-type {
+    width: 100%;
+  }
   .lang-currency {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .lang-currency>div {
+    flex: 1 1 0;
+    position: relative;
+  }
+  .select-lang {
+    margin-right: 1%;
+  }
+  .lang-currency img {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+  .lang-currency input {
     display: none;
+  }
+  .lang-currency>div>label {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 11px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+  }
+  .lang-currency label.user-currency {
+    margin: 0;
+  }
+  .lang-currency label span {
+    color: #fff;
+  }
+  .lang-currency .arrow::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 1px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .lang-currency .arrow1 {
+    position: absolute;
+    top: 41%;
+    right: 20px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .lang-currency .arrow2 {
+    position: absolute;
+    top: 60%;
+    right: 20px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  input[id="user-lang"]:checked+label+div>div,
+  input[id="user-currency"]:checked+label+div>div {
+    display: block;
+  }
+  .lang-box>div,
+  .currency-box>div {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #fff;
+    padding: 5vw;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 6;
+  }
+  .close-box {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
+    cursor: pointer;
+  }
+  .close-box span {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #000;
+  }
+  .close-box span:first-of-type {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .close-box span:last-of-type {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .lang-box ul,
+  .currency-box ul {
+    width: 40%;
+    float: left;
+  }
+  .lang-box ul li a,
+  .currency-box ul li a {
+    display: block;
+    padding: 5px 10px;
+  }
+  .lang-box ul li a:hover,
+  .currency-box ul li a:hover {
+    background: #03b4cd;
+    color: #fff;
+  }
+  .lang-box span,
+  .currency-box span {
+    font-size: .8rem;
+  }
+  .currency-box span:first-of-type {
+    font: normal .8rem "BMJUA", sans-serif;
+    color: #03b4cd;
+  }
+  .currency-box ul li a:hover span:first-of-type {
+    color: #000;
+  }
+  .lang-currency label.hide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 0;
+  }
+  input[id="user-lang"]:checked+label+div>label.hide,
+  input[id="user-currency"]:checked+label+div>label.hide {
+    display: block;
+    z-index: 5;
   }
   .footer-menu h4 {
     color: #fff;
