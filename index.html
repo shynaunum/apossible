@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>&lt;a&gt;:possible - MAIN</title>
+    <meta charset="UTF-8">
+    <meta name="showport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
+    <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
+    <!--[if iE 8]><html class="no-js old ie8"><![endif]-->
+    <!--[if iE 9]><html class="no-js modern ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><html class="no-js modern"><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/typingCarousel.js"></script>
+    <script src="js/tabMenu.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('a[href="#"]').on('click', function(e){
+    			e.preventDefault();
+    		});
+
+        $('.tab-menu').menuBar();
+
+        $('#show-profile').on('click', function(){
+          $('#maker-info').prop('checked', false);
+          if($('input[id*="show-work"]').is(':checked')){
+            $('input[id*="show-work"]').prop('checked', false);
+          }
+        });
+        $('#maker-info').on('click', function(){
+          if($('#show-profile').is(':checked')){
+            $('#show-profile').prop('checked', false);
+          }
+        });
+
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/master2.css">
+  </head>
+  <body id="works-main">
+    <div class="opening"></div>
+    <header>
+      <div class="header-inner">
+        <h1 id="web-title">
+          <a href="main.html">
+            <p>&lt;a&gt; is possible</p>
+          </a>
+        </h1>
+        <p class="typewrite" data-period="5000" data-type='[ "❮a❯ is possible.", "WEB MOST LIKE WEB" ]'></p>
+      </div>
+    </header>
+    <section>
+      <div class="wrapper">
+        <ul>
+          <li class="work work1">
+            <input type="checkbox" id="show-work1" class="hide">
+            <label for="show-work1">
+              <div class="work-thumb thumb1"></div>
+              <div class="thumb-txt">
+                <p class="thumb-subtit">여행 예약 사이트</p>
+                <p class="thumb-tit">오늘의 여행</p>
+                <p class="thumb-dscr">
+                  항공권, 호텔, 액티비티 등을 한번에 손쉽게 예약할 수 있는 종합 여행 예약 사이트.
+                </p>
+              </div>
+            </label>
+            <div class="work-page work-page1">
+              <label for="show-work1"><span></span><span></span></label>
+              <div>
+                <ul class="work-tab tab-menu">
+                  <li class="menu1 active">
+                    <a href="#">OVERVIEW</a>
+                  </li>
+                  <li class="menu2">
+                    <a href="#">CONCEPT</a>
+                  </li>
+                  <li class="menu3">
+                    <a href="#">LAYOUT</a>
+                  </li>
+                </ul>
+                <div class="work-content tab-menu">
+                  <div class="content1 menu1 active">
+                    <h2>OVERVIEW</h2>
+                    <p class="work-subtit">여행 예약 사이트</p>
+                    <p class="work-tit">오늘의 여행</p>
+
+                  </div>
+                  <div class="content2 menu2">
+                    <h2>CONCEPT</h2>
+                  </div>
+                  <div class="content3 menu3">
+                    <h2>LAYOUT</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="work work2">
+            <input type="checkbox" id="show-work2" class="hide">
+            <label for="show-work2">
+              <div class="work-thumb thumb2"></div>
+              <div class="thumb-txt">
+                <p class="thumb-subtit">Formula 1 Racing Team</p>
+                <p class="thumb-tit">Styx</p>
+                <p class="thumb-dscr">
+                  세계적인 모터스포츠, F1의 가상 팀인 Styx의 공식 홈페이지로 다양한 볼거리와 경기 일정, 정보 등을 제공하는 사이트.
+                </p>
+              </div>
+            </label>
+            <div class="work-page work-page2">
+              <label for="show-work2"><span></span><span></span></label>
+              <div>
+                <ul class="work-tab tab-menu">
+                  <li class="menu1 active">
+                    <a href="#">OVERVIEW</a>
+                  </li>
+                  <li class="menu2">
+                    <a href="#">CONCEPT</a>
+                  </li>
+                  <li class="menu3">
+                    <a href="#">LAYOUT</a>
+                  </li>
+                </ul>
+                <div class="work-content tab-menu">
+                  <div class="content1 active">
+                    <h2>OVERVIEW</h2>
+                    <p class="work-subtit">Formula 1 Racing Team</p>
+                    <p class="work-tit">Styx</p>
+                    <div class="work-video">
+                      <video class="pj-video" muted loop autoplay controls>
+                        <source src="videos/styx.mp4" type="video/mp4">
+                        <source src="videos/styx.ogv" type="video/ogg">
+                        <source src="videos/styx.webm" type="video/webm">
+                      </video>
+                    </div>
+                    <div class="work-dscr">
+                      <p>세계적으로 인기있는 모터 스포츠 종목 가운데서도 가장 대표적으로 손꼽히는 Formula 1.<br>이 스포츠의 가상팀을 하나 설정하여 브랜드 아이덴티티부터 디자인, 코딩을 맡아<br>다양한 볼거리와 정보를 갖춘 팀의 공식 홈페이지로 구현함.</p>
+                      <ul>
+                        <li>
+                          <img src="images/icon/f-html5.svg" alt="html5아이콘">
+                          <span>HTML5</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-css3.svg" alt="css3아이콘">
+                          <span>CSS3</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-js.svg" alt="자바스크립트아이콘">
+                          <span>자바스크립트</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-resp.svg" alt="반응형아이콘">
+                          <span>반응형</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-uiux.svg" alt="ui/ux아이콘">
+                          <span>UI/UX</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-cb.svg" alt="크로스브라우징아이콘">
+                          <span>크로스브라우징</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-w3c.svg" alt="웹표준아이콘">
+                          <span>웹표준 준수</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="work-link">
+                      <p>main 1 page, sub 5 pages</p>
+                      <div class="link-wrap">
+                        <div class="link" style="background: url('images/thumb/work2/styx1.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/main.html" target="_blank">
+                            <span>MAIN</span>
+                          </a>
+                        </div>
+                        <div class="link" style="background: url('images/thumb/work2/styx2.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/race.html" target="_blank">
+                            <span>RACE</span>
+                          </a>
+                        </div>
+                        <div class="link" style="background: url('images/thumb/work2/styx3.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/news.html" target="_blank">
+                            <span>NEWS</span>
+                          </a>
+                        </div>
+                        <div class="link" style="background: url('images/thumb/work2/styx4.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/team.html" target="_blank">
+                            <span>TEAM</span>
+                          </a>
+                        </div>
+                        <div class="link" style="background: url('images/thumb/work2/styx5.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/car.html" target="_blank">
+                            <span>CAR</span>
+                          </a>
+                        </div>
+                        <div class="link" style="background: url('images/thumb/work2/styx6.jpg')no-repeat center top">
+                          <a href="https://shynaunum.github.io/apossible/styx/store.html" target="_blank">
+                            <span>STORE</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content2"></div>
+                  <div class="content3"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="work work3">
+            <input type="checkbox" id="show-work3" class="hide">
+            <label for="show-work3">
+              <div class="work-thumb thumb3"></div>
+              <div class="thumb-txt">
+                <p class="thumb-subtit">문학 전문 출판사</p>
+                <p class="thumb-tit">도서출판 이음</p>
+                <p class="thumb-dscr">
+                  문학 도서 전문 출판사로 초판본 디자인을 그대로 재현하여 도서를 출판하는 가상의 도서 출판사.
+                </p>
+              </div>
+            </label>
+            <div class="work-page work-page3">
+              <label for="show-work3"><span></span><span></span></label>
+              <div>
+                <ul class="work-tab tab-menu">
+                  <li class="menu1 active">
+                    <a href="#">OVERVIEW</a>
+                  </li>
+                  <li class="menu2">
+                    <a href="#">CONCEPT</a>
+                  </li>
+                  <li class="menu3">
+                    <a href="#">LAYOUT</a>
+                  </li>
+                </ul>
+                <div class="work-content tab-menu">
+                  <div class="content1 menu1 active">
+                    <h2>OVERVIEW</h2>
+                    <p class="work-subtit">문학 전문 출판사</p>
+                    <p class="work-tit">도서출판 이음</p>
+                    <div class="work-video">
+                      <video class="pj-video" muted loop autoplay controls>
+                        <source src="videos/yieum.mp4" type="video/mp4">
+                        <source src="videos/yieum.ogv" type="video/ogg">
+                        <source src="videos/yieum.webm" type="video/webm">
+                      </video>
+                    </div>
+                    <div class="work-dscr">
+                      <p>초판본 디자인을 그대로 재현하여 도서를 출판하는 가상의 문학 도서 출판사.<br>도서의 커버 디자인을 잘 살릴 수 있는 레이아웃 &amp; 디자인을 바탕으로<br>동적 요소를 추가하여 사용자 편의를 높인 홈페이지로 구현.</p>
+                      <ul>
+                        <li>
+                          <img src="images/icon/f-html5.svg" alt="html5아이콘">
+                          <span>HTML5</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-css3.svg" alt="css3아이콘">
+                          <span>CSS3</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-js.svg" alt="자바스크립트아이콘">
+                          <span>자바스크립트</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-jq.svg" alt="제이쿼리아이콘">
+                          <span>jQuery</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-resp.svg" alt="반응형아이콘">
+                          <span>반응형</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-uiux.svg" alt="ui/ux아이콘">
+                          <span>UI/UX</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-cb.svg" alt="크로스브라우징아이콘">
+                          <span>크로스브라우징</span>
+                        </li>
+                        <li>
+                          <img src="images/icon/f-w3c.svg" alt="웹표준아이콘">
+                          <span>웹표준 준수</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="content2 menu2"></div>
+                  <div class="content3 menu3"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <div id="maker">
+      <input type="checkbox" id="maker-info" class="hide">
+      <label for="maker-info"></label>
+      <div>
+        <label for="maker-info">
+          <p></p>
+        </label>
+        <div class="maker-more profile">
+          <span>프로필</span>
+          <input type="checkbox" id="show-profile" class="hide">
+          <label for="show-profile"></label>
+          <div class="profile-page">
+            <label for="show-profile"><span></span><span></span></label>
+            <div class="profile-photo-mobile"></div>
+            <div class="profile-inner">
+              <h2>NAM HYUN SU</h2>
+              <ul>
+                <li>
+                  <div class="profile-photo"></div>
+                </li>
+                <li>
+                  <p>남현수</p>
+                </li>
+                <li>
+                  <p>16 January 1992</p>
+                </li>
+                <li>
+                  <p>010.7456.7515</p>
+                </li>
+                <li>
+                  <p>shynaunum@gmail.com</p>
+                </li>
+                <li>
+                  <p>2014.02</p>
+                  <p>동아방송예술대학교 패션스타일리스트과 졸업</p>
+                </li>
+                <li>
+                  <p>2019.10</p>
+                  <p>더조은컴퓨터아카데미 스마트기기 UI/UX 디지털앱&amp;웹디자인 과정 수료</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="maker-more blog">
+          <span>블로그</span>
+          <a href="https://shynaunum.tistory.com/" target="_blank"></a>
+        </div>
+        <div class="maker-more insta">
+          <span>인스타그램</span>
+          <a href="https://www.instagram.com/_12th_moon_/" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
