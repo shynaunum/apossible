@@ -378,6 +378,10 @@ input[id*="show-profile"]:checked+label+div {
   text-align: center;
   line-height: 1.5rem;
 }
+.work-dscr>p {
+  width: 50%;
+  margin: 0 auto;
+}
 .work-dscr ul {
   margin: 50px auto;
 }
@@ -446,6 +450,7 @@ input[id*="show-profile"]:checked+label+div {
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
   background-size: cover !important;
+  position: relative;
 }
 .link a {
   display: flex;
@@ -455,7 +460,7 @@ input[id*="show-profile"]:checked+label+div {
   align-items: center;
   color: #fff;
   font: normal 1rem "GmarketSansBold", sans-serif;
-  position: relative;
+  position: absolute;
 }
 .link a::after {
   content: '';
@@ -765,8 +770,9 @@ input[id*="show-profile"]:checked+label+div {
   .pj-video {
     width: 100%;
   }
-  .work-dscr p {
-    font-size: .9rem;
+  .work-dscr>p {
+    width: 100%;
+    font: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
     text-align: left;
   }
   .work-dscr ul>li {
@@ -780,18 +786,19 @@ input[id*="show-profile"]:checked+label+div {
     flex-wrap: wrap;
   }
   .link {
-    width: 30%;
+    width: 49.5%;
     height: unset;
+    margin: 0;
   }
   .link::after {
     content: '';
     display: block;
     padding-bottom: 100%;
   }
-  .link a {
-    position: absolute;
+  .work-page2 .link:nth-of-type(odd) {
+    margin-right: 1%;
   }
-  .work-page2 .link:nth-of-type(-n+3) {
+  .work-page2 .link:nth-of-type(-n+4) {
     margin-bottom: 10px;
   }
   .profile-page {
