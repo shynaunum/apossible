@@ -871,6 +871,8 @@ input[id*="show-profile"]:checked+label+div {
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 20px;
+    -webkit-backdrop-filter: blur(100px) !important;
+    backdrop-filter: blur(100px) !important;
   }
   .work-content>div .work-tit {
     margin-bottom: 30px;
