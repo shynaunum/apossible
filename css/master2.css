@@ -737,8 +737,8 @@ input[id*="show-profile"]:checked+label+div {
   .profile-page>label {
     width: 4vh;
     height: 4vh;
-    top: 20px;
-    right: 20px;
+    top: 22px;
+    right: 22px;
   }
   .work-page>label span,
   .profile-page>label span {
@@ -746,19 +746,19 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-page>label span:first-of-type,
   .profile-page>label span:first-of-type {
-    -webkit-transform: translate(0, 3vw) rotate(45deg);
-    -moz-transform: translate(0, 3vw) rotate(45deg);
-    -ms-transform: translate(0, 3vw) rotate(45deg);
-    -o-transform: translate(0, 3vw) rotate(45deg);
-    transform: translate(0, 3vw) rotate(45deg);
+    -webkit-transform: translate(0, 2vh) rotate(45deg);
+    -moz-transform: translate(0, 2vh) rotate(45deg);
+    -ms-transform: translate(0, 2vh) rotate(45deg);
+    -o-transform: translate(0, 2vh) rotate(45deg);
+    transform: translate(0, 2vh) rotate(45deg);
   }
   .work-page>label span:last-of-type,
   .profile-page>label span:last-of-type {
-    -webkit-transform: translate(0, 3vw) rotate(-45deg);
-    -moz-transform: translate(0, 3vw) rotate(-45deg);
-    -ms-transform: translate(0, 3vw) rotate(-45deg);
-    -o-transform: translate(0, 3vw) rotate(-45deg);
-    transform: translate(0, 3vw) rotate(-45deg);
+    -webkit-transform: translate(0, 2vh) rotate(-45deg);
+    -moz-transform: translate(0, 2vh) rotate(-45deg);
+    -ms-transform: translate(0, 2vh) rotate(-45deg);
+    -o-transform: translate(0, 2vh) rotate(-45deg);
+    transform: translate(0, 2vh) rotate(-45deg);
   }
   .work-page .work-tab {
     margin-bottom: 5vh;
@@ -772,6 +772,9 @@ input[id*="show-profile"]:checked+label+div {
     border-radius: 10vh;
   }
   .work-content {
+    height: -webkit-calc(100% - 9vh - 2px);
+    height: -moz-calc(100% - 9vh - 2px);
+    height: calc(100% - 9vh - 2px);
     padding: 0 15px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -873,6 +876,18 @@ input[id*="show-profile"]:checked+label+div {
     padding: 20px;
     -webkit-backdrop-filter: blur(100px) !important;
     backdrop-filter: blur(100px) !important;
+  }
+  .work-page .work-tab {
+    margin-bottom: 5vw;
+  }
+  .work-tab li a {
+    font-size: 2vw;
+    padding: 1.5vw 3vw;
+  }
+  .work-content {
+    height: -webkit-calc(100% - 10vw - 2px);
+    height: -moz-calc(100% - 10vw - 2px);
+    height: calc(100% - 10vw - 2px);
   }
   .work-content>div .work-tit {
     margin-bottom: 30px;
