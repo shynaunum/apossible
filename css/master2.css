@@ -731,6 +731,45 @@ input[id*="show-profile"]:checked+label+div {
   left: -20px;
 }
 @media screen and (max-width: 1023px) and (orientation: portrait) {
+  body {
+    overflow-y: auto;
+    height: 100%;
+  }
+  header {
+    height: 60vh
+  }
+  h1+p {
+    font-size: clamp(28px, 4vh, 32px);
+  }
+  h1+p span {
+    white-space: nowrap;
+  }
+  section::after {
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    background-position: center bottom;
+  }
+  .wrapper>ul {
+    display: block;
+  }
+  .work {
+    width: 100%;
+    margin-bottom: 10vh;
+  }
+  .work>label {
+    width: 100%;
+  }
+  .work-thumb {
+    height: unset;
+    position: relative;
+  }
+  .work-thumb::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 20px;
