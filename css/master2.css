@@ -775,6 +775,9 @@ input[id*="show-profile"]:checked+label+div {
     font: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
     text-align: left;
   }
+  .work-dscr ul {
+    white-space: nowrap;
+  }
   .work-dscr ul>li {
     margin: 0;
   }
