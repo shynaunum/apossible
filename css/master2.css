@@ -728,7 +728,7 @@ input[id*="show-profile"]:checked+label+div {
   top: 9px;
   left: -20px;
 }
-@media screen and (max-width: 767px) and (orientation: portrait) {
+@media screen and (max-width: 1023px) and (orientation: portrait) {
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 20px;
@@ -794,6 +794,8 @@ input[id*="show-profile"]:checked+label+div {
   .work-dscr>p {
     width: 100%;
     font: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
+    font-size: min(14px);
+    line-height: min(21px);
     text-align: left;
   }
   .work-dscr ul {
@@ -870,7 +872,7 @@ input[id*="show-profile"]:checked+label+div {
     padding: 50px 15vw;
   }
 }
-@media screen and (max-width: 767px) and (orientation: landscape) {
+@media screen and (max-width: 1023px) and (orientation: landscape) {
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 20px;
@@ -883,6 +885,7 @@ input[id*="show-profile"]:checked+label+div {
   .work-tab li a {
     font-size: 2vw;
     padding: 1.5vw 3vw;
+    border-radius: 10vw;
   }
   .work-content {
     height: -webkit-calc(100% - 10vw - 2px);
@@ -899,6 +902,21 @@ input[id*="show-profile"]:checked+label+div {
   .work-dscr>p {
     width: 90%;
     font: normal 2vw/3vw 'NEXON Lv1 Gothic OTF Light', sans-serif;
+    font-size: max(14px);
+    line-height: max(21px);
+  }
+  .work-dscr ul {
+    white-space: nowrap;
+    margin: 3vw auto 5vw;
+  }
+  .work-dscr ul>li {
+    margin: 0;
+  }
+  .work-dscr img {
+    width: 8vw;
+    height: 8vw;
+    max-width: 50px;
+    max-height: 50px;
   }
   .link-wrap {
     flex-wrap: wrap;
