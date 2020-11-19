@@ -721,7 +721,7 @@ input[id*="show-profile"]:checked+label+div {
   top: 9px;
   left: -20px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 40px;
