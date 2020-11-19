@@ -497,12 +497,8 @@ input[id*="show-profile"]:checked+label+div {
   transition: all .5s .3s;
 }
 #maker>label {
-  width: 10vw;
-  max-width: 70px;
-  min-width: 60px;;
-  height: 10vw;
-  max-height: 70px;
-  min-height: 60px;
+  width: 60px;
+  height: 60px;
   position: fixed;
   right: 30px;
   bottom: 30px;
@@ -623,12 +619,12 @@ input[id*="show-profile"]:checked+label+div {
   bottom: 120px;
 }
 #maker-info:checked+label+div .blog {
-  right: 98px;
-  bottom: 90px;
+  right: 95px;
+  bottom: 95px;
 }
 #maker-info:checked+label+div .insta {
   right: 120px;
-  bottom: 30px;
+  bottom: 40px;
 }
 .maker-more>span {
   position: absolute;
@@ -743,7 +739,7 @@ input[id*="show-profile"]:checked+label+div {
     height: 35vh;
   }
   h1+p {
-    font-size: clamp(28px, 4vh, 32pxss);
+    font-size: clamp(28px, 4vh, 32px);
   }
   h1+p span {
     white-space: nowrap;
@@ -849,7 +845,6 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-dscr>p {
     width: 100%;
-    font-family: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
     font-size: clamp(14px, 2vh, 16px);
     line-height: clamp(21px, 3vh, 24px);
     text-align: left;
@@ -935,6 +930,17 @@ input[id*="show-profile"]:checked+label+div {
     right: 20px;
     bottom: 20px;
   }
+  #maker-info:checked+label+div .profile {
+    bottom: 100px;
+  }
+  #maker-info:checked+label+div .blog {
+    right: 75px;
+    bottom: 75px;
+  }
+  #maker-info:checked+label+div .insta {
+    right: 100px;
+    bottom: 20px;
+  }
 }
 @media screen and (max-width: 1023px) and (orientation: landscape) {
   input[id*="show-work"]:checked+label+div,
@@ -1008,5 +1014,24 @@ input[id*="show-profile"]:checked+label+div {
     padding-bottom: 0;
     font-size: 3vw;
     opacity: .8;
+  }
+  #maker>label {
+    right: 10px;
+    bottom: 10px;
+  }
+  .maker-more {
+    right: 20px;
+    bottom: 20px;
+  }
+  #maker-info:checked+label+div .profile {
+    bottom: 100px;
+  }
+  #maker-info:checked+label+div .blog {
+    right: 75px;
+    bottom: 75px;
+  }
+  #maker-info:checked+label+div .insta {
+    right: 100px;
+    bottom: 20px;
   }
 }
