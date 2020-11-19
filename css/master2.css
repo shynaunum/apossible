@@ -312,6 +312,7 @@ input[id*="show-profile"]:checked+label+div {
 .work-tab li.active a {
   background: #ffe5e080;
   color: #000;
+  border: 1px solid transparent;
 }
 .work-content {
   width: 100%;
@@ -763,9 +764,9 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-tab li a {
     font-size: 2vh;
-    -webkit-border-radius: 2vh;
-    -moz-border-radius: 2vh;
-    border-radius: 2vh;
+    -webkit-border-radius: 10vh;
+    -moz-border-radius: 10vh;
+    border-radius: 10vh;
   }
   .work-content {
     padding: 0 15px;
@@ -822,6 +823,9 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-page2 .link:nth-of-type(-n+4) {
     margin-bottom: 10px;
+  }
+  .link a span {
+    font-size: 6vw;
   }
   .profile-page {
     align-items: flex-end;
