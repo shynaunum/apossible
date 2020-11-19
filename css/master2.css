@@ -30,7 +30,8 @@ img {
 body {
   user-select: none;
   overflow: hidden;
-  font: normal 1rem 'NEXON Lv1 Gothic OTF Light', sans-serif;
+  font-family: 'NEXON Lv1 Gothic OTF Light', sans-serif;
+  font-size: 16px;
 }
 .hide {
   display: none;
@@ -741,7 +742,7 @@ input[id*="show-profile"]:checked+label+div {
     height: 35vh;
   }
   h1+p {
-    font-size: clamp(28px, 4vh, 32px);
+    font-size: clamp(28px, 4vh, 32pxss);
   }
   h1+p span {
     white-space: nowrap;
@@ -945,7 +946,7 @@ input[id*="show-profile"]:checked+label+div {
     margin-bottom: 5vw;
   }
   .work-tab li a {
-    font-size: clamp(14px, 2vw, 16px);
+    font-size: clamp(2vh, 1.5vw, 2.5vh);
     padding: 1.5vw 3vw;
     border-radius: 10vw;
   }
