@@ -496,8 +496,10 @@ input[id*="show-profile"]:checked+label+div {
   transition: all .5s .3s;
 }
 #maker>label {
-  width: 60px;
-  height: 60px;
+  width: 10vw;
+  max-width: 80px;
+  height: 10vw;
+  max-height: 80px;
   position: fixed;
   right: 30px;
   bottom: 30px;
@@ -766,7 +768,7 @@ input[id*="show-profile"]:checked+label+div {
   .work-tab li a {
     margin-right: 1vw;
     padding: 1vh 3vw;
-    font-size: 2vh;
+    font-size: clamp(14px, 2vh, 16px);
     -webkit-border-radius: 10vh;
     -moz-border-radius: 10vh;
     border-radius: 10vh;
@@ -782,10 +784,10 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-content>div .work-tit {
     margin-bottom: 5vh;
-    font-size: 4vh;
+    font-size: clamp(28px, 4vh, 32px);
   }
   .work-content>div .work-subtit {
-    font-size: 2vh;
+    font-size: clamp(14px, 2vh, 16px);
   }
   .pj-video {
     width: 100%;
@@ -793,8 +795,8 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-dscr>p {
     width: 100%;
-    font: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
-    font-size: min(14px);
+    font-family: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
+    font-size: clamp(14px, 2vh, 16px);
     line-height: min(21px);
     text-align: left;
   }
@@ -810,7 +812,7 @@ input[id*="show-profile"]:checked+label+div {
     height: 8vw;
   }
   .work-link p {
-    font-size: 2vh;
+    font-size: clamp(14px, 2vh, 16px);
     margin: 0 auto 2vh;
     padding-bottom: 2vh;
   }
@@ -883,7 +885,7 @@ input[id*="show-profile"]:checked+label+div {
     margin-bottom: 5vw;
   }
   .work-tab li a {
-    font-size: 2vw;
+    font-size: clamp(14px, 2vw, 16px);
     padding: 1.5vw 3vw;
     border-radius: 10vw;
   }
