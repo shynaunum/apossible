@@ -497,9 +497,11 @@ input[id*="show-profile"]:checked+label+div {
 }
 #maker>label {
   width: 10vw;
-  max-width: 80px;
+  max-width: 70px;
+  min-width: 60px;;
   height: 10vw;
-  max-height: 80px;
+  max-height: 70px;
+  min-height: 60px;
   position: fixed;
   right: 30px;
   bottom: 30px;
@@ -836,7 +838,7 @@ input[id*="show-profile"]:checked+label+div {
     width: 100%;
     font-family: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
     font-size: clamp(14px, 2vh, 16px);
-    line-height: min(21px);
+    line-height: clamp(21px, 3vh, 24px);
     text-align: left;
   }
   .work-dscr ul {
