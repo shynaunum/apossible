@@ -782,7 +782,6 @@ input[id*="show-profile"]:checked+label+div {
   .link {
     width: 30%;
     height: unset;
-    position: relative;
   }
   .link::after {
     content: '';
