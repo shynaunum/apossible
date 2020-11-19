@@ -733,30 +733,39 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-page>label,
   .profile-page>label {
-    width: 30px;
-    height: 30px;
-    top: 15px;
-    right: 15px;
+    width: 6vw;
+    height: 6vw;
+    top: 40px;
+    right: 40px;
   }
   .work-page>label span,
   .profile-page>label span {
-    width: 30px;
+    width: 6vw;
   }
   .work-page>label span:first-of-type,
   .profile-page>label span:first-of-type {
-    -webkit-transform: translate(0, 15px) rotate(45deg);
-    -moz-transform: translate(0, 15px) rotate(45deg);
-    -ms-transform: translate(0, 15px) rotate(45deg);
-    -o-transform: translate(0, 15px) rotate(45deg);
-    transform: translate(0, 15px) rotate(45deg);
+    -webkit-transform: translate(0, 3vw) rotate(45deg);
+    -moz-transform: translate(0, 3vw) rotate(45deg);
+    -ms-transform: translate(0, 3vw) rotate(45deg);
+    -o-transform: translate(0, 3vw) rotate(45deg);
+    transform: translate(0, 3vw) rotate(45deg);
   }
   .work-page>label span:last-of-type,
   .profile-page>label span:last-of-type {
-    -webkit-transform: translate(0, 15px) rotate(-45deg);
-    -moz-transform: translate(0, 15px) rotate(-45deg);
-    -ms-transform: translate(0, 15px) rotate(-45deg);
-    -o-transform: translate(0, 15px) rotate(-45deg);
-    transform: translate(0, 15px) rotate(-45deg);
+    -webkit-transform: translate(0, 3vw) rotate(-45deg);
+    -moz-transform: translate(0, 3vw) rotate(-45deg);
+    -ms-transform: translate(0, 3vw) rotate(-45deg);
+    -o-transform: translate(0, 3vw) rotate(-45deg);
+    transform: translate(0, 3vw) rotate(-45deg);
+  }
+  .work-page .work-tab {
+    margin-bottom: 5vh;
+  }
+  .work-tab li a {
+    font-size: 2vh;
+    -webkit-border-radius: 2vh;
+    -moz-border-radius: 2vh;
+    border-radius: 2vh;
   }
   .work-content {
     padding: 0 15px;
@@ -765,10 +774,15 @@ input[id*="show-profile"]:checked+label+div {
     box-sizing: border-box;
   }
   .work-content>div .work-tit {
-    margin-bottom: 30px;
+    margin-bottom: 3vh;
+    font-size: 4vh;
+  }
+  .work-content>div .work-subtit {
+    font-size: 2vh;
   }
   .pj-video {
     width: 100%;
+    margin-bottom: 3vh;
   }
   .work-dscr>p {
     width: 100%;
@@ -782,8 +796,13 @@ input[id*="show-profile"]:checked+label+div {
     margin: 0;
   }
   .work-dscr img {
-    width: 40px;
-    height: 40px;
+    width: 8vw;
+    height: 8vw;
+  }
+  .work-link p {
+    font-size: 1.5vh;
+    margin: 0 auto 2vh;
+    padding-bottom: 2vh;
   }
   .link-wrap {
     flex-wrap: wrap;
