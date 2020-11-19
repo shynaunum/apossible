@@ -772,7 +772,7 @@ input[id*="show-profile"]:checked+label+div {
   }
   .work-dscr>p {
     width: 100%;
-    font: normal 2vh/3vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
+    font: normal 1.5vh/2.5vh 'NEXON Lv1 Gothic OTF Light', sans-serif;
     text-align: left;
   }
   .work-dscr ul {
