@@ -67,9 +67,9 @@ section::after {
   width: 100%;
   height: 65px;
   position: absolute;
-  top: -50px;
+  top: -65px;
   left: 0;
-  background: url('../images/bg/bar.svg')50% 50% no-repeat;
+  background: url('../images/bg/bar.svg')50% 100% no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -946,8 +946,6 @@ input[id*="show-profile"]:checked+label+div {
   input[id*="show-work"]:checked+label+div,
   input[id*="show-profile"]:checked+label+div {
     padding: 20px;
-    -webkit-backdrop-filter: blur(100px) !important;
-    backdrop-filter: blur(100px) !important;
   }
   .work-page .work-tab {
     margin-bottom: 5vw;
