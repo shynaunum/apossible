@@ -308,6 +308,9 @@ input[id*="show-profile"]:checked+label+div {
   -moz-border-radius: 20px;
   border-radius: 20px;
   color: #ffe5e080;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s;
 }
 .work-tab li.active a {
@@ -433,7 +436,7 @@ input[id*="show-profile"]:checked+label+div {
 .work-dscr img:hover+span {
   opacity: 1;
 }
-.work-link p {
+.work-link>p {
   width: 80%;
   margin: 0 auto 20px;
   padding-bottom: 20px;
@@ -495,6 +498,34 @@ input[id*="show-profile"]:checked+label+div {
   -moz-transition: all .5s .3s;
   -o-transition: all .5s .3s;
   transition: all .5s .3s;
+}
+.btn-link {
+  margin-top: 50px;
+  text-align: center;
+}
+.btn-link span {
+  display: inline-block;
+}
+.btn-link a {
+  display: inline-block;
+  padding: 11px 20px 10px;
+  border: 1px solid #ffe5e080;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  color: #ffe5e080;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+.btn-link span:first-of-type a {
+  margin-right: 10px;
+}
+.btn-link a:hover {
+  background: #ffe5e080;
+  color: #000;
+  border: 1px solid transparent;
 }
 #maker>label {
   width: 60px;
