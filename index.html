@@ -3,7 +3,7 @@
   <head>
     <title>&lt;a&gt;:possible - MAIN</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
     <!--[if iE 6]><html class="no-js old ie6"><![endif]-->
     <!--[if iE 7]><html class="no-js old ie7"><![endif]-->
@@ -33,6 +33,20 @@
         $('#maker-info').on('click', function(){
           if($('#show-profile').is(':checked')){
             $('#show-profile').prop('checked', false);
+          }
+        });
+
+        $('label[for*="show-work"]').on('click', function(){
+          if($('.work-page').is(':visible')){
+            $('body').css({
+              'height':'100vh',
+              'overflow-y':'hidden'
+            });
+          }else if($('.work-page').is(':hidden')){
+            $('body').css({
+              'height':'auto',
+              'overflow-y':'auto'
+            });
           }
         });
 
@@ -86,7 +100,6 @@
                     <h2>OVERVIEW</h2>
                     <p class="work-subtit">여행 예약 사이트</p>
                     <p class="work-tit">오늘의 여행</p>
-
                   </div>
                   <div class="content2 menu2">
                     <h2>CONCEPT</h2>
@@ -203,13 +216,17 @@
                           </a>
                         </div>
                       </div>
+                      <div class="btn-link">
+                        <span><a href="https://shynaunum.github.io/apossible/styx/main.html">GO TO SITE</a></span>
+                        <span><a href="https://github.com/shynaunum/apossible/tree/master/styx">VIEW SOURCE CODE</a></span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="content2"></div>
-                  <div class="content3"></div>
-                </div>
+                  </div><!--content1-->
+                  <div class="content2"></div><!--content2-->
+                  <div class="content3"></div><!--content3-->
+                </div><!--work-content-->
               </div>
-            </div>
+            </div><!--work-page-->
           </li>
           <li class="work work3">
             <input type="checkbox" id="show-work3" class="hide">
