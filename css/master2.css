@@ -109,13 +109,13 @@ section::after {
   background-size: cover !important;
 }
 .thumb1 {
-  background: url('../images/thumb/work1.png')no-repeat center top;
+  background: url('../images/thumb/work1.jpg')no-repeat center top;
 }
 .thumb2 {
-  background: url('../images/thumb/work2.png')no-repeat center top;
+  background: url('../images/thumb/work2.jpg')no-repeat center top;
 }
 .thumb3 {
-  background: url('../images/thumb/work3.png')no-repeat center top;
+  background: url('../images/thumb/work3.jpg')no-repeat center top;
 }
 .thumb-txt {
   display: table;
